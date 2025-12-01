@@ -1,0 +1,2939 @@
+[
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Analog Alchemy: Neural Computation with In-Memory Inference, Learning and Routing",
+    "authors": [
+      "Yigit Demirag"
+    ],
+    "year": 2024,
+    "doi": "10.5167/uzh-267127",
+    "url": "http://arxiv.org/abs/2412.20848v1",
+    "summary": "As neural computation is revolutionizing the field of Artificial Intelligence (AI), rethinking the ideal neural hardware is becoming the next frontier. Fast and reliable von Neumann architecture has been the hosting platform for neural computation. Although capable, its separation of memory and computation creates the bottleneck for the energy efficiency of neural computation, contrasting the biological brain. The question remains: how can we efficiently combine memory and computation, while exp",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "2412.20848v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "A Neural Network-Evolutionary Computational Framework for Remaining Useful Life Estimation of Mechanical Systems",
+    "authors": [
+      "David Laredo",
+      "Zhaoyin Chen",
+      "Oliver Sch\u00fctze",
+      "Jian-Qiao Sun"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.04.016",
+    "url": "http://arxiv.org/abs/1905.05918v1",
+    "summary": "This paper presents a framework for estimating the remaining useful life (RUL) of mechanical systems. The framework consists of a multi-layer perceptron and an evolutionary algorithm for optimizing the data-related parameters. The framework makes use of a strided time window to estimate the RUL for mechanical components. Tuning the data-related parameters can become a very time consuming task. The framework presented here automatically reshapes the data such that the efficiency of the model is i",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "1905.05918v1"
+  },
+  {
+    "title": "Memristors -- from In-memory computing, Deep Learning Acceleration, Spiking Neural Networks, to the Future of Neuromorphic and Bio-inspired Computing",
+    "authors": [
+      "Adnan Mehonic",
+      "Abu Sebastian",
+      "Bipin Rajendran",
+      "Osvaldo Simeone",
+      "Eleni Vasilaki",
+      "Anthony J. Kenyon"
+    ],
+    "year": 2020,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2004.14942v1",
+    "summary": "Machine learning, particularly in the form of deep learning, has driven most of the recent fundamental developments in artificial intelligence. Deep learning is based on computational models that are, to a certain extent, bio-inspired, as they rely on networks of connected simple computing units operating in parallel. Deep learning has been successfully applied in areas such as object/pattern recognition, speech and natural language processing, self-driving vehicles, intelligent self-diagnostics",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "2004.14942v1"
+  },
+  {
+    "title": "Reservoir Memory Machines as Neural Computers",
+    "authors": [
+      "Benjamin Paa\u00dfen",
+      "Alexander Schulz",
+      "Terrence C. Stewart",
+      "Barbara Hammer"
+    ],
+    "year": 2020,
+    "doi": "10.1109/TNNLS.2021.3094139",
+    "url": "http://arxiv.org/abs/2009.06342v2",
+    "summary": "Differentiable neural computers extend artificial neural networks with an explicit memory without interference, thus enabling the model to perform classic computation tasks such as graph traversal. However, such models are difficult to train, requiring long training times and large datasets. In this work, we achieve some of the computational capabilities of differentiable neural computers with a model that can be trained very efficiently, namely an echo state network with an explicit memory with",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "2009.06342v2"
+  },
+  {
+    "title": "Adversarial Frontier Stitching for Remote Neural Network Watermarking",
+    "authors": [
+      "Erwan Le Merrer",
+      "Patrick Perez",
+      "Gilles Tr\u00e9dan"
+    ],
+    "year": 2017,
+    "doi": "10.1007/s00521-019-04434-z",
+    "url": "http://arxiv.org/abs/1711.01894v2",
+    "summary": "The state of the art performance of deep learning models comes at a high cost for companies and institutions, due to the tedious data collection and the heavy processing requirements. Recently, [35, 22] proposed to watermark convolutional neural networks for image classification, by embedding information into their weights. While this is a clear progress towards model protection, this technique solely allows for extracting the watermark from a network that one accesses locally and entirely.\n  In",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "1711.01894v2"
+  },
+  {
+    "title": "A Review on Neural Network Models of Schizophrenia and Autism Spectrum Disorder",
+    "authors": [
+      "Pablo Lanillos",
+      "Daniel Oliva",
+      "Anja Philippsen",
+      "Yuichi Yamashita",
+      "Yukie Nagai",
+      "Gordon Cheng"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.10.014",
+    "url": "http://arxiv.org/abs/1906.10015v2",
+    "summary": "This survey presents the most relevant neural network models of autism spectrum disorder and schizophrenia, from the first connectionist models to recent deep network architectures. We analyzed and compared the most representative symptoms with its neural model counterpart, detailing the alteration introduced in the network that generates each of the symptoms, and identifying their strengths and weaknesses. We additionally cross-compared Bayesian and free-energy approaches, as they are widely ap",
+    "source": "arxiv",
+    "query": "wave-based analog computing neural network",
+    "arxiv_id": "1906.10015v2"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Structure Is Not Enough: Leveraging Behavior for Neural Network Weight Reconstruction",
+    "authors": [
+      "L\u00e9o Meynent",
+      "Ivan Melev",
+      "Konstantin Sch\u00fcrholt",
+      "G\u00f6ran Kauermann",
+      "Damian Borth"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2503.17138v1",
+    "summary": "The weights of neural networks (NNs) have recently gained prominence as a new data modality in machine learning, with applications ranging from accuracy and hyperparameter prediction to representation learning or weight generation. One approach to leverage NN weights involves training autoencoders (AEs), using contrastive and reconstruction losses. This allows such models to be applied to a wide variety of downstream tasks, and they demonstrate strong predictive performance and low reconstructio",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "2503.17138v1"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Adiabatic Fine-Tuning of Neural Quantum States Enables Detection of Phase Transitions in Weight Space",
+    "authors": [
+      "Vinicius Hernandes",
+      "Thomas Spriggs",
+      "Saqar Khaleefah",
+      "Eliska Greplova"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2503.17140v2",
+    "summary": "Neural quantum states (NQS) have emerged as a powerful tool for approximating quantum wavefunctions using deep learning. While these models achieve remarkable accuracy, understanding how they encode physical information remains an open challenge. In this work, we introduce adiabatic fine-tuning, a scheme that trains NQS across a phase diagram, leading to strongly correlated weight representations across different models. This correlation in weight space enables the detection of phase transitions",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "2503.17140v2"
+  },
+  {
+    "title": "Encoding binary neural codes in networks of threshold-linear neurons",
+    "authors": [
+      "Carina Curto",
+      "Anda Degeratu",
+      "Vladimir Itskov"
+    ],
+    "year": 2012,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1212.0031v3",
+    "summary": "Networks of neurons in the brain encode preferred patterns of neural activity via their synaptic connections. Despite receiving considerable attention, the precise relationship between network connectivity and encoded patterns is still poorly understood. Here we consider this problem for networks of threshold-linear neurons whose computational function is to learn and store a set of binary patterns (e.g., a neural code) as \"permitted sets\" of the network. We introduce a simple Encoding Rule that",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "1212.0031v3"
+  },
+  {
+    "title": "Recursive Self-Similarity in Deep Weight Spaces of Neural Architectures: A Fractal and Coarse Geometry Perspective",
+    "authors": [
+      "Ambarish Moharil",
+      "Indika Kumara",
+      "Damian Andrew Tamburri",
+      "Majid Mohammadi",
+      "Willem-Jan van den Heuvel"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2503.14298v1",
+    "summary": "This paper conceptualizes the Deep Weight Spaces (DWS) of neural architectures as hierarchical, fractal-like, coarse geometric structures observable at discrete integer scales through recursive dilation. We introduce a coarse group action termed the fractal transformation, $T_{r_k} $, acting under the symmetry group $G = (\\mathbb{Z}, +) $, to analyze neural parameter matrices or tensors, by segmenting the underlying discrete grid $\u03a9$ into $N(r_k)$ fractals across varying observation scales $ r_k",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "2503.14298v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "Development of a sensory-neural network for medical diagnosing",
+    "authors": [
+      "Igor Grabec",
+      "Eva \u0160vegl",
+      "Mihael Sok"
+    ],
+    "year": 2018,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1807.02477v1",
+    "summary": "Performance of a sensory-neural network developed for diagnosing of diseases is described. Information about patient's condition is provided by answers to the questionnaire. Questions correspond to sensors generating signals when patients acknowledge symptoms. These signals excite neurons in which characteristics of the diseases are represented by synaptic weights associated with indicators of symptoms. The disease corresponding to the most excited neuron is proposed as the result of diagnosing.",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "1807.02477v1"
+  },
+  {
+    "title": "Normalisation of Weights and Firing Rates in Spiking Neural Networks with Spike-Timing-Dependent Plasticity",
+    "authors": [
+      "Katarzyna Kozdon",
+      "Peter Bentley"
+    ],
+    "year": 2019,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1910.00122v1",
+    "summary": "Maintaining the ability to fire sparsely is crucial for information encoding in neural networks. Additionally, spiking homeostasis is vital for spiking neural networks with changing numbers of weights and neurons. We discuss a range of network stabilisation approaches, inspired by homeostatic synaptic plasticity mechanisms reported in the brain. These include weight scaling, and weight change as a function of the network's spiking activity. We tested normalisation of the sum of weights for all n",
+    "source": "arxiv",
+    "query": "phase encoding weights neural network",
+    "arxiv_id": "1910.00122v1"
+  },
+  {
+    "title": "Implementing a Bayes Filter in a Neural Circuit: The Case of Unknown Stimulus Dynamics",
+    "authors": [
+      "Sacha Sokoloski"
+    ],
+    "year": 2015,
+    "doi": "10.1162/neco_a_00991",
+    "url": "http://arxiv.org/abs/1512.07839v4",
+    "summary": "In order to interact intelligently with objects in the world, animals must first transform neural population responses into estimates of the dynamic, unknown stimuli which caused them. The Bayesian solution to this problem is known as a Bayes filter, which applies Bayes' rule to combine population responses with the predictions of an internal model. In this paper we present a method for learning to approximate a Bayes filter when the stimulus dynamics are unknown. To do this we use the inferenti",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1512.07839v4"
+  },
+  {
+    "title": "Encoding binary neural codes in networks of threshold-linear neurons",
+    "authors": [
+      "Carina Curto",
+      "Anda Degeratu",
+      "Vladimir Itskov"
+    ],
+    "year": 2012,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1212.0031v3",
+    "summary": "Networks of neurons in the brain encode preferred patterns of neural activity via their synaptic connections. Despite receiving considerable attention, the precise relationship between network connectivity and encoded patterns is still poorly understood. Here we consider this problem for networks of threshold-linear neurons whose computational function is to learn and store a set of binary patterns (e.g., a neural code) as \"permitted sets\" of the network. We introduce a simple Encoding Rule that",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1212.0031v3"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "On functions computed on trees",
+    "authors": [
+      "Roozbeh Farhoodi",
+      "Khashayar Filom",
+      "Ilenna Simone Jones",
+      "Konrad Paul Kording"
+    ],
+    "year": 2019,
+    "doi": "10.1162/neco_a_01231",
+    "url": "http://arxiv.org/abs/1904.02309v4",
+    "summary": "Any function can be constructed using a hierarchy of simpler functions through compositions. Such a hierarchy can be characterized by a binary rooted tree. Each node of this tree is associated with a function which takes as inputs two numbers from its children and produces one output. Since thinking about functions in terms of computation graphs is getting popular we may want to know which functions can be implemented on a given tree. Here, we describe a set of necessary constraints in the form ",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1904.02309v4"
+  },
+  {
+    "title": "A Neural Network-Evolutionary Computational Framework for Remaining Useful Life Estimation of Mechanical Systems",
+    "authors": [
+      "David Laredo",
+      "Zhaoyin Chen",
+      "Oliver Sch\u00fctze",
+      "Jian-Qiao Sun"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.04.016",
+    "url": "http://arxiv.org/abs/1905.05918v1",
+    "summary": "This paper presents a framework for estimating the remaining useful life (RUL) of mechanical systems. The framework consists of a multi-layer perceptron and an evolutionary algorithm for optimizing the data-related parameters. The framework makes use of a strided time window to estimate the RUL for mechanical components. Tuning the data-related parameters can become a very time consuming task. The framework presented here automatically reshapes the data such that the efficiency of the model is i",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1905.05918v1"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Coherent states for compact Lie groups and their large-N limits",
+    "authors": [
+      "Brian C. Hall"
+    ],
+    "year": 2017,
+    "doi": "10.1007/978-3-319-76732-1_3",
+    "url": "http://arxiv.org/abs/1707.02355v1",
+    "summary": "The first two parts of this article surveys results related to the heat-kernel coherent states for a compact Lie group K. I begin by reviewing the definition of the coherent states, their resolution of the identity, and the associated Segal-Bargmann transform. I then describe related results including connections to geometric quantization and (1+1)-dimensional Yang--Mills theory, the associated coherent states on spheres, and applications to quantum gravity.\n  The third part of this article summ",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1707.02355v1"
+  },
+  {
+    "title": "Cognitive computation with autonomously active neural networks: an emerging field",
+    "authors": [
+      "Claudius Gros"
+    ],
+    "year": 2009,
+    "doi": "",
+    "url": "http://arxiv.org/abs/0901.3028v1",
+    "summary": "The human brain is autonomously active. To understand the functional role of this self-sustained neural activity, and its interplay with the sensory data input stream, is an important question in cognitive system research and we review here the present state of theoretical modelling.\n  This review will start with a brief overview of the experimental efforts, together with a discussion of transient vs. self-sustained neural activity in the framework of reservoir computing. The main emphasis will ",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "0901.3028v1"
+  },
+  {
+    "title": "Coherent states in fermionic Fock-Krein spaces and their amplitudes",
+    "authors": [
+      "Robert Oeckl"
+    ],
+    "year": 2017,
+    "doi": "10.1007/978-3-319-76732-1_12",
+    "url": "http://arxiv.org/abs/1708.03047v2",
+    "summary": "We generalize the fermionic coherent states to the case of Fock-Krein spaces, i.e., Fock spaces with an idefinite inner product of Krein type. This allows for their application in topological or functorial quantum field theory and more specifically in general boundary quantum field theory. In this context we derive a universal formula for the amplitude of a coherent state in linear field theory on an arbitrary manifold with boundary.",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1708.03047v2"
+  },
+  {
+    "title": "Review of Entangled Coherent States",
+    "authors": [
+      "Barry C. Sanders"
+    ],
+    "year": 2011,
+    "doi": "10.1088/1751-8113/45/24/244002",
+    "url": "http://arxiv.org/abs/1112.1778v1",
+    "summary": "We review entangled coherent state research since its first implicit use in 1967 to the present. Entangled coherent states are important to quantum superselection principles, quantum information processing, quantum optics, and mathematical physics. Despite their inherent fragility they have produced in a conditional propagating-wave quantum optics realization. Fundamentally the states are intriguing because they are entanglements of the coherent states, which are in a sense the most classical of",
+    "source": "arxiv",
+    "query": "coherent demodulation neural computation",
+    "arxiv_id": "1112.1778v1"
+  },
+  {
+    "title": "Accumulate: An identity-based blockchain protocol with cross-chain support, human-readable addresses, and key management capabilities",
+    "authors": [
+      "Kyle Michelson",
+      "Anjali Sridharan",
+      "Umut Can Cabuk",
+      "Ethan Reesor",
+      "Ben Stolman",
+      "Drew Mailen",
+      "Dennis Bunfield",
+      "Jay Smith",
+      "Paul Snow"
+    ],
+    "year": 2022,
+    "doi": "10.48550/arXiv.2204.06878",
+    "url": "http://arxiv.org/abs/2204.06878v2",
+    "summary": "The Accumulate Protocol (\"Accumulate\") is an identity-based, Delegated Proof of Stake (DPoS) blockchain designed to power the digital economy through interoperability with Layer-1 blockchains, integration with enterprise tech stacks, and interfacing with the World Wide Web. Accumulate bypasses the trilemma of security, scalability, and decentralization by implementing a chain-of-chains architecture in which digital identities with the ability to manage keys, tokens, data, and other identities ar",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2204.06878v2"
+  },
+  {
+    "title": "Linear Delay-cell Design for Low-energy Delay Multiplication and Accumulation",
+    "authors": [
+      "Aditya Shukla"
+    ],
+    "year": 2020,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2007.13895v3",
+    "summary": "A practical deep neural network's (DNN) evaluation involves thousands of multiply-and-accumulate (MAC) operations. To extend DNN's superior inference capabilities to energy constrained devices, architectures and circuits that minimize energy-per-MAC must be developed. In this respect, analog delay-based MAC is advantageous due to reasons both extrinsic and intrinsic to the MAC implementation - (1) lower fixed-point precision requirement for a DNN's evaluation, (2) better dynamic range than charg",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2007.13895v3"
+  },
+  {
+    "title": "MultiPLY: A Multisensory Object-Centric Embodied Large Language Model in 3D World",
+    "authors": [
+      "Yining Hong",
+      "Zishuo Zheng",
+      "Peihao Chen",
+      "Yian Wang",
+      "Junyan Li",
+      "Chuang Gan"
+    ],
+    "year": 2024,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2401.08577v1",
+    "summary": "Human beings possess the capability to multiply a melange of multisensory cues while actively exploring and interacting with the 3D world. Current multi-modal large language models, however, passively absorb sensory data as inputs, lacking the capacity to actively interact with the objects in the 3D environment and dynamically collect their multisensory information. To usher in the study of this area, we propose MultiPLY, a multisensory embodied large language model that could incorporate multis",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2401.08577v1"
+  },
+  {
+    "title": "AutoLungDx: A Hybrid Deep Learning Approach for Early Lung Cancer Diagnosis Using 3D Res-U-Net, YOLOv5, and Vision Transformers",
+    "authors": [
+      "Samiul Based Shuvo",
+      "Tasnia Binte Mamun"
+    ],
+    "year": 2023,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2305.00046v4",
+    "summary": "Lung cancer is a leading cause of cancer-related deaths worldwide, and early detection is crucial for improving patient outcomes. Nevertheless, early diagnosis of cancer is a major challenge, particularly in low-resource settings where access to medical resources and trained radiologists is limited. The objective of this study is to propose an automated end-to-end deep learning-based framework for the early detection and classification of lung nodules, specifically for low-resource settings. The",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2305.00046v4"
+  },
+  {
+    "title": "On the Capacity Region of the Two-User Interference Channel",
+    "authors": [
+      "Reza K. Farsani"
+    ],
+    "year": 2013,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1302.1837v1",
+    "summary": "One of the key open problems in network information theory is to obtain the capacity region for the two-user Interference Channel (IC). In this paper, new results are derived for this channel. As a first result, a noisy interference regime is given for the general IC where the sum-rate capacity is achieved by treating interference as noise at the receivers. To obtain this result, a single-letter outer bound in terms of some auxiliary random variables is first established for the sum-rate capacit",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "1302.1837v1"
+  },
+  {
+    "title": "A Multi-Stage Hybrid CNN-Transformer Network for Automated Pediatric Lung Sound Classification",
+    "authors": [
+      "Samiul Based Shuvo",
+      "Taufiq Hasan"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2507.20408v2",
+    "summary": "Automated analysis of lung sound auscultation is essential for monitoring respiratory health, especially in regions facing a shortage of skilled healthcare workers. While respiratory sound classification has been widely studied in adults, its ap plication in pediatric populations, particularly in children aged <6 years, remains an underexplored area. The developmental changes in pediatric lungs considerably alter the acoustic proper ties of respiratory sounds, necessitating specialized classific",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2507.20408v2"
+  },
+  {
+    "title": "Interference Mitigation through Limited Transmitter Cooperation",
+    "authors": [
+      "I-Hsiang Wang",
+      "David N. C. Tse"
+    ],
+    "year": 2010,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1004.5421v1",
+    "summary": "Interference limits performance in wireless networks, and cooperation among receivers or transmitters can help mitigate interference by forming distributed MIMO systems. Earlier work shows how limited receiver cooperation helps mitigate interference. The scenario with transmitter cooperation, however, is more difficult to tackle. In this paper we study the two-user Gaussian interference channel with conferencing transmitters to make progress towards this direction. We characterize the capacity r",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "1004.5421v1"
+  },
+  {
+    "title": "A Self-Attention-Driven Deep Denoiser Model for Real Time Lung Sound Denoising in Noisy Environments",
+    "authors": [
+      "Samiul Based Shuvo",
+      "Syed Samiul Alam",
+      "Taufiq Hasan"
+    ],
+    "year": 2024,
+    "doi": "10.1016/j.bspc.2025.108818",
+    "url": "http://arxiv.org/abs/2404.04365v3",
+    "summary": "Objective: Lung auscultation is a valuable tool in diagnosing and monitoring various respiratory diseases. However, lung sounds (LS) are significantly affected by numerous sources of contamination, especially when recorded in real-world clinical settings. Conventional denoising models prove impractical for LS denoising, primarily owing to spectral overlap complexities arising from diverse noise sources. To address this issue, we propose a specialized deep-learning model (Uformer) for lung sound ",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2404.04365v3"
+  },
+  {
+    "title": "Call to Protect the Dark and Quiet Sky from Harmful Interference by Satellite Constellations",
+    "authors": [
+      "IAU Centre for the Protection of the Dark",
+      "Quiet Sky from Satellite Constellation Interference",
+      "Gyula I. G. J\u00f3zsa",
+      "Andrew Williams",
+      "Richard Green",
+      "Isabel Marsh",
+      "John Antoniadis",
+      "Domingos Barbosa",
+      "John Barentine",
+      "Guillermo Blanc",
+      "Aaron Boley",
+      "Bruno Coelho",
+      "Patricia Cooper",
+      "Sara Dalledonne",
+      "Federico Di Vruno",
+      "Joe Diamond",
+      "Adam Dong",
+      "Ronald Drimmel",
+      "Siegfried Eggl",
+      "Nusrin Habeeb",
+      "Jessica Heim",
+      "Chris Hofer",
+      "Narae Hwang",
+      "Mathieu Isidro",
+      "David Koplow",
+      "James Lowenthal",
+      "Sara Lucatello",
+      "Mariya Lyubenova",
+      "Robert Massey",
+      "Mike Peel",
+      "Meredith Rawls",
+      "Adrien Saada",
+      "Alejandro Sanchez",
+      "Pedro Sanhueza",
+      "Warren Skidmore",
+      "Boris Sorokin",
+      "P. Sreekumar",
+      "Tim Stevenson",
+      "Paula Tartari",
+      "Vincenza Tornatore",
+      "Connie Walker",
+      "Benjamin Winkel",
+      "Yana Yakushina"
+    ],
+    "year": 2024,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2412.08244v2",
+    "summary": "The growing number of satellite constellations in low Earth orbit (LEO) enhances global communications and Earth observation, and support of space commerce is a high priority of many governments. At the same time, the proliferation of satellites in LEO has negative effects on astronomical observations and research, and the preservation of the dark and quiet sky. These satellite constellations reflect sunlight onto optical telescopes, and their radio emission impacts radio observatories, jeopardi",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2412.08244v2"
+  },
+  {
+    "title": "ResCap-DBP: A Lightweight Residual-Capsule Network for Accurate DNA-Binding Protein Prediction Using Global ProteinBERT Embeddings",
+    "authors": [
+      "Samiul Based Shuvo",
+      "Tasnia Binte Mamun",
+      "U Rajendra Acharya"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2507.20426v1",
+    "summary": "DNA-binding proteins (DBPs) are integral to gene regulation and cellular processes, making their accurate identification essential for understanding biological functions and disease mechanisms. Experimental methods for DBP identification are time-consuming and costly, driving the need for efficient computational prediction techniques. In this study, we propose a novel deep learning framework, ResCap-DBP, that combines a residual learning-based encoder with a one-dimensional Capsule Network (1D-C",
+    "source": "arxiv",
+    "query": "interference based multiply accumulate",
+    "arxiv_id": "2507.20426v1"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "Piecewise Semi-Analytical Formulation for the Analysis of Coupled-Oscillator Systems",
+    "authors": [
+      "Pedro Umpierrez",
+      "Victor Arana",
+      "Sergio Sancho"
+    ],
+    "year": 2024,
+    "doi": "10.1109/TMTT.2019.2912366",
+    "url": "http://arxiv.org/abs/2404.12780v1",
+    "summary": "A new simulation technique to obtain the synchronized steady-state solutions existing in coupled oscillator systems is presented. The technique departs from a semi-analytical formulation presented in previous works. It extends the model of the admittance function describing each individual oscillator to a piecewise linear one. This provides a global formulation of the coupled system, considering the whole characteristic of each voltage-controlled oscillator (VCO) in the array. In comparison with",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "2404.12780v1"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "Development of a sensory-neural network for medical diagnosing",
+    "authors": [
+      "Igor Grabec",
+      "Eva \u0160vegl",
+      "Mihael Sok"
+    ],
+    "year": 2018,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1807.02477v1",
+    "summary": "Performance of a sensory-neural network developed for diagnosing of diseases is described. Information about patient's condition is provided by answers to the questionnaire. Questions correspond to sensors generating signals when patients acknowledge symptoms. These signals excite neurons in which characteristics of the diseases are represented by synaptic weights associated with indicators of symptoms. The disease corresponding to the most excited neuron is proposed as the result of diagnosing.",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "1807.02477v1"
+  },
+  {
+    "title": "A Review on Neural Network Models of Schizophrenia and Autism Spectrum Disorder",
+    "authors": [
+      "Pablo Lanillos",
+      "Daniel Oliva",
+      "Anja Philippsen",
+      "Yuichi Yamashita",
+      "Yukie Nagai",
+      "Gordon Cheng"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.10.014",
+    "url": "http://arxiv.org/abs/1906.10015v2",
+    "summary": "This survey presents the most relevant neural network models of autism spectrum disorder and schizophrenia, from the first connectionist models to recent deep network architectures. We analyzed and compared the most representative symptoms with its neural model counterpart, detailing the alteration introduced in the network that generates each of the symptoms, and identifying their strengths and weaknesses. We additionally cross-compared Bayesian and free-energy approaches, as they are widely ap",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "1906.10015v2"
+  },
+  {
+    "title": "How transferable are features in deep neural networks?",
+    "authors": [
+      "Jason Yosinski",
+      "Jeff Clune",
+      "Yoshua Bengio",
+      "Hod Lipson"
+    ],
+    "year": 2014,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1411.1792v1",
+    "summary": "Many deep neural networks trained on natural images exhibit a curious phenomenon in common: on the first layer they learn features similar to Gabor filters and color blobs. Such first-layer features appear not to be specific to a particular dataset or task, but general in that they are applicable to many datasets and tasks. Features must eventually transition from general to specific by the last layer of the network, but this transition has not been studied extensively. In this paper we experime",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "1411.1792v1"
+  },
+  {
+    "title": "Parallel Neural Networks in Golang",
+    "authors": [
+      "Daniela Kalwarowskyj",
+      "Erich Schikuta"
+    ],
+    "year": 2023,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2304.09590v1",
+    "summary": "This paper describes the design and implementation of parallel neural networks (PNNs) with the novel programming language Golang. We follow in our approach the classical Single-Program Multiple-Data (SPMD) model where a PNN is composed of several sequential neural networks, which are trained with a proportional share of the training dataset. We used for this purpose the MNIST dataset, which contains binary images of handwritten digits. Our analysis focusses on different activation functions and ",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "2304.09590v1"
+  },
+  {
+    "title": "Dual Accuracy-Quality-Driven Neural Network for Prediction Interval Generation",
+    "authors": [
+      "Giorgio Morales",
+      "John W. Sheppard"
+    ],
+    "year": 2022,
+    "doi": "10.1109/TNNLS.2023.3339470",
+    "url": "http://arxiv.org/abs/2212.06370v4",
+    "summary": "Accurate uncertainty quantification is necessary to enhance the reliability of deep learning models in real-world applications. In the case of regression tasks, prediction intervals (PIs) should be provided along with the deterministic predictions of deep learning models. Such PIs are useful or \"high-quality\" as long as they are sufficiently narrow and capture most of the probability density. In this paper, we present a method to learn prediction intervals for regression-based neural networks au",
+    "source": "arxiv",
+    "query": "coupled oscillator neural network",
+    "arxiv_id": "2212.06370v4"
+  },
+  {
+    "title": "Implementing a Bayes Filter in a Neural Circuit: The Case of Unknown Stimulus Dynamics",
+    "authors": [
+      "Sacha Sokoloski"
+    ],
+    "year": 2015,
+    "doi": "10.1162/neco_a_00991",
+    "url": "http://arxiv.org/abs/1512.07839v4",
+    "summary": "In order to interact intelligently with objects in the world, animals must first transform neural population responses into estimates of the dynamic, unknown stimuli which caused them. The Bayesian solution to this problem is known as a Bayes filter, which applies Bayes' rule to combine population responses with the predictions of an internal model. In this paper we present a method for learning to approximate a Bayes filter when the stimulus dynamics are unknown. To do this we use the inferenti",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "1512.07839v4"
+  },
+  {
+    "title": "Synchronization conditions in the Kuramoto model and their relationship to seminorms",
+    "authors": [
+      "Jared C. Bronski",
+      "Thomas E. Carty",
+      "Lee DeVille"
+    ],
+    "year": 2020,
+    "doi": "10.1088/1361-6544/abf9ed",
+    "url": "http://arxiv.org/abs/2007.04343v2",
+    "summary": "In this paper we address two questions about the synchronization of coupled oscillators in the Kuramoto model with all-to-all coupling. In the first part we use some classical results in convex geometry to prove bounds on the size of the frequency set supporting the existence of stable, phase locked solutions and show that the set of such frequencies can be expressed by a seminorm which we call the Kuramoto norm. In the second part we use some ideas from extreme order statistics to compute upper",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "2007.04343v2"
+  },
+  {
+    "title": "Conformal Group Actions on Generalized Kuramoto Oscillators",
+    "authors": [
+      "Max Lipton"
+    ],
+    "year": 2018,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1812.06539v3",
+    "summary": "This paper unifies the recent results on generalized Kuramoto Model reductions. Lohe took a coupled system of $N$ bodies on $S^d$ governed by the Kuramoto equations $\\dot{x_i} = \u03a9x_i + X - \\langle x_i, X \\rangle x_i$ and used the method of Watanabe and Strogatz to reduce this system to $d + \\frac{d(d-1)}{2}$ equations. Using a model of rigid rotations on a sphere as a guide, we show that the reduction is described by a smooth path in the Lie group of conformal transformations on the sphere, whic",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "1812.06539v3"
+  },
+  {
+    "title": "Encoding binary neural codes in networks of threshold-linear neurons",
+    "authors": [
+      "Carina Curto",
+      "Anda Degeratu",
+      "Vladimir Itskov"
+    ],
+    "year": 2012,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1212.0031v3",
+    "summary": "Networks of neurons in the brain encode preferred patterns of neural activity via their synaptic connections. Despite receiving considerable attention, the precise relationship between network connectivity and encoded patterns is still poorly understood. Here we consider this problem for networks of threshold-linear neurons whose computational function is to learn and store a set of binary patterns (e.g., a neural code) as \"permitted sets\" of the network. We introduce a simple Encoding Rule that",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "1212.0031v3"
+  },
+  {
+    "title": "Synchronization of Kuramoto Oscillators on Knots",
+    "authors": [
+      "Amelia Carolina Sparavigna"
+    ],
+    "year": 2011,
+    "doi": "10.18483/ijSci.217",
+    "url": "http://arxiv.org/abs/1104.3493v2",
+    "summary": "A knot is a circle embedded in the space. Projecting a knot on a plane, we obtain a diagram which is known as the knot diagram. The vertices of the diagram, where the curved lines are crossed, can be considered as sites occupied by oscillators. The synchronization of these oscillators can be studied by means of a Kuramoto model. Here we propose to define some order parameters, of the complete knot diagram and of its regions, to study the synchronization of the system with regard to the different",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "1104.3493v2"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "On functions computed on trees",
+    "authors": [
+      "Roozbeh Farhoodi",
+      "Khashayar Filom",
+      "Ilenna Simone Jones",
+      "Konrad Paul Kording"
+    ],
+    "year": 2019,
+    "doi": "10.1162/neco_a_01231",
+    "url": "http://arxiv.org/abs/1904.02309v4",
+    "summary": "Any function can be constructed using a hierarchy of simpler functions through compositions. Such a hierarchy can be characterized by a binary rooted tree. Each node of this tree is associated with a function which takes as inputs two numbers from its children and produces one output. Since thinking about functions in terms of computation graphs is getting popular we may want to know which functions can be implemented on a given tree. Here, we describe a set of necessary constraints in the form ",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "1904.02309v4"
+  },
+  {
+    "title": "A Neural Network-Evolutionary Computational Framework for Remaining Useful Life Estimation of Mechanical Systems",
+    "authors": [
+      "David Laredo",
+      "Zhaoyin Chen",
+      "Oliver Sch\u00fctze",
+      "Jian-Qiao Sun"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.04.016",
+    "url": "http://arxiv.org/abs/1905.05918v1",
+    "summary": "This paper presents a framework for estimating the remaining useful life (RUL) of mechanical systems. The framework consists of a multi-layer perceptron and an evolutionary algorithm for optimizing the data-related parameters. The framework makes use of a strided time window to estimate the RUL for mechanical components. Tuning the data-related parameters can become a very time consuming task. The framework presented here automatically reshapes the data such that the efficiency of the model is i",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "1905.05918v1"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Cognitive computation with autonomously active neural networks: an emerging field",
+    "authors": [
+      "Claudius Gros"
+    ],
+    "year": 2009,
+    "doi": "",
+    "url": "http://arxiv.org/abs/0901.3028v1",
+    "summary": "The human brain is autonomously active. To understand the functional role of this self-sustained neural activity, and its interplay with the sensory data input stream, is an important question in cognitive system research and we review here the present state of theoretical modelling.\n  This review will start with a brief overview of the experimental efforts, together with a discussion of transient vs. self-sustained neural activity in the framework of reservoir computing. The main emphasis will ",
+    "source": "arxiv",
+    "query": "Kuramoto neural computation",
+    "arxiv_id": "0901.3028v1"
+  },
+  {
+    "title": "Compute and Energy Consumption Trends in Deep Learning Inference",
+    "authors": [
+      "Radosvet Desislavov",
+      "Fernando Mart\u00ednez-Plumed",
+      "Jos\u00e9 Hern\u00e1ndez-Orallo"
+    ],
+    "year": 2021,
+    "doi": "10.1016/j.suscom.2023.100857",
+    "url": "http://arxiv.org/abs/2109.05472v2",
+    "summary": "The progress of some AI paradigms such as deep learning is said to be linked to an exponential growth in the number of parameters. There are many studies corroborating these trends, but does this translate into an exponential increase in energy consumption? In order to answer this question we focus on inference costs rather than training costs, as the former account for most of the computing effort, solely because of the multiplicative factors. Also, apart from algorithmic innovations, we accoun",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2109.05472v2"
+  },
+  {
+    "title": "Cold Start Latency in Serverless Computing: A Systematic Review, Taxonomy, and Future Directions",
+    "authors": [
+      "Muhammed Golec",
+      "Guneet Kaur Walia",
+      "Mohit Kumar",
+      "Felix Cuadrado",
+      "Sukhpal Singh Gill",
+      "Steve Uhlig"
+    ],
+    "year": 2023,
+    "doi": "10.1145/3700875",
+    "url": "http://arxiv.org/abs/2310.08437v2",
+    "summary": "Recently, academics and the corporate sector have paid attention to serverless computing, which enables dynamic scalability and an economic model. In serverless computing, users only pay for the time they actually use resources, enabling zero scaling to optimise cost and resource utilisation. However, this approach also introduces the serverless cold start problem. Researchers have developed various solutions to address the cold start problem, yet it remains an unresolved research area. In this ",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2310.08437v2"
+  },
+  {
+    "title": "Solving the Hamiltonian path problem with a light-based computer",
+    "authors": [
+      "Mihai Oltean"
+    ],
+    "year": 2007,
+    "doi": "10.1007/s11047-007-9042-z",
+    "url": "http://arxiv.org/abs/0708.1512v1",
+    "summary": "In this paper we propose a special computational device which uses light rays for solving the Hamiltonian path problem on a directed graph. The device has a graph-like representation and the light is traversing it by following the routes given by the connections between nodes. In each node the rays are uniquely marked so that they can be easily identified. At the destination node we will search only for particular rays that have passed only once through each node. We show that the proposed devic",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "0708.1512v1"
+  },
+  {
+    "title": "Quantum Computing: Vision and Challenges",
+    "authors": [
+      "Sukhpal Singh Gill",
+      "Oktay Cetinkaya",
+      "Stefano Marrone",
+      "Daniel Claudino",
+      "David Haunschild",
+      "Leon Schlote",
+      "Huaming Wu",
+      "Carlo Ottaviani",
+      "Xiaoyuan Liu",
+      "Sree Pragna Machupalli",
+      "Kamalpreet Kaur",
+      "Priyansh Arora",
+      "Ji Liu",
+      "Ahmed Farouk",
+      "Houbing Herbert Song",
+      "Steve Uhlig",
+      "Kotagiri Ramamohanarao"
+    ],
+    "year": 2024,
+    "doi": "10.1016/B978-0-443-29096-1.00008-8",
+    "url": "http://arxiv.org/abs/2403.02240v5",
+    "summary": "The recent development of quantum computing, which uses entanglement, superposition, and other quantum fundamental concepts, can provide substantial processing advantages over traditional computing. These quantum features help solve many complex problems that cannot be solved otherwise with conventional computing methods. These problems include modeling quantum mechanics, logistics, chemical-based advances, drug design, statistical science, sustainable energy, banking, reliable communication, an",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2403.02240v5"
+  },
+  {
+    "title": "Tierkreis: A Dataflow Framework for Hybrid Quantum-Classical Computing",
+    "authors": [
+      "Seyon Sivarajah",
+      "Lukas Heidemann",
+      "Alan Lawrence",
+      "Ross Duncan"
+    ],
+    "year": 2022,
+    "doi": "10.1109/QCS56647.2022.00007",
+    "url": "http://arxiv.org/abs/2211.02350v1",
+    "summary": "We present Tierkreis, a higher-order dataflow graph program representation and runtime designed for compositional, quantum-classical hybrid algorithms. The design of the system is motivated by the remote nature of quantum computers, the need for hybrid algorithms to involve cloud and distributed computing, and the long-running nature of these algorithms. The graph-based representation reflects how designers reason about and visualise algorithms, and allows automatic parallelism and asynchronicit",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2211.02350v1"
+  },
+  {
+    "title": "Synthetic Biology meets Neuromorphic Computing: Towards a bio-inspired Olfactory Perception System",
+    "authors": [
+      "Kevin Max",
+      "Larissa Sames",
+      "Shimeng Ye",
+      "Jan Steink\u00fchler",
+      "Federico Corradi"
+    ],
+    "year": 2025,
+    "doi": "10.1088/2634-4386/aded2d",
+    "url": "http://arxiv.org/abs/2504.10053v2",
+    "summary": "In this study, we explore how the combination of synthetic biology, neuroscience modeling, and neuromorphic electronic systems offers a new approach to creating an artificial system that mimics the natural sense of smell. We argue that a co-design approach offers significant advantages in replicating the complex dynamics of odor sensing and processing. We propose a hybrid system of synthetic sensory neurons that provides three key features: (a) receptor-gated ion channels, (b) interface between ",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2504.10053v2"
+  },
+  {
+    "title": "Double Robust Semi-Supervised Inference for the Mean: Selection Bias under MAR Labeling with Decaying Overlap",
+    "authors": [
+      "Yuqian Zhang",
+      "Abhishek Chakrabortty",
+      "Jelena Bradic"
+    ],
+    "year": 2021,
+    "doi": "10.1093/imaiai/iaad021",
+    "url": "http://arxiv.org/abs/2104.06667v2",
+    "summary": "Semi-supervised (SS) inference has received much attention in recent years. Apart from a moderate-sized labeled data, L, the SS setting is characterized by an additional, much larger sized, unlabeled data, U. The setting of |U| >> |L|, makes SS inference unique and different from the standard missing data problems, owing to natural violation of the so-called \"positivity\" or \"overlap\" assumption. However, most of the SS literature implicitly assumes L and U to be equally distributed, i.e., no sel",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2104.06667v2"
+  },
+  {
+    "title": "A Comparative Study of Load Balancing Algorithms in Cloud Computing Environment",
+    "authors": [
+      "Mayanka Katyal",
+      "Atul Mishra"
+    ],
+    "year": 2014,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1403.6918v1",
+    "summary": "Cloud Computing is a new trend emerging in IT environment with huge requirements of infrastructure and resources. Load Balancing is an important aspect of cloud computing environment. Efficient load balancing scheme ensures efficient resource utilization by provisioning of resources to cloud users on demand basis in pay as you say manner. Load Balancing may even support prioritizing users by applying appropriate scheduling criteria. This paper presents various load balancing schemes in different",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "1403.6918v1"
+  },
+  {
+    "title": "Universal Workers: A Vision for Eliminating Cold Starts in Serverless Computing",
+    "authors": [
+      "Saman Akbari",
+      "Manfred Hauswirth"
+    ],
+    "year": 2025,
+    "doi": "10.1109/CLOUD67622.2025.00051",
+    "url": "http://arxiv.org/abs/2505.19880v2",
+    "summary": "Serverless computing enables developers to deploy code without managing infrastructure, but suffers from cold start overhead when initializing new function instances. Existing solutions such as \"keep-alive\" or \"pre-warming\" are costly and unreliable under bursty workloads. We propose universal workers, which are computational units capable of executing any function with minimal initialization overhead. Based on an analysis of production workload traces, our key insight is that requests in Functi",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2505.19880v2"
+  },
+  {
+    "title": "Placement of Microservices-based IoT Applications in Fog Computing: A Taxonomy and Future Directions",
+    "authors": [
+      "Samodha Pallewatta",
+      "Vassilis Kostakos",
+      "Rajkumar Buyya"
+    ],
+    "year": 2022,
+    "doi": "10.1145/3592598",
+    "url": "http://arxiv.org/abs/2207.05399v2",
+    "summary": "The Fog computing paradigm utilises distributed, heterogeneous and resource-constrained devices at the edge of the network for efficient deployment of latency-critical and bandwidth-hungry IoT application services. Moreover, MicroService Architecture (MSA) is increasingly adopted to keep up with the rapid development and deployment needs of fast-evolving IoT applications. Due to the fine-grained modularity of the microservices and their independently deployable and scalable nature, MSA exhibits ",
+    "source": "arxiv",
+    "query": "oscillator-based computing inference",
+    "arxiv_id": "2207.05399v2"
+  },
+  {
+    "title": "Cold Start Latency in Serverless Computing: A Systematic Review, Taxonomy, and Future Directions",
+    "authors": [
+      "Muhammed Golec",
+      "Guneet Kaur Walia",
+      "Mohit Kumar",
+      "Felix Cuadrado",
+      "Sukhpal Singh Gill",
+      "Steve Uhlig"
+    ],
+    "year": 2023,
+    "doi": "10.1145/3700875",
+    "url": "http://arxiv.org/abs/2310.08437v2",
+    "summary": "Recently, academics and the corporate sector have paid attention to serverless computing, which enables dynamic scalability and an economic model. In serverless computing, users only pay for the time they actually use resources, enabling zero scaling to optimise cost and resource utilisation. However, this approach also introduces the serverless cold start problem. Researchers have developed various solutions to address the cold start problem, yet it remains an unresolved research area. In this ",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "2310.08437v2"
+  },
+  {
+    "title": "Driven spin wave modes in XY ferromagnet: Nonequilibrium phase transition",
+    "authors": [
+      "Muktish Acharyya"
+    ],
+    "year": 2017,
+    "doi": "10.1080/01411594.2018.1506878",
+    "url": "http://arxiv.org/abs/1706.01619v6",
+    "summary": "The dynamical responses of XY ferromagnet driven by linearly polarised propagating and standing magnetic field wave have been studied by Monte Carlo simulation in three dimensions. In the case of propagating magnetic field wave (with specified amplitude, frequency and the wavelength), the low temperature dynamical mode is a propagating spin wave and the system becomes structureless (or random) in the high temperature. A dynamical symmetry breaking phase transition is observed at a finite (nonzer",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "1706.01619v6"
+  },
+  {
+    "title": "Room temperature reversible colossal volto-magnetic effect in all-oxide metallicmagnet/topotactic-phase-transition material heterostructures",
+    "authors": [
+      "Sourav Chowdhury",
+      "Supriyo Majumder",
+      "Rajan Mishra",
+      "Arup Kumar Mandal",
+      "Anita Bagri",
+      "Satish Yadav",
+      "Suman Karmarkar",
+      "D. M. Phase",
+      "R. J. Choudhary"
+    ],
+    "year": 2023,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2308.04324v1",
+    "summary": "Multiferroic materials have undergone extensive research in the past two decades in an effort to produce a sizable room-temperature magneto-electric (ME) effect in either exclusive or composite materials for use in a variety of electronic or spintronic devices. These studies have looked into the ME effect by switching the electric polarization by the magnetic field or switching the magnetism by the electric field. Here, an innovative way is developed to knot the functional properties based on th",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "2308.04324v1"
+  },
+  {
+    "title": "Reversible Computing with Fast, Fully Static, Fully Adiabatic CMOS",
+    "authors": [
+      "Michael P. Frank",
+      "Robert W. Brocato",
+      "Brian D. Tierney",
+      "Nancy A. Missert",
+      "Alexander H. Hsia"
+    ],
+    "year": 2020,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2009.00448v2",
+    "summary": "To advance the energy efficiency of general digital computing far beyond the thermodynamic limits that apply to conventional digital circuits will require utilizing the principles of reversible computing. It has been known since the early 1990s that reversible computing based on adiabatic switching is possible in CMOS, although almost all of the \"adiabatic\" CMOS logic families in the literature are not actually fully adiabatic, which limits their achievable energy savings. The first CMOS logic s",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "2009.00448v2"
+  },
+  {
+    "title": "Monte Carlo study of the phase transitions in the classical XY ferromagnets with random anisotropy",
+    "authors": [
+      "Olivia Mallick",
+      "Muktish Acharyya"
+    ],
+    "year": 2022,
+    "doi": "10.1080/01411594.2023.2246623",
+    "url": "http://arxiv.org/abs/2208.10109v8",
+    "summary": "The three-dimensional anisotropic classical XY ferromagnet has been investigated by extensive Monte Carlo simulation using the Metropolis single spin flip algorithm. The magnetization ($M$) and the susceptibility ($\u03c7$) are measured and studied as functions of the temperature of the system. For constant anisotropy, the ferro-para phase transition has been found to take place at a higher temperature than that observed in the isotropic case. The system gets ordered at higher temperatures for higher",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "2208.10109v8"
+  },
+  {
+    "title": "Solving the Hamiltonian path problem with a light-based computer",
+    "authors": [
+      "Mihai Oltean"
+    ],
+    "year": 2007,
+    "doi": "10.1007/s11047-007-9042-z",
+    "url": "http://arxiv.org/abs/0708.1512v1",
+    "summary": "In this paper we propose a special computational device which uses light rays for solving the Hamiltonian path problem on a directed graph. The device has a graph-like representation and the light is traversing it by following the routes given by the connections between nodes. In each node the rays are uniquely marked so that they can be easily identified. At the destination node we will search only for particular rays that have passed only once through each node. We show that the proposed devic",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "0708.1512v1"
+  },
+  {
+    "title": "Supporting Multi-Cloud in Serverless Computing",
+    "authors": [
+      "Haidong Zhao",
+      "Zakaria Benomar",
+      "Tobias Pfandzelter",
+      "Nikolaos Georgantas"
+    ],
+    "year": 2022,
+    "doi": "10.1109/UCC56403.2022.00051",
+    "url": "http://arxiv.org/abs/2209.09367v4",
+    "summary": "Serverless computing is a widely adopted cloud execution model composed of Function-as-a-Service (FaaS) and Backend-as-a-Service (BaaS) offerings. The increased level of abstraction makes vendor lock-in inherent to serverless computing, raising more concerns than previous cloud paradigms. Multi-cloud serverless is a promising emerging approach against vendor lock-in, yet multiple challenges must be overcome to tap its potential. First, we need to be aware of both the performance and cost of each",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "2209.09367v4"
+  },
+  {
+    "title": "Bridging Phases at the Morphotropic Boundaries of Lead-Oxide Solid Solutions",
+    "authors": [
+      "B. Noheda",
+      "D. E. Cox"
+    ],
+    "year": 2005,
+    "doi": "",
+    "url": "http://arxiv.org/abs/cond-mat/0511256v1",
+    "summary": "Ceramic solid solutions of PbZr(1-x)TixO3 (PZT) with compositions of about x= 0.50 are well-known for their extraordinarily large piezoelectric responses. The latter are highly anisotropic, and it was recently shown that, for the rhombohedral compositions (x< 0.5), the piezoelectric coefficients were largest away from the polar direction, contrary to common belief. Shortly afterwards a low-symmetry monoclinic phase was observed by synchrotron x-ray diffraction at around x=0.50. Similar behavior ",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "cond-mat/0511256v1"
+  },
+  {
+    "title": "Quantum Computing: Vision and Challenges",
+    "authors": [
+      "Sukhpal Singh Gill",
+      "Oktay Cetinkaya",
+      "Stefano Marrone",
+      "Daniel Claudino",
+      "David Haunschild",
+      "Leon Schlote",
+      "Huaming Wu",
+      "Carlo Ottaviani",
+      "Xiaoyuan Liu",
+      "Sree Pragna Machupalli",
+      "Kamalpreet Kaur",
+      "Priyansh Arora",
+      "Ji Liu",
+      "Ahmed Farouk",
+      "Houbing Herbert Song",
+      "Steve Uhlig",
+      "Kotagiri Ramamohanarao"
+    ],
+    "year": 2024,
+    "doi": "10.1016/B978-0-443-29096-1.00008-8",
+    "url": "http://arxiv.org/abs/2403.02240v5",
+    "summary": "The recent development of quantum computing, which uses entanglement, superposition, and other quantum fundamental concepts, can provide substantial processing advantages over traditional computing. These quantum features help solve many complex problems that cannot be solved otherwise with conventional computing methods. These problems include modeling quantum mechanics, logistics, chemical-based advances, drug design, statistical science, sustainable energy, banking, reliable communication, an",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "2403.02240v5"
+  },
+  {
+    "title": "Tierkreis: A Dataflow Framework for Hybrid Quantum-Classical Computing",
+    "authors": [
+      "Seyon Sivarajah",
+      "Lukas Heidemann",
+      "Alan Lawrence",
+      "Ross Duncan"
+    ],
+    "year": 2022,
+    "doi": "10.1109/QCS56647.2022.00007",
+    "url": "http://arxiv.org/abs/2211.02350v1",
+    "summary": "We present Tierkreis, a higher-order dataflow graph program representation and runtime designed for compositional, quantum-classical hybrid algorithms. The design of the system is motivated by the remote nature of quantum computers, the need for hybrid algorithms to involve cloud and distributed computing, and the long-running nature of these algorithms. The graph-based representation reflects how designers reason about and visualise algorithms, and allows automatic parallelism and asynchronicit",
+    "source": "arxiv",
+    "query": "phase domain computing CMOS",
+    "arxiv_id": "2211.02350v1"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Analog Alchemy: Neural Computation with In-Memory Inference, Learning and Routing",
+    "authors": [
+      "Yigit Demirag"
+    ],
+    "year": 2024,
+    "doi": "10.5167/uzh-267127",
+    "url": "http://arxiv.org/abs/2412.20848v1",
+    "summary": "As neural computation is revolutionizing the field of Artificial Intelligence (AI), rethinking the ideal neural hardware is becoming the next frontier. Fast and reliable von Neumann architecture has been the hosting platform for neural computation. Although capable, its separation of memory and computation creates the bottleneck for the energy efficiency of neural computation, contrasting the biological brain. The question remains: how can we efficiently combine memory and computation, while exp",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2412.20848v1"
+  },
+  {
+    "title": "Graph Neural Networks Based Analog Circuit Link Prediction",
+    "authors": [
+      "Guanyuan Pan",
+      "Tiansheng Zhou",
+      "Jianxiang Zhao",
+      "Zhi Li",
+      "Yugui Lin",
+      "Bingtao Ma",
+      "Yaqi Wang",
+      "Pietro Li\u00f2",
+      "Shuai Wang"
+    ],
+    "year": 2025,
+    "doi": "10.1016/j.engappai.2025.113035",
+    "url": "http://arxiv.org/abs/2504.10240v5",
+    "summary": "Circuit link prediction, which identifies missing component connections from incomplete netlists, is crucial in analog circuit design automation. However, existing methods face three main challenges: 1) Insufficient use of topological patterns in circuit graphs reduces prediction accuracy; 2) Data scarcity due to the complexity of annotations hinders model generalization; 3) Limited adaptability to various netlist formats restricts model flexibility. We propose Graph Neural Networks Based Analog",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2504.10240v5"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Partially Oblivious Neural Network Inference",
+    "authors": [
+      "Panagiotis Rizomiliotis",
+      "Christos Diou",
+      "Aikaterini Triakosia",
+      "Ilias Kyrannas",
+      "Konstantinos Tserpes"
+    ],
+    "year": 2022,
+    "doi": "10.5220/0011272500003283",
+    "url": "http://arxiv.org/abs/2210.15189v1",
+    "summary": "Oblivious inference is the task of outsourcing a ML model, like neural-networks, without disclosing critical and sensitive information, like the model's parameters. One of the most prominent solutions for secure oblivious inference is based on a powerful cryptographic tools, like Homomorphic Encryption (HE) and/or multi-party computation (MPC). Even though the implementation of oblivious inference systems schemes has impressively improved the last decade, there are still significant limitations ",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2210.15189v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "A Metalearned Neural Circuit for Nonparametric Bayesian Inference",
+    "authors": [
+      "Jake C. Snell",
+      "Gianluca Bencomo",
+      "Thomas L. Griffiths"
+    ],
+    "year": 2023,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2311.14601v1",
+    "summary": "Most applications of machine learning to classification assume a closed set of balanced classes. This is at odds with the real world, where class occurrence statistics often follow a long-tailed power-law distribution and it is unlikely that all classes are seen in a single sample. Nonparametric Bayesian models naturally capture this phenomenon, but have significant practical barriers to widespread adoption, namely implementation complexity and computational inefficiency. To address this, we pre",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2311.14601v1"
+  },
+  {
+    "title": "On the Accuracy of Analog Neural Network Inference Accelerators",
+    "authors": [
+      "T. Patrick Xiao",
+      "Ben Feinberg",
+      "Christopher H. Bennett",
+      "Venkatraman Prabhakar",
+      "Prashant Saxena",
+      "Vineet Agrawal",
+      "Sapan Agarwal",
+      "Matthew J. Marinella"
+    ],
+    "year": 2021,
+    "doi": "10.1109/MCAS.2022.3214409",
+    "url": "http://arxiv.org/abs/2109.01262v3",
+    "summary": "Specialized accelerators have recently garnered attention as a method to reduce the power consumption of neural network inference. A promising category of accelerators utilizes nonvolatile memory arrays to both store weights and perform $\\textit{in situ}$ analog computation inside the array. While prior work has explored the design space of analog accelerators to optimize performance and energy efficiency, there is seldom a rigorous evaluation of the accuracy of these accelerators. This work sho",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2109.01262v3"
+  },
+  {
+    "title": "DiffCkt: A Diffusion Model-Based Hybrid Neural Network Framework for Automatic Transistor-Level Generation of Analog Circuits",
+    "authors": [
+      "Chengjie Liu",
+      "Jiajia Li",
+      "Yabing Feng",
+      "Wenhao Huang",
+      "Weiyu Chen",
+      "Yuan Du",
+      "Jun Yang",
+      "Li Du"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2507.00444v2",
+    "summary": "Analog circuit design consists of the pre-layout and layout phases. Among them, the pre-layout phase directly decides the final circuit performance, but heavily depends on experienced engineers to do manual design according to specific application scenarios. To overcome these challenges and automate the analog circuit pre-layout design phase, we introduce DiffCkt: a diffusion model-based hybrid neural network framework for the automatic transistor-level generation of analog circuits, which can d",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2507.00444v2"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "analog neural network inference circuit",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "The CEPC input for the European Strategy for Particle Physics - Accelerator",
+    "authors": [
+      "The CEPC Accelerator Study Group"
+    ],
+    "year": 2019,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1901.03169v1",
+    "summary": "In this manuscript, we provide a summary of accelerator design and the key challenges of the CEPC accelerator, both of which are laid out in detail in the Conceptual Design Report (CDR) released in November 2018. We also outline future directions and challenges. In the Addendum, we briefly describe the planning and the international organization of the CEPC. The next step for the CEPC team is to perform detailed technical design studies. Effective international collaboration would be crucial at ",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "1901.03169v1"
+  },
+  {
+    "title": "Applications of Particle Accelerators",
+    "authors": [
+      "Suzie Sheehy"
+    ],
+    "year": 2024,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2407.10216v1",
+    "summary": "Of the tens of thousands of particle accelerators in operation worldwide, the vast majority are not used for particle physics, but instead for applications. Some applications such as radiotherapy for cancer treatment are well-known, while others are more surprising: food irradiation using electron beams, or the hardening of road tarmac. The uses of particle beams are constantly growing in number including in medicine, industry, security, environment, and cultural heritage preservation. This lect",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "2407.10216v1"
+  },
+  {
+    "title": "Accelerator design concept for future neutrino facilities",
+    "authors": [
+      "The ISS Accelerator Working Group"
+    ],
+    "year": 2008,
+    "doi": "10.1088/1748-0221/4/07/P07001",
+    "url": "http://arxiv.org/abs/0802.4023v2",
+    "summary": "This document summarizes the findings of the Accelerator Working Group (AWG) of the International Scoping Study (ISS) of a Future Neutrino Factory and super-beam Facility. The work of the group took place at three plenary meetings along with three workshops, and an oral summary report was presented at the NuFact06 workshop held at UC-Irvine in August, 2006. The goal was to reach consensus on a baseline design for a Neutrino Factory complex. One aspect of this endeavor was to examine critically t",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "0802.4023v2"
+  },
+  {
+    "title": "Time-domain and Frequency-domain Signals and their Analysis",
+    "authors": [
+      "H. Schmickler"
+    ],
+    "year": 2020,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2009.14544v2",
+    "summary": "Depending on the application people use time-domain or frequency-domain signals in order to measure or describe processes. First we will look at the definition of these terms, produce some mathematical background and then apply the tools to measurements made in the accelerator domain. We will first look at signals produced by a single bunch passing once through a detector (transfer line, linac), then periodic single bunch passages (circular accelerator) and at the end multi-bunch passages in a c",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "2009.14544v2"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Fixed-Field Alternating-Gradient Accelerators",
+    "authors": [
+      "S. L. Sheehy"
+    ],
+    "year": 2016,
+    "doi": "10.23730/CYRSP-2017-001.321",
+    "url": "http://arxiv.org/abs/1604.05221v1",
+    "summary": "These notes provide an overview of Fixed-Field Alternating-Gradient (FFAG) accelerators for medical applications. We begin with a review of the basic principles of this type of accelerator, including the scaling and non-scaling types, highlighting beam dynamics issues that are of relevance to hadron ac- celerators. The potential of FFAG accelerators in the field of hadron therapy is discussed in detail, including an overview of existing medical FFAG designs. The options for FFAG treatment gantri",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "1604.05221v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "Training of mixed-signal optical convolutional neural network with reduced quantization level",
+    "authors": [
+      "Joseph Ulseth",
+      "Zheyuan Zhu",
+      "Guifang Li",
+      "Shuo Pang"
+    ],
+    "year": 2020,
+    "doi": "10.1109/ACCESS.2021.3072193",
+    "url": "http://arxiv.org/abs/2008.09206v1",
+    "summary": "Mixed-signal artificial neural networks (ANNs) that employ analog matrix-multiplication accelerators can achieve higher speed and improved power efficiency. Though analog computing is known to be susceptible to noise and device imperfections, various analog computing paradigms have been considered as promising solutions to address the growing computing demand in machine learning applications, thanks to the robustness of ANNs. This robustness has been explored in low-precision, fixed-point ANN mo",
+    "source": "arxiv",
+    "query": "mixed-signal neural network accelerator",
+    "arxiv_id": "2008.09206v1"
+  },
+  {
+    "title": "Analog Alchemy: Neural Computation with In-Memory Inference, Learning and Routing",
+    "authors": [
+      "Yigit Demirag"
+    ],
+    "year": 2024,
+    "doi": "10.5167/uzh-267127",
+    "url": "http://arxiv.org/abs/2412.20848v1",
+    "summary": "As neural computation is revolutionizing the field of Artificial Intelligence (AI), rethinking the ideal neural hardware is becoming the next frontier. Fast and reliable von Neumann architecture has been the hosting platform for neural computation. Although capable, its separation of memory and computation creates the bottleneck for the energy efficiency of neural computation, contrasting the biological brain. The question remains: how can we efficiently combine memory and computation, while exp",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2412.20848v1"
+  },
+  {
+    "title": "Memristors -- from In-memory computing, Deep Learning Acceleration, Spiking Neural Networks, to the Future of Neuromorphic and Bio-inspired Computing",
+    "authors": [
+      "Adnan Mehonic",
+      "Abu Sebastian",
+      "Bipin Rajendran",
+      "Osvaldo Simeone",
+      "Eleni Vasilaki",
+      "Anthony J. Kenyon"
+    ],
+    "year": 2020,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2004.14942v1",
+    "summary": "Machine learning, particularly in the form of deep learning, has driven most of the recent fundamental developments in artificial intelligence. Deep learning is based on computational models that are, to a certain extent, bio-inspired, as they rely on networks of connected simple computing units operating in parallel. Deep learning has been successfully applied in areas such as object/pattern recognition, speech and natural language processing, self-driving vehicles, intelligent self-diagnostics",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2004.14942v1"
+  },
+  {
+    "title": "Analog, In-memory Compute Architectures for Artificial Intelligence",
+    "authors": [
+      "Patrick Bowen",
+      "Guy Regev",
+      "Nir Regev",
+      "Bruno Pedroni",
+      "Edward Hanson",
+      "Yiran Chen"
+    ],
+    "year": 2023,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2302.06417v1",
+    "summary": "This paper presents an analysis of the fundamental limits on energy efficiency in both digital and analog in-memory computing architectures, and compares their performance to single instruction, single data (scalar) machines specifically in the context of machine inference. The focus of the analysis is on how efficiency scales with the size, arithmetic intensity, and bit precision of the computation to be performed. It is shown that analog, in-memory computing architectures can approach arbitrar",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2302.06417v1"
+  },
+  {
+    "title": "HZO-based FerroNEMS MAC for In-Memory Computing",
+    "authors": [
+      "Shubham Jadhav",
+      "Ved Gund",
+      "Benyamin Davaji",
+      "Debdeep Jena",
+      "Huili",
+      "Xing",
+      "Amit Lal"
+    ],
+    "year": 2022,
+    "doi": "10.1063/5.0120629",
+    "url": "http://arxiv.org/abs/2208.06499v1",
+    "summary": "This paper demonstrates a hafnium zirconium oxide (HZO)-based ferroelectric NEMS unimorph as the fundamental building block for very low-energy capacitive readout in-memory computing. The reported device consists of a 250 $\u03bc$m $\\times$ 30 $\u03bc$m unimorph cantilever with 20 nm thick ferroelectric HZO on 1 $\u03bc$m $SiO_2$.Partial ferroelectric switching in HZO achieves analog programmable control of the piezoelectric coefficient ($d_{31}$) which serves as the computational weight for multiply-accumulat",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2208.06499v1"
+  },
+  {
+    "title": "MRAM-based Analog Sigmoid Function for In-memory Computing",
+    "authors": [
+      "Md Hasibul Amin",
+      "Mohammed Elbtity",
+      "Mohammadreza Mohammadi",
+      "Ramtin Zand"
+    ],
+    "year": 2022,
+    "doi": "10.1145/3526241.3530376",
+    "url": "http://arxiv.org/abs/2204.09918v1",
+    "summary": "We propose an analog implementation of the transcendental activation function leveraging two spin-orbit torque magnetoresistive random-access memory (SOT-MRAM) devices and a CMOS inverter. The proposed analog neuron circuit consumes 1.8-27x less power, and occupies 2.5-4931x smaller area, compared to the state-of-the-art analog and digital implementations. Moreover, the developed neuron can be readily integrated with memristive crossbars without requiring any intermediate signal conversion units",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2204.09918v1"
+  },
+  {
+    "title": "An Asynchronous Multi-Beam MAC Protocol for Multi-Hop Wireless Networks",
+    "authors": [
+      "Shivam Garg",
+      "Nandini Venkatraman",
+      "Elizabeth Serena Bentley",
+      "Sunil Kumar"
+    ],
+    "year": 2021,
+    "doi": "10.1109/ICCCN54977.2022.9868910",
+    "url": "http://arxiv.org/abs/2111.10073v1",
+    "summary": "A node equipped with a multi-beam antenna can achieve a throughput of up to m times as compared to a single-beam antenna, by simultaneously communicating on its m non-interfering beams. However, the existing multi-beam medium access control (MAC) schemes can achieve concurrent data communication only when the transmitter nodes are locally synchronized. Asynchronous packet arrival at a multi-beam receiver node would increase the node deafness and MAC layer capture problems, and thereby limit the ",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2111.10073v1"
+  },
+  {
+    "title": "Wireless sensors networks MAC protocols analysis",
+    "authors": [
+      "Lamia Chaari",
+      "Lotfi Kamoun"
+    ],
+    "year": 2010,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1004.4600v1",
+    "summary": "Wireless sensors networks performance are strictly related to the medium access mechanism. An effective one, require non-conventional paradigms for protocol design due to several constraints. An adequate equilibrium between communication improvement and data processing capabilities must be accomplished. To achieve low power operation, several MAC protocols already proposed for WSN. The aim of this paper is to survey and to analyze the most energy efficient MAC protocol in order to categorize the",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "1004.4600v1"
+  },
+  {
+    "title": "Cold Start Latency in Serverless Computing: A Systematic Review, Taxonomy, and Future Directions",
+    "authors": [
+      "Muhammed Golec",
+      "Guneet Kaur Walia",
+      "Mohit Kumar",
+      "Felix Cuadrado",
+      "Sukhpal Singh Gill",
+      "Steve Uhlig"
+    ],
+    "year": 2023,
+    "doi": "10.1145/3700875",
+    "url": "http://arxiv.org/abs/2310.08437v2",
+    "summary": "Recently, academics and the corporate sector have paid attention to serverless computing, which enables dynamic scalability and an economic model. In serverless computing, users only pay for the time they actually use resources, enabling zero scaling to optimise cost and resource utilisation. However, this approach also introduces the serverless cold start problem. Researchers have developed various solutions to address the cold start problem, yet it remains an unresolved research area. In this ",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2310.08437v2"
+  },
+  {
+    "title": "Energy Efficient Dual Designs of FeFET-Based Analog In-Memory Computing with Inherent Shift-Add Capability",
+    "authors": [
+      "Zeyu Yang",
+      "Qingrong Huang",
+      "Yu Qian",
+      "Kai Ni",
+      "Thomas K\u00e4mpfe",
+      "Xunzhao Yin"
+    ],
+    "year": 2024,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2410.19593v1",
+    "summary": "In-memory computing (IMC) architecture emerges as a promising paradigm, improving the energy efficiency of multiply-and-accumulate (MAC) operations within DNNs by integrating the parallel computations within the memory arrays. Various high-precision analog IMC array designs have been developed based on both SRAM and emerging non-volatile memories. These designs perform MAC operations of partial input and weight, with the corresponding partial products then fed into shift-add circuitry to produce",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2410.19593v1"
+  },
+  {
+    "title": "LionHeart: A Layer-based Mapping Framework for Heterogeneous Systems with Analog In-Memory Computing Tiles",
+    "authors": [
+      "Corey Lammie",
+      "Yuxuan Wang",
+      "Flavio Ponzina",
+      "Joshua Klein",
+      "Hadjer Benmeziane",
+      "Marina Zapater",
+      "Irem Boybat",
+      "Abu Sebastian",
+      "Giovanni Ansaloni",
+      "David Atienza"
+    ],
+    "year": 2024,
+    "doi": "10.1109/TETC.2025.3546128",
+    "url": "http://arxiv.org/abs/2401.09420v3",
+    "summary": "When arranged in a crossbar configuration, resistive memory devices can be used to execute Matrix-Vector Multiplications (MVMs), the most dominant operation of many Machine Learning (ML) algorithms, in constant time complexity. Nonetheless, when performing computations in the analog domain, novel challenges are introduced in terms of arithmetic precision and stochasticity, due to non-ideal circuit and device behaviour. Moreover, these non-idealities have a temporal dimension, resulting in a degr",
+    "source": "arxiv",
+    "query": "in-memory computing MAC analog",
+    "arxiv_id": "2401.09420v3"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "Nonlinear Integrated Microwave Photonics",
+    "authors": [
+      "David Marpaung",
+      "Benjamin J. Eggleton"
+    ],
+    "year": 2013,
+    "doi": "10.1109/JLT.2014.2306676",
+    "url": "http://arxiv.org/abs/1310.4897v1",
+    "summary": "Harnessing nonlinear optical effects in a photonic chip scale has been proven useful for a number of key applications in optical communications. Microwave photonics can also benefit from the adoption of such a technology, creating a new concept of nonlinear integrated microwave photonics. Here, we discuss the potential of on-chip nonlinear processing towards the creation of robust and multifunctional microwave photonic (MWP) processors. We also highlight key recent results in the field, includin",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "1310.4897v1"
+  },
+  {
+    "title": "Crosstalk Reduction for Superconducting Microwave Resonator Arrays",
+    "authors": [
+      "Omid Noroozian",
+      "Peter K. Day",
+      "Byeong Ho Eom",
+      "Henry G. Leduc",
+      "Jonas Zmuidzinas"
+    ],
+    "year": 2012,
+    "doi": "10.1109/TMTT.2012.2187538",
+    "url": "http://arxiv.org/abs/1206.5571v1",
+    "summary": "Large-scale arrays of Microwave Kinetic Inductance Detectors (MKIDs) are attractive candidates for use in imaging instruments for next generation submillimeter-wave telescopes such as CCAT. We have designed and fabricated tightly packed ~250-pixel MKID arrays using lumped-element resonators etched from a thin layer of superconducting TiNx deposited on a silicon substrate. The high pixel packing density in our initial design resulted in large microwave crosstalk due to electromagnetic coupling be",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "1206.5571v1"
+  },
+  {
+    "title": "Development of a sensory-neural network for medical diagnosing",
+    "authors": [
+      "Igor Grabec",
+      "Eva \u0160vegl",
+      "Mihael Sok"
+    ],
+    "year": 2018,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1807.02477v1",
+    "summary": "Performance of a sensory-neural network developed for diagnosing of diseases is described. Information about patient's condition is provided by answers to the questionnaire. Questions correspond to sensors generating signals when patients acknowledge symptoms. These signals excite neurons in which characteristics of the diseases are represented by synaptic weights associated with indicators of symptoms. The disease corresponding to the most excited neuron is proposed as the result of diagnosing.",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "1807.02477v1"
+  },
+  {
+    "title": "Near-Field Microwave Microscopy of Materials Properties",
+    "authors": [
+      "Steven M. Anlage",
+      "D. E. Steinhauer",
+      "B. J. Feenstra",
+      "C. P. Vlahacos",
+      "F. C. Wellstood"
+    ],
+    "year": 2000,
+    "doi": "",
+    "url": "http://arxiv.org/abs/cond-mat/0001075v2",
+    "summary": "Near-field microwave microscopy has created the opportunity for a new class of electrodynamics experiments of materials. Freed from the constraints of traditional microwave optics, experiments can be carried out at high spatial resolution over a broad frequency range. In addition, the measurements can be done quantitatively so that images of microwave materials properties can be created. We review the five major types of near-field microwave microscopes and discuss our own form of microscopy in ",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "cond-mat/0001075v2"
+  },
+  {
+    "title": "A Review on Neural Network Models of Schizophrenia and Autism Spectrum Disorder",
+    "authors": [
+      "Pablo Lanillos",
+      "Daniel Oliva",
+      "Anja Philippsen",
+      "Yuichi Yamashita",
+      "Yukie Nagai",
+      "Gordon Cheng"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.10.014",
+    "url": "http://arxiv.org/abs/1906.10015v2",
+    "summary": "This survey presents the most relevant neural network models of autism spectrum disorder and schizophrenia, from the first connectionist models to recent deep network architectures. We analyzed and compared the most representative symptoms with its neural model counterpart, detailing the alteration introduced in the network that generates each of the symptoms, and identifying their strengths and weaknesses. We additionally cross-compared Bayesian and free-energy approaches, as they are widely ap",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "1906.10015v2"
+  },
+  {
+    "title": "How transferable are features in deep neural networks?",
+    "authors": [
+      "Jason Yosinski",
+      "Jeff Clune",
+      "Yoshua Bengio",
+      "Hod Lipson"
+    ],
+    "year": 2014,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1411.1792v1",
+    "summary": "Many deep neural networks trained on natural images exhibit a curious phenomenon in common: on the first layer they learn features similar to Gabor filters and color blobs. Such first-layer features appear not to be specific to a particular dataset or task, but general in that they are applicable to many datasets and tasks. Features must eventually transition from general to specific by the last layer of the network, but this transition has not been studied extensively. In this paper we experime",
+    "source": "arxiv",
+    "query": "microwave photonic neural network",
+    "arxiv_id": "1411.1792v1"
+  },
+  {
+    "title": "Bell-state measurement and quantum teleportation using linear optics: two-photon pairs, entangled coherent states, and hybrid entanglement",
+    "authors": [
+      "Seung-Woo Lee",
+      "Hyunseok Jeong"
+    ],
+    "year": 2013,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1304.1214v1",
+    "summary": "We review and compare Bell-state measurement and quantum teleportation schemes using linear optics with three different types of resources, i.e., two-photon pairs, entangled coherent states and hybrid entangled states. Remarkably, perfect teleportation with linear optics is possible in principle based on a hybrid approach that combines two-photon pairs and entangled coherent states. It turns out that hybrid approach allows to perform Bell-state measurement and local Pauli operations in a determi",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "1304.1214v1"
+  },
+  {
+    "title": "Coherent states for compact Lie groups and their large-N limits",
+    "authors": [
+      "Brian C. Hall"
+    ],
+    "year": 2017,
+    "doi": "10.1007/978-3-319-76732-1_3",
+    "url": "http://arxiv.org/abs/1707.02355v1",
+    "summary": "The first two parts of this article surveys results related to the heat-kernel coherent states for a compact Lie group K. I begin by reviewing the definition of the coherent states, their resolution of the identity, and the associated Segal-Bargmann transform. I then describe related results including connections to geometric quantization and (1+1)-dimensional Yang--Mills theory, the associated coherent states on spheres, and applications to quantum gravity.\n  The third part of this article summ",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "1707.02355v1"
+  },
+  {
+    "title": "Coherent states in fermionic Fock-Krein spaces and their amplitudes",
+    "authors": [
+      "Robert Oeckl"
+    ],
+    "year": 2017,
+    "doi": "10.1007/978-3-319-76732-1_12",
+    "url": "http://arxiv.org/abs/1708.03047v2",
+    "summary": "We generalize the fermionic coherent states to the case of Fock-Krein spaces, i.e., Fock spaces with an idefinite inner product of Krein type. This allows for their application in topological or functorial quantum field theory and more specifically in general boundary quantum field theory. In this context we derive a universal formula for the amplitude of a coherent state in linear field theory on an arbitrary manifold with boundary.",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "1708.03047v2"
+  },
+  {
+    "title": "Review of Entangled Coherent States",
+    "authors": [
+      "Barry C. Sanders"
+    ],
+    "year": 2011,
+    "doi": "10.1088/1751-8113/45/24/244002",
+    "url": "http://arxiv.org/abs/1112.1778v1",
+    "summary": "We review entangled coherent state research since its first implicit use in 1967 to the present. Entangled coherent states are important to quantum superselection principles, quantum information processing, quantum optics, and mathematical physics. Despite their inherent fragility they have produced in a conditional propagating-wave quantum optics realization. Fundamentally the states are intriguing because they are entanglements of the coherent states, which are in a sense the most classical of",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "1112.1778v1"
+  },
+  {
+    "title": "Enabling Scalable Photonic Tensor Cores with Polarization-Domain Photonic Computing",
+    "authors": [
+      "Amin Shafiee",
+      "Linhong Chen",
+      "Sudeep Pasricha",
+      "Jie Yao",
+      "Mahdi Nikdast"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2501.18886v1",
+    "summary": "We present a silicon-photonic tensor core using 2D ferroelectric materials to enable wavelength- and polarization-domain computing. Results, based on experimentally characterized material properties, show up to 83% improvement in computation accuracy compared to coherent networks.",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "2501.18886v1"
+  },
+  {
+    "title": "Highly-coherent stimulated phonon oscillations in a multi-core optical fiber",
+    "authors": [
+      "H. Hagai Diamandi",
+      "Yosef London",
+      "Gil Bashan",
+      "Arik Bergman",
+      "Avi Zadok"
+    ],
+    "year": 2018,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1811.06290v1",
+    "summary": "Opto-mechanical oscillators that generate coherent acoustic waves are drawing much interest, in both fundamental research and applications. Narrowband oscillations can be obtained through the introduction of feedback to the acoustic wave. Most previous realizations of this concept, sometimes referred to as \"phonon lasers\", relied on radiation pressure and moving boundary effects in micro- or nano-structured media. Demonstrations in bulk crystals required cryogenic temperatures. In this work, sti",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "1811.06290v1"
+  },
+  {
+    "title": "The COHERENT Experiment at the Spallation Neutron Source",
+    "authors": [
+      "COHERENT Collaboration",
+      "D. Akimov",
+      "P. An",
+      "C. Awe",
+      "P. S. Barbeau",
+      "P. Barton",
+      "B. Becker",
+      "V. Belov",
+      "A. Bolozdynya",
+      "A. Burenkov",
+      "B. Cabrera-Palmer",
+      "J. I. Collar",
+      "R. J. Cooper",
+      "R. L. Cooper",
+      "C. Cuesta",
+      "D. Dean",
+      "J. Detwiler",
+      "A. G. Dolgolenko",
+      "Y. Efremenko",
+      "S. R. Elliott",
+      "A. Etenko",
+      "N. Fields",
+      "W. Fox",
+      "A. Galindo-Uribarri",
+      "M. Green",
+      "M. Heath",
+      "S. Hedges",
+      "D. Hornback",
+      "E. B. Iverson",
+      "L. Kaufman",
+      "S. R. Klein",
+      "A. Khromov",
+      "A. Konovalov",
+      "A. Kovalenko",
+      "A. Kumpan",
+      "C. Leadbetter",
+      "L. Li",
+      "W. Lu",
+      "Y. Melikyan",
+      "D. Markoff",
+      "K. Miller",
+      "M. Middlebrook",
+      "P. Mueller",
+      "P. Naumov",
+      "J. Newby",
+      "D. Parno",
+      "S. Penttila",
+      "G. Perumpilly",
+      "D. Radford",
+      "H. Ray",
+      "J. Raybern",
+      "D. Reyna",
+      "G. C. Rich",
+      "D. Rimal",
+      "D. Rudik",
+      "K. Scholberg",
+      "B. Scholz",
+      "W. M. Snow",
+      "A. Sosnovtsev",
+      "A. Shakirov",
+      "S. Suchyta",
+      "B. Suh",
+      "R. Tayloe",
+      "R. T. Thornton",
+      "A. Tolstukhin",
+      "K. Vetter",
+      "C. H. Yu"
+    ],
+    "year": 2015,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1509.08702v2",
+    "summary": "The COHERENT collaboration's primary objective is to measure coherent elastic neutrino-nucleus scattering (CEvNS) using the unique, high-quality source of tens-of-MeV neutrinos provided by the Spallation Neutron Source (SNS) at Oak Ridge National Laboratory (ORNL). In spite of its large cross section, the CEvNS process has never been observed, due to tiny energies of the resulting nuclear recoils which are out of reach for standard neutrino detectors. The measurement of CEvNS has now become feas",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "1509.08702v2"
+  },
+  {
+    "title": "CORE -- a COmpact detectoR for the EIC",
+    "authors": [
+      "CORE Collaboration",
+      "R. Alarcon",
+      "M. Baker",
+      "V. Baturin",
+      "P. Brindza",
+      "S. Bueltmann",
+      "M. Bukhari",
+      "R. Capobianco",
+      "E. Christy",
+      "S. Diehl",
+      "M. Dugger",
+      "R. Dupr\u00e9",
+      "R. Dzhygadlo",
+      "K. Flood",
+      "K. Gnanvo",
+      "L. Guo",
+      "T. Hayward",
+      "M. Hattawy",
+      "M. Hoballah",
+      "M. Hohlmann",
+      "C. E. Hyde",
+      "Y. Ilieva",
+      "W. W. Jacobs",
+      "K. Joo",
+      "G. Kalicy",
+      "A. Kim",
+      "V. Kubarovsky",
+      "A. Lehmann",
+      "W. Li",
+      "D. Marchand",
+      "H. Marukyan",
+      "M. J. Murray",
+      "H. E. Montgomery",
+      "V. Morozov",
+      "I. Mostafanezhad",
+      "A. Movsisyan",
+      "E. Munevar",
+      "C. Mu\u00f1oz Camacho",
+      "P. Nadel-Turonski",
+      "S. Niccolai",
+      "K. Peters",
+      "A. Prokudin",
+      "J. Richards",
+      "B. G. Ritchie",
+      "U. Shrestha",
+      "B. Schmookler",
+      "G. Schnell",
+      "C. Schwarz",
+      "J. Schwiening",
+      "P. Schweitzer",
+      "P. Simmerling",
+      "H. Szumila-Vance",
+      "S. Tripathi",
+      "N. Trotta",
+      "G. Varner",
+      "A. Vossen",
+      "E. Voutier",
+      "N. Wickramaarachchi",
+      "N. Zachariou"
+    ],
+    "year": 2022,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2209.00496v1",
+    "summary": "The COmpact detectoR for the Eic (CORE) Proposal was submitted to the EIC \"Call for Collaboration Proposals for Detectors\". CORE comprehensively covers the physics scope of the EIC Community White Paper and the National Academies of Science 2018 report. The design exploits advances in detector precision and granularity to minimize size. The central detector includes a 3Tesla, 2.5m solenoid. Tracking is primarily silicon. Electromagnetic calorimetry is based on the high performance crystals. Ring",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "2209.00496v1"
+  },
+  {
+    "title": "COHERENT Collaboration data release from the first detection of coherent elastic neutrino-nucleus scattering on argon",
+    "authors": [
+      "COHERENT Collaboration",
+      "D. Akimov",
+      "J. B. Albert",
+      "P. An",
+      "C. Awe",
+      "P. S. Barbeau",
+      "B. Becker",
+      "V. Belov",
+      "M. A. Blackston",
+      "L. Blokland",
+      "A. Bolozdynya",
+      "B. Cabrera-Palmer",
+      "N. Chen",
+      "D. Chernyak",
+      "E. Conley",
+      "R. L. Cooper",
+      "J. Daughhetee",
+      "M. del Valle Coello",
+      "J. A. Detwiler",
+      "M. R. Durand",
+      "Y. Efremenko",
+      "S. R. Elliott",
+      "L. Fabris",
+      "M. Febbraro",
+      "W. Fox",
+      "A. Galindo-Uribarri",
+      "M. P. Green",
+      "K. S. Hansen",
+      "M. R. Heath",
+      "S. Hedges",
+      "M. Hughes",
+      "T. Johnson",
+      "M. Kaemingk",
+      "L. J. Kaufman",
+      "A. Khromov",
+      "A. Konovalov",
+      "E. Kozlova",
+      "A. Kumpan",
+      "L. Li",
+      "J. T. Librande",
+      "J. M. Link",
+      "J. Liu",
+      "K. Mann",
+      "D. M. Markoff",
+      "O. McGoldrick",
+      "H. Moreno",
+      "P. E. Mueller",
+      "J. Newby",
+      "D. S. Parno",
+      "S. Penttila",
+      "D. Pershey",
+      "D. Radford",
+      "R. Rapp",
+      "H. Ray",
+      "J. Raybern",
+      "O. Razuvaeva",
+      "D. Reyna",
+      "G. C. Rich",
+      "D. Rudik",
+      "J. Runge",
+      "D. J. Salvat",
+      "K. Scholberg",
+      "A. Shakirov",
+      "G. Simakov",
+      "G. Sinev",
+      "W. M. Snow",
+      "V. Sosnovtsev",
+      "B. Suh",
+      "R. Tayloe",
+      "K. Tellez-Giron-Flores",
+      "R. T. Thornton",
+      "I. Tolstukhin",
+      "J. Vanderwerp",
+      "R. L. Varner",
+      "C. J. Virtue",
+      "G. Visser",
+      "C. Wiseman",
+      "T. Wongjirad",
+      "J. Yang",
+      "Y. -R. Yen",
+      "J. Yoo",
+      "C. -H. Yu",
+      "J. Zettlemoyer"
+    ],
+    "year": 2020,
+    "doi": "10.5281/zenodo.3903810",
+    "url": "http://arxiv.org/abs/2006.12659v2",
+    "summary": "Release of COHERENT collaboration data from the first detection of coherent elastic neutrino-nucleus scattering (CEvNS) on argon. This release corresponds with the results of \"Analysis A\" published in Akimov et al., arXiv:2003.10630 [nucl-ex]. Data is shared in a binned, text-based format representing both \"signal\" and \"backgrounds\" along with associated uncertainties such that the included data can be used to perform independent analyses. This document describes the contents of the data release",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "2006.12659v2"
+  },
+  {
+    "title": "An optical fiber-based probe for photonic crystal microcavities",
+    "authors": [
+      "Kartik Srinivasan",
+      "Paul E. Barclay",
+      "Matthew Borselli",
+      "Oskar Painter"
+    ],
+    "year": 2004,
+    "doi": "10.1109/JSAC.2005.851212",
+    "url": "http://arxiv.org/abs/physics/0406129v1",
+    "summary": "We review a novel method for characterizing both the spectral and spatial properties of resonant cavities within two-dimensional photonic crystals (PCs). An optical fiber taper serves as an external waveguide probe whose micron-scale field is used to source and couple light from the cavity modes, which appear as resonant features in the taper's wavelength-dependent transmission spectrum when it is placed within the cavity's near field. Studying the linewidth and depth of these resonances as a fu",
+    "source": "arxiv",
+    "query": "photonic tensor core coherent",
+    "arxiv_id": "physics/0406129v1"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Photovoltaic-ferroelectric materials for the realization of all-optical devices",
+    "authors": [
+      "A. Makhort",
+      "R. Gumeniuk",
+      "J. -F. Dayen",
+      "P. Dunne",
+      "U. Burkhardt",
+      "M. Viret",
+      "B. Doudin",
+      "B. Kundys"
+    ],
+    "year": 2022,
+    "doi": "10.1002/adom.202102353",
+    "url": "http://arxiv.org/abs/2203.06515v1",
+    "summary": "Following how the electrical transistor revolutionized the field of electronics,the realization of an optical transistor in which the flow of light is controlled optically should open the long-sought era of optical computing and new data processing possibilities. However, such function requires photons to influence each other, an effect which is unnatural in free space. Here it is shown that a ferroelectric and photovoltaic crystal gated optically at the onset of its bandgap energy can act as a ",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "2203.06515v1"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "Frequency Ratio Measurements with 18-digit Accuracy Using a Network of Optical Clocks",
+    "authors": [
+      "Boulder Atomic Clock Optical Network",
+      "Collaboration",
+      ":",
+      "Kyle Beloy",
+      "Martha I. Bodine",
+      "Tobias Bothwell",
+      "Samuel M. Brewer",
+      "Sarah L. Bromley",
+      "Jwo-Sy Chen",
+      "Jean-Daniel Desch\u00eanes",
+      "Scott A. Diddams",
+      "Robert J. Fasano",
+      "Tara M. Fortier",
+      "Youssef S. Hassan",
+      "David B. Hume",
+      "Dhruv Kedar",
+      "Colin J. Kennedy",
+      "Isaac Khader",
+      "Amanda Koepke",
+      "David R. Leibrandt",
+      "Holly Leopardi",
+      "Andrew D. Ludlow",
+      "William F. McGrew",
+      "William R. Milner",
+      "Nathan R. Newbury",
+      "Daniele Nicolodi",
+      "Eric Oelker",
+      "Thomas E. Parker",
+      "John M. Robinson",
+      "Stefania Romisch",
+      "Stefan A. Sch\u00e4ffer",
+      "Jeffrey A. Sherman",
+      "Laura C. Sinclair",
+      "Lindsay Sonderhouse",
+      "William C. Swann",
+      "Jian Yao",
+      "Jun Ye",
+      "Xiaogang Zhang"
+    ],
+    "year": 2020,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2005.14694v1",
+    "summary": "Atomic clocks occupy a unique position in measurement science, exhibiting higher accuracy than any other measurement standard and underpinning six out of seven base units in the SI system. By exploiting higher resonance frequencies, optical atomic clocks now achieve greater stability and lower frequency uncertainty than existing primary standards. Here, we report frequency ratios of the $^{27}$Al$^+$, $^{171}$Yb and $^{87}$Sr optical clocks in Boulder, Colorado, measured across an optical networ",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "2005.14694v1"
+  },
+  {
+    "title": "A Fast, robust algorithm for power line interference cancellation in neural recording",
+    "authors": [
+      "Mohammad Reza Keshtkaran",
+      "Zhi Yang"
+    ],
+    "year": 2014,
+    "doi": "10.1088/1741-2560/11/2/026017",
+    "url": "http://arxiv.org/abs/1402.6862v2",
+    "summary": "Power line interference may severely corrupt neural recordings at 50/60 Hz and harmonic frequencies. In this paper, we present a robust and computationally efficient algorithm for removing power line interference from neural recordings. The algorithm includes four steps. First, an adaptive notch filter is used to estimate the fundamental frequency of the interference. Subsequently, based on the estimated frequency, harmonics are generated by using discrete-time oscillators, and then the amplitud",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "1402.6862v2"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "Development of a sensory-neural network for medical diagnosing",
+    "authors": [
+      "Igor Grabec",
+      "Eva \u0160vegl",
+      "Mihael Sok"
+    ],
+    "year": 2018,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1807.02477v1",
+    "summary": "Performance of a sensory-neural network developed for diagnosing of diseases is described. Information about patient's condition is provided by answers to the questionnaire. Questions correspond to sensors generating signals when patients acknowledge symptoms. These signals excite neurons in which characteristics of the diseases are represented by synaptic weights associated with indicators of symptoms. The disease corresponding to the most excited neuron is proposed as the result of diagnosing.",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "1807.02477v1"
+  },
+  {
+    "title": "A Review on Neural Network Models of Schizophrenia and Autism Spectrum Disorder",
+    "authors": [
+      "Pablo Lanillos",
+      "Daniel Oliva",
+      "Anja Philippsen",
+      "Yuichi Yamashita",
+      "Yukie Nagai",
+      "Gordon Cheng"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.10.014",
+    "url": "http://arxiv.org/abs/1906.10015v2",
+    "summary": "This survey presents the most relevant neural network models of autism spectrum disorder and schizophrenia, from the first connectionist models to recent deep network architectures. We analyzed and compared the most representative symptoms with its neural model counterpart, detailing the alteration introduced in the network that generates each of the symptoms, and identifying their strengths and weaknesses. We additionally cross-compared Bayesian and free-energy approaches, as they are widely ap",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "1906.10015v2"
+  },
+  {
+    "title": "How transferable are features in deep neural networks?",
+    "authors": [
+      "Jason Yosinski",
+      "Jeff Clune",
+      "Yoshua Bengio",
+      "Hod Lipson"
+    ],
+    "year": 2014,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1411.1792v1",
+    "summary": "Many deep neural networks trained on natural images exhibit a curious phenomenon in common: on the first layer they learn features similar to Gabor filters and color blobs. Such first-layer features appear not to be specific to a particular dataset or task, but general in that they are applicable to many datasets and tasks. Features must eventually transition from general to specific by the last layer of the network, but this transition has not been studied extensively. In this paper we experime",
+    "source": "arxiv",
+    "query": "optical interference neural network",
+    "arxiv_id": "1411.1792v1"
+  },
+  {
+    "title": "A Tutorial about Random Neural Networks in Supervised Learning",
+    "authors": [
+      "Sebasti\u00e1n Basterrech",
+      "Gerardo Rubino"
+    ],
+    "year": 2016,
+    "doi": "10.14311/NNW.2015.25.024",
+    "url": "http://arxiv.org/abs/1609.04846v1",
+    "summary": "Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have been successfully used in several domains during the last 25 years, as queuing networks to analyze the performance of resource sharing in many engineering areas, as learning tools and in combinatorial optimization, where they are seen as neural systems, and also as models of neurological aspects of living beings. In this article we focus on their learning capa",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "1609.04846v1"
+  },
+  {
+    "title": "Predicting concentration levels of air pollutants by transfer learning and recurrent neural network",
+    "authors": [
+      "Iat Hang Fong",
+      "Tengyue Li",
+      "Simon Fong",
+      "Raymond K. Wong",
+      "Antonio J. Tall\u00f3n-Ballesteros"
+    ],
+    "year": 2025,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2502.01654v1",
+    "summary": "Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate prediction of AP helps people to plan for their outdoor activities and aids protecting human health. In this paper, long-short term memory (LSTM) recurrent neural networks (RNNs) have been used to predict the future concentration of air pollutants (APS) in Macau. Additionally, meteorological data and data on the concentration of APS have been utilized. Moreover, in ",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "2502.01654v1"
+  },
+  {
+    "title": "Masked Conditional Neural Networks for Audio Classification",
+    "authors": [
+      "Fady Medhat",
+      "David Chesmore",
+      "John Robinson"
+    ],
+    "year": 2018,
+    "doi": "10.1007/978-3-319-68612-7_40",
+    "url": "http://arxiv.org/abs/1803.02421v2",
+    "summary": "We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recognition. The CLNN takes into consideration the temporal nature of the sound signal and the MCLNN extends upon the CLNN through a binary mask to preserve the spatial locality of the features and allows an automated exploration of the features combination analogous to hand-crafting the most relevant features for the recognition task. MCLNN has achieved competitive rec",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "1803.02421v2"
+  },
+  {
+    "title": "Understanding and mitigating noise in trained deep neural networks",
+    "authors": [
+      "Nadezhda Semenova",
+      "Laurent Larger",
+      "Daniel Brunner"
+    ],
+    "year": 2021,
+    "doi": "10.1016/j.neunet.2021.11.008",
+    "url": "http://arxiv.org/abs/2103.07413v3",
+    "summary": "Deep neural networks unlocked a vast range of new applications by solving tasks of which many were previously deemed as reserved to higher human intelligence. One of the developments enabling this success was a boost in computing power provided by special purpose hardware, such as graphic or tensor processing units. However, these do not leverage fundamental features of neural networks like parallelism and analog state variables. Instead, they emulate neural networks relying on binary computing,",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "2103.07413v3"
+  },
+  {
+    "title": "The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory",
+    "authors": [
+      "Sergey Oladyshkin",
+      "Timothy Praditia",
+      "Ilja Kr\u00f6ker",
+      "Farid Mohammadi",
+      "Wolfgang Nowak",
+      "Sebastian Otte"
+    ],
+    "year": 2023,
+    "doi": "10.1016/j.neunet.2023.06.036",
+    "url": "http://arxiv.org/abs/2306.14753v1",
+    "summary": "Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, computational science, communication science, and stochastic analysis. Approaches based on Deep Artificial Neural Networks (DANN) are very popular in our days. Depending on the learning task, the exact form of DANNs is determined via their multi-layer architecture, activation functions and the so-called loss function. However, for a majority of deep learning approach",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "2306.14753v1"
+  },
+  {
+    "title": "Analog Alchemy: Neural Computation with In-Memory Inference, Learning and Routing",
+    "authors": [
+      "Yigit Demirag"
+    ],
+    "year": 2024,
+    "doi": "10.5167/uzh-267127",
+    "url": "http://arxiv.org/abs/2412.20848v1",
+    "summary": "As neural computation is revolutionizing the field of Artificial Intelligence (AI), rethinking the ideal neural hardware is becoming the next frontier. Fast and reliable von Neumann architecture has been the hosting platform for neural computation. Although capable, its separation of memory and computation creates the bottleneck for the energy efficiency of neural computation, contrasting the biological brain. The question remains: how can we efficiently combine memory and computation, while exp",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "2412.20848v1"
+  },
+  {
+    "title": "Denoising Noisy Neural Networks: A Bayesian Approach with Compensation",
+    "authors": [
+      "Yulin Shao",
+      "Soung Chang Liew",
+      "Deniz Gunduz"
+    ],
+    "year": 2021,
+    "doi": "10.1109/TSP.2023.3290327",
+    "url": "http://arxiv.org/abs/2105.10699v3",
+    "summary": "Deep neural networks (DNNs) with noisy weights, which we refer to as noisy neural networks (NoisyNNs), arise from the training and inference of DNNs in the presence of noise. NoisyNNs emerge in many new applications, including the wireless transmission of DNNs, the efficient deployment or storage of DNNs in analog devices, and the truncation or quantization of DNN weights. This paper studies a fundamental problem of NoisyNNs: how to reconstruct the DNN weights from their noisy manifestations. Wh",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "2105.10699v3"
+  },
+  {
+    "title": "Development of a sensory-neural network for medical diagnosing",
+    "authors": [
+      "Igor Grabec",
+      "Eva \u0160vegl",
+      "Mihael Sok"
+    ],
+    "year": 2018,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1807.02477v1",
+    "summary": "Performance of a sensory-neural network developed for diagnosing of diseases is described. Information about patient's condition is provided by answers to the questionnaire. Questions correspond to sensors generating signals when patients acknowledge symptoms. These signals excite neurons in which characteristics of the diseases are represented by synaptic weights associated with indicators of symptoms. The disease corresponding to the most excited neuron is proposed as the result of diagnosing.",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "1807.02477v1"
+  },
+  {
+    "title": "A Review on Neural Network Models of Schizophrenia and Autism Spectrum Disorder",
+    "authors": [
+      "Pablo Lanillos",
+      "Daniel Oliva",
+      "Anja Philippsen",
+      "Yuichi Yamashita",
+      "Yukie Nagai",
+      "Gordon Cheng"
+    ],
+    "year": 2019,
+    "doi": "10.1016/j.neunet.2019.10.014",
+    "url": "http://arxiv.org/abs/1906.10015v2",
+    "summary": "This survey presents the most relevant neural network models of autism spectrum disorder and schizophrenia, from the first connectionist models to recent deep network architectures. We analyzed and compared the most representative symptoms with its neural model counterpart, detailing the alteration introduced in the network that generates each of the symptoms, and identifying their strengths and weaknesses. We additionally cross-compared Bayesian and free-energy approaches, as they are widely ap",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "1906.10015v2"
+  },
+  {
+    "title": "How transferable are features in deep neural networks?",
+    "authors": [
+      "Jason Yosinski",
+      "Jeff Clune",
+      "Yoshua Bengio",
+      "Hod Lipson"
+    ],
+    "year": 2014,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1411.1792v1",
+    "summary": "Many deep neural networks trained on natural images exhibit a curious phenomenon in common: on the first layer they learn features similar to Gabor filters and color blobs. Such first-layer features appear not to be specific to a particular dataset or task, but general in that they are applicable to many datasets and tasks. Features must eventually transition from general to specific by the last layer of the network, but this transition has not been studied extensively. In this paper we experime",
+    "source": "arxiv",
+    "query": "analog neural network noise tolerance",
+    "arxiv_id": "1411.1792v1"
+  },
+  {
+    "title": "Noise and Bell's inequality",
+    "authors": [
+      "David K. Ferry",
+      "Laszlo B. Kish"
+    ],
+    "year": 2010,
+    "doi": "10.1142/S0219477510000320",
+    "url": "http://arxiv.org/abs/1008.0667v2",
+    "summary": "From the beginning of quantum mechanics, there has been a discussion about the concept of reality, as exemplified by the EPR paradox. To many, the idea of the paradox and the possibility of local hidden variables was dismissed by the Bell inequality. Yet, there remains considerable evidence that this inequality can be violated even by classical systems, so that experiments showing quantum behavior and the violation of the inequality must be questioned. Here, we demonstrate that classical optical",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "1008.0667v2"
+  },
+  {
+    "title": "Quantum and Classical Frontiers of Noise",
+    "authors": [
+      "X. Oriols"
+    ],
+    "year": 2016,
+    "doi": "10.1142/S0219477516020016",
+    "url": "http://arxiv.org/abs/1612.03430v1",
+    "summary": "This paper is an introduction to the eleven works of the special issue on Quantum and Classical Frontiers of Noise. The weather, and its butterfly effect, is the typical example that explain why many natural phenomena are, in fact, not predictable with certainty. Noise in classical or quantum phenomena, understood as the difference between the empirical output of an experiment and its statistical prediction, is a measure of such uncertainty. One of the great contributions of noise appeared in 19",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "1612.03430v1"
+  },
+  {
+    "title": "Noise based logic: why noise? A comparative study of the necessity of randomness out of orthogonality",
+    "authors": [
+      "He Wen",
+      "Laszlo B. Kish"
+    ],
+    "year": 2012,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1204.2545v4",
+    "summary": "Although noise-based logic shows potential advantages of reduced power dissipation and the ability of large parallel operations with low hardware and time complexity the question still persist: is randomness really needed out of orthogonality? In this Letter, after some general thermodynamical considerations, we show relevant examples where we compare the computational complexity of logic systems based on orthogonal noise and sinusoidal signals, respectively. The conclusion is that in certain sp",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "1204.2545v4"
+  },
+  {
+    "title": "Decoherence and noise in open quantum system dynamics",
+    "authors": [
+      "Bassano Vacchini"
+    ],
+    "year": 2016,
+    "doi": "10.1142/S0219477516400034",
+    "url": "http://arxiv.org/abs/1605.07838v1",
+    "summary": "We consider the description of quantum noise within the framework of the standard Copenhagen interpretation of quantum mechanics applied to a composite system environment setting. Averaging over the environmental degrees of freedom leads to a stochastic quantum dynamics, described by equations complying with the constraints arising from the statistical structure of quantum mechanics. Simple examples are considered in the framework of open system dynamics described within a master equation approa",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "1605.07838v1"
+  },
+  {
+    "title": "Instantaneous noise-based logic",
+    "authors": [
+      "Laszlo B. Kish",
+      "Sunil Khatri",
+      "Ferdinand Peper"
+    ],
+    "year": 2010,
+    "doi": "10.1142/S0219477510000253",
+    "url": "http://arxiv.org/abs/1004.2652v2",
+    "summary": "We show two universal, Boolean, deterministic logic schemes based on binary noise timefunctions that can be realized without time-averaging units. The first scheme is based on a new bipolar random telegraph wave scheme and the second one makes use of the recent noise-based logic which is conjectured to be the brain's method of logic operations [Physics Letters A 373 (2009) 2338-2342]. Error propagation and error removal issues are also addressed.",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "1004.2652v2"
+  },
+  {
+    "title": "Noise Dynamics in the Quantum Regime",
+    "authors": [
+      "Clovis Farley",
+      "Edouard Pinsolle",
+      "Bertrand Reulet"
+    ],
+    "year": 2023,
+    "doi": "10.1109/ICNF57520.2023.10472766",
+    "url": "http://arxiv.org/abs/2311.17794v1",
+    "summary": "A time-dependent bias voltage on a tunnel junction generates a time-dependent modulation of its current fluctuations, and in particular of its variance. This translates into an excitation at frequency $\\tilde{f}$ generating correlations between current fluctuating at any frequency $f$ and at frequency $\\pm$ $\\tilde{f} -f$. We report the measurement of such a correlation in the fully quantum regime, i.e. when both frequencies are much greater than $k_BT/h$ with $T$ the temperature. Such a correla",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "2311.17794v1"
+  },
+  {
+    "title": "Simple Cracking of (Noise-Based) Dynamic Watermarking in Smart Grids",
+    "authors": [
+      "Mehmet Yildirim",
+      "Nasir Kenarangui",
+      "Robert Balog",
+      "Laszlo B. Kish",
+      "Chanan Singh"
+    ],
+    "year": 2024,
+    "doi": "10.1142/S0219477524500597",
+    "url": "http://arxiv.org/abs/2406.15494v3",
+    "summary": "Previous research employing a conceptual approach with a digital twin has demonstrated that (noise-based) dynamic watermarking is incapable of providing unconditional security in smart electrical grid systems. However, the implementation of digital twins can be prohibitively costly or infeasible due to limited available data on critical infrastructure. In this study, we first analyze the spectral properties of dynamic watermarking and its associated protocol. Subsequently, we present a straightf",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "2406.15494v3"
+  },
+  {
+    "title": "Phase-Locked, Low-Noise, Frequency Agile Titanium: Sapphire Lasers for Simultaneous Atom Interferometers",
+    "authors": [
+      "Holger Mueller",
+      "Sheng-wey Chiow",
+      "Quan Long",
+      "Steven Chu"
+    ],
+    "year": 2005,
+    "doi": "10.1364/OL.31.000202",
+    "url": "http://arxiv.org/abs/physics/0507187v2",
+    "summary": "We demonstrate phase lock of two >1.6W Titanium:sapphire lasers with a phase noise of -138dBc/Hz at 1MHz from the carrier, using an intra-cavity electro-optic phase modulator. The residual phase variance is 2.5 10^(-8)rad^2 integrated from 1Hz to 10kHz. Instantaneous offset frequency steps of up to 4MHz are achieved within 200ns. Simultaneous atom interferometers can make full use of this ultra-low phase noise in differential measurements by suppressing common influences from vibration of optics",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "physics/0507187v2"
+  },
+  {
+    "title": "Stokes' Drift and Hypersensitive Response with Dichotomous Markov Noise",
+    "authors": [
+      "I. Bena",
+      "R. Kawai",
+      "C. Van den Broeck",
+      "Katja Lindenberg"
+    ],
+    "year": 2005,
+    "doi": "",
+    "url": "http://arxiv.org/abs/cond-mat/0501499v1",
+    "summary": "Stochastic Stokes' drift and hypersensitive transport driven by dichotomous noise are theoretically investigated. Explicit mathematical expressions for the asymptotic probability density and drift velocity are derived including the situation in which particles cross unstable fixed points. The results are confirmed by numerical simulations.",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "cond-mat/0501499v1"
+  },
+  {
+    "title": "Shot noise for entangled and spin-polarized electrons",
+    "authors": [
+      "J. C. Egues",
+      "P. Recher",
+      "D. S. Saraga",
+      "V. N. Golovach",
+      "G. Burkard",
+      "E. V. Sukhorukov",
+      "D. Loss"
+    ],
+    "year": 2002,
+    "doi": "",
+    "url": "http://arxiv.org/abs/cond-mat/0210498v1",
+    "summary": "We review our recent contributions on shot noise for entangled electrons and spin-polarized currents in novel mesoscopic geometries. We first discuss some of our recent proposals for electron entanglers involving a superconductor coupled to a double dot in the Coulomb blockade regime, a superconductor tunnel-coupled to Luttinger-liquid leads, and a triple-dot setup coupled to Fermi leads. We calculate current and shot noise for spin-polarized currents and entangled/unentangled electron pairs in ",
+    "source": "arxiv",
+    "query": "phase noise inference accuracy",
+    "arxiv_id": "cond-mat/0210498v1"
+  },
+  {
+    "title": "The Data Conversion Bottleneck in Analog Computing Accelerators",
+    "authors": [
+      "James T. Meech",
+      "Vasileios Tsoutsouras",
+      "Phillip Stanley-Marbell"
+    ],
+    "year": 2023,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2308.01719v4",
+    "summary": "Most modern computing tasks have digital electronic input and output data. Due to these constraints imposed by real-world use cases of computer systems, any analog computing accelerator, whether analog electronic or optical, must perform an analog-to-digital conversion on its input data and a subsequent digital-to-analog conversion on its output data. The energy and latency costs incurred by data conversion place performance limits on analog computing accelerators. To avoid this overhead, analog",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "2308.01719v4"
+  },
+  {
+    "title": "Analysis of Performance of Linear Analog Codes",
+    "authors": [
+      "Yang Liu",
+      "Jing Li",
+      "Kai Xie"
+    ],
+    "year": 2015,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1511.05509v2",
+    "summary": "In this paper we carefully study the MSE performance of the linear analog codes. We have derived a lower bound of the MSE performance under Likelihood(ML) and Linear Minimal Mean Square Error(LMMSE) decoding criteria respectively. It is proved in this essay that a kind of linear analog codes called \\emph {unitary codes} can simultaneously achieve both of these two bounds. At the same time, we compare the obtained linear analog codes' MSE bounds with the performance of some existing nonlinear cod",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "1511.05509v2"
+  },
+  {
+    "title": "Security of quantum key distribution with detection-efficiency mismatch in the single-photon case: Tight bounds",
+    "authors": [
+      "M. K. Bochkov",
+      "A. S. Trushechkin"
+    ],
+    "year": 2018,
+    "doi": "10.1103/PhysRevA.99.032308",
+    "url": "http://arxiv.org/abs/1810.04663v3",
+    "summary": "One of the challenges in practical quantum key distribution is dealing with efficiency mismatch between different threshold single-photon detectors. There are known bounds for the secret key rate for the BB84 protocol with detection-efficiency mismatch provided that the eavesdropper sends no more than one photon to the legitimate receiver. Here we improve these bounds and give tight bounds for the secret key rate with a constant detection-efficiency mismatch under the same single-photon assumpti",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "1810.04663v3"
+  },
+  {
+    "title": "Performance Analysis of the Matrix Pair Beamformer with Matrix Mismatch",
+    "authors": [
+      "Jianshu Chen",
+      "Jian Wang",
+      "Xiu-Ming Shan",
+      "Ning Ge",
+      "Xiang-Gen Xia"
+    ],
+    "year": 2010,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1009.5979v4",
+    "summary": "Matrix pair beamformer (MPB) is a blind beamformer. It exploits the temporal structure of the signal of interest (SOI) and applies generalized eigen-decomposition to a covariance matrix pair. Unlike other blind algorithms, it only uses the second order statistics. A key assumption in the previous work is that the two matrices have the same interference statistics. However, this assumption may be invalid in the presence of multipath propagations or certain \"smart\" jammers, and we call it as matri",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "1009.5979v4"
+  },
+  {
+    "title": "The three and a half layers of dynamics : analog, digital, semi-digital, analog",
+    "authors": [
+      "T. P. Singh"
+    ],
+    "year": 2011,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1106.0911v1",
+    "summary": "Quantum theory is extremely successful in explaining most physical phenomena, and is not contradicted by any experiment. Yet, the theory has many puzzling features : the occurrence of probabilities, the unclear distinction between the microscopic and the macroscopic, the unexplained absence of superpositions in positions of macroscopic objects, the dependence of the theory on an external classical time, and the experimentally verified but peculiar `influence' outside the light-cone in EPR experi",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "1106.0911v1"
+  },
+  {
+    "title": "Are Bohmian trajectories real? On the dynamical mismatch between de Broglie-Bohm and classical dynamics in semiclassical systems",
+    "authors": [
+      "A. Matzkin",
+      "V. Nurock"
+    ],
+    "year": 2006,
+    "doi": "10.1016/j.shpsb.2007.04.005",
+    "url": "http://arxiv.org/abs/quant-ph/0609172v2",
+    "summary": "The de Broglie-Bohm interpretation of quantum mechanics aims to give a realist description of quantum phenomena in terms of the motion of point-like particles following well-defined trajectories. This work is concerned by the de Broglie-Bohm account of the properties of semiclassical systems. Semiclassical systems are quantum systems that display the manifestation of classical trajectories: the wavefunction and the observable properties of such systems depend on the trajectories of the classical",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "quant-ph/0609172v2"
+  },
+  {
+    "title": "Analog Alchemy: Neural Computation with In-Memory Inference, Learning and Routing",
+    "authors": [
+      "Yigit Demirag"
+    ],
+    "year": 2024,
+    "doi": "10.5167/uzh-267127",
+    "url": "http://arxiv.org/abs/2412.20848v1",
+    "summary": "As neural computation is revolutionizing the field of Artificial Intelligence (AI), rethinking the ideal neural hardware is becoming the next frontier. Fast and reliable von Neumann architecture has been the hosting platform for neural computation. Although capable, its separation of memory and computation creates the bottleneck for the energy efficiency of neural computation, contrasting the biological brain. The question remains: how can we efficiently combine memory and computation, while exp",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "2412.20848v1"
+  },
+  {
+    "title": "Computation over Mismatched Channels",
+    "authors": [
+      "Nikhil Karamchandani",
+      "Urs Niesen",
+      "Suhas Diggavi"
+    ],
+    "year": 2012,
+    "doi": "",
+    "url": "http://arxiv.org/abs/1204.5059v2",
+    "summary": "We consider the problem of distributed computation of a target function over a multiple-access channel. If the target and channel functions are matched (i.e., compute the same function), significant performance gains can be obtained by jointly designing the computation and communication tasks. However, in most situations there is mismatch between these two functions. In this work, we analyze the impact of this mismatch on the performance gains achievable with joint computation and communication ",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "1204.5059v2"
+  },
+  {
+    "title": "Superfluid Analog of the Davies-Unruh Effect",
+    "authors": [
+      "G. L. Comer"
+    ],
+    "year": 2005,
+    "doi": "",
+    "url": "http://arxiv.org/abs/gr-qc/0505005v1",
+    "summary": "We produce an analog of the Davies-Unruh effect for superfluid helium four. There are two temperatures which result--one is associated with ordinary, or first, sound and the other with second sound.",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "gr-qc/0505005v1"
+  },
+  {
+    "title": "Semantic Communications with Discrete-time Analog Transmission: A PAPR Perspective",
+    "authors": [
+      "Yulin Shao",
+      "Deniz Gunduz"
+    ],
+    "year": 2022,
+    "doi": "",
+    "url": "http://arxiv.org/abs/2208.08342v3",
+    "summary": "Recent progress in deep learning (DL)-based joint source-channel coding (DeepJSCC) has led to a new paradigm of semantic communications. Two salient features of DeepJSCC-based semantic communications are the exploitation of semantic-aware features directly from the source signal, and the discrete-time analog transmission (DTAT) of these features. Compared with traditional digital communications, semantic communications with DeepJSCC provide superior reconstruction performance at the receiver and",
+    "source": "arxiv",
+    "query": "mismatch variation analog compute",
+    "arxiv_id": "2208.08342v3"
+  }
+]

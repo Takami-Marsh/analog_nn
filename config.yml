@@ -1,0 +1,32 @@
+seed: 42
+toy_sim:
+  n_samples: 200
+  n_features: 32
+  snr_db_list: [-5, 0, 5, 10, 15, 20, 30]
+  phase_noise_std: 0.02
+  amplitude_noise_std: 0.01
+  carrier_freq: 1.0
+  weight_phase_gain: 1.0
+digits_demo:
+  enabled: true
+  train_fraction: 0.8
+  dataset: mnist
+  input_dim: 784
+  hidden_dims: [256, 128]
+  epochs: 40
+  lr: 0.005
+  noise_std: [0.0, 0.01, 0.02, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
+  methods:
+    - name: digital
+      type: digital
+    - name: phase
+      type: phase
+      train_noise: 0.0
+    - name: phase_noiseaware
+      type: phase
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.1, 0.15, 0.2]
+    - name: amplitude
+      type: amplitude
+    - name: amplitude_noiseaware
+      type: amplitude
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.1, 0.15, 0.2]

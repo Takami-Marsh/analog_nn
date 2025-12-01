@@ -1,0 +1,22 @@
+wave_phase_compute:
+  - "wave-based analog computing neural network"
+  - "phase encoding weights neural network"
+  - "coherent demodulation neural computation"
+  - "interference based multiply accumulate"
+oscillator_networks:
+  - "coupled oscillator neural network"
+  - "Kuramoto neural computation"
+  - "oscillator-based computing inference"
+  - "phase domain computing CMOS"
+mixed_signal_accelerators:
+  - "analog neural network inference circuit"
+  - "mixed-signal neural network accelerator"
+  - "in-memory computing MAC analog"
+photonic_rf:
+  - "microwave photonic neural network"
+  - "photonic tensor core coherent"
+  - "optical interference neural network"
+noise_robustness:
+  - "analog neural network noise tolerance"
+  - "phase noise inference accuracy"
+  - "mismatch variation analog compute"

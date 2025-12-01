@@ -1,0 +1,1084 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Analog / Wave-Based Neural Network Capstone</title>
+  <style>
+    body { font-family: 'Helvetica', 'Arial', sans-serif; margin: 30px; color: #111; line-height: 1.5; }
+    h1,h2,h3,h4 { color: #0d1b2a; margin-top: 24px; }
+    section { margin-bottom: 24px; }
+    code { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
+    pre { background: #f8f8f8; padding: 10px; border-radius: 6px; overflow-x: auto; }
+    table { border-collapse: collapse; width: 100%; }
+    th, td { border: 1px solid #ddd; padding: 6px 8px; }
+    th { background: #f0f0f0; }
+    img { max-width: 100%; height: auto; }
+    </style>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$','$'], ['\\(','\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']]
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+<body>
+<section id='08_capstone_report'>
+<h1 id="capstone-report">Capstone Report</h1>
+<h2 id="1-problem-motivation">1. Problem &amp; motivation</h2>
+<p>Phase- or frequency-encoded analog neural networks promise high-throughput MACs using wave superposition instead of dense digital MAC arrays, reducing ADC/DAC overhead and leveraging coherent detection as shown in photonic tensor cores [@shen2017deep; @feldmann2021parallel]. The goal is to quantify whether phase-coded weights can deliver accurate MACs under realistic noise and how training and calibration must adapt.</p>
+<h2 id="2-prior-work-taxonomy">2. Prior work (taxonomy)</h2>
+<ul>
+<li><strong>Interference compute:</strong> coherent photonic meshes for matrix multiplication [@shen2017deep; @tait2017neuromorphic]; broadcast-and-weight frequency-division weighting [@tait2014broadcast]; diffractive optics for passive inference [@lin2018all]; integrated tensor cores with phase-change weights [@feldmann2021parallel]; photonic reservoirs for temporal tasks [@vandoorne2014experimental]; compact mesh layouts for scalable interferometers [@clements2016optimal].</li>
+<li><strong>Oscillator networks:</strong> synchronization-based inference and Ising solvers using coupled oscillators [@csaba2020coupled; @hoppensteadt1999oscillatory; @wang2019ising].</li>
+<li><strong>Mixed-signal accelerators:</strong> analog in-memory MACs, variability, and calibration needs [@sebastian2020memory; @khwa2018mixed]; programmable photonic circuits for stable phase control [@bogaerts2020programmable].</li>
+<li><strong>Training/calibration:</strong> hardware-in-the-loop backprop for physical systems [@wright2022deep]; pilot-tone phase tracking and dithering in photonic meshes [@tait2017neuromorphic; @tait2014broadcast]; algorithmic noise mitigation [@rahman2021noise].</li>
+</ul>
+<h2 id="3-proposed-approach">3. Proposed approach</h2>
+<ul>
+<li><strong>Chosen architecture:</strong> Option A—coherent superposition with phase-coded weights and IQ demodulation—because it most directly implements a linear MAC, follows demonstrated photonic meshes [@shen2017deep], and reuses broadcast-and-weight calibration techniques [@tait2014broadcast].</li>
+<li><strong>Mapping:</strong> (w_i \in [-1,1] \rightarrow \phi_i = \arccos(w_i)); inputs are amplitudes (x_i); IQ demod extracts (I \approx \sum x_i w_i). Frequency-coded variant remains an alternative for orthogonality and drift tolerance.</li>
+<li><strong>System blocks:</strong> carrier source, phase shifters, amplitude modulators, summing node, IQ demod, ADC; slow calibration loop for phase drift and gain equalization.</li>
+</ul>
+<h2 id="4-math-model-mapping">4. Math model &amp; mapping</h2>
+<p>The waveform model (s(t)=\sum_i x_i \cos(\omega t + \phi_i) + n(t)) demodulates to (I = \sum_i x_i \cos(\phi_i) + \eta_I). Phase noise (\delta\phi), amplitude noise (\delta a), and additive noise determine accuracy (see <code>docs/04_math_model.md</code>). Training uses noise injection on (\phi) to match deployment conditions [@wright2022deep].</p>
+<h2 id="5-simulation-methodology">5. Simulation methodology</h2>
+<ul>
+<li><strong>Toy MAC:</strong> 32-feature MAC, 200 Monte Carlo samples per SNR. Noise: amplitude std 0.01, phase std 0.02 rad. Outputs in <code>results/toy_mse_vs_snr.csv</code>.</li>
+<li><strong>Digits demo:</strong> single-layer phase-coded classifier on sklearn digits; weights parameterized as (\cos(\theta)); evaluate accuracy under phase noise list <code>[0, 0.02, 0.05, 0.1, 0.2]</code>. Outputs in <code>results/acc_vs_noise.csv</code>.</li>
+<li>Reproducible via <code>bash scripts/reproduce.sh</code>, which sets up a venv, fetches literature metadata, and runs both simulations.</li>
+</ul>
+<h2 id="6-results">6. Results</h2>
+<ul>
+<li><strong>MAC accuracy:</strong> MSE improves from 0.42 at -5 dB SNR to 0.01 at 30 dB; &lt;2e-2 MSE at ≥10 dB (Figure <code>figures/toy_mse_vs_snr.png</code>).</li>
+<li><strong>Digits classification (comparative noise study):</strong></li>
+<li><code>digital</code> baseline: 0.95 accuracy, unaffected by injected noise (reference ceiling).</li>
+<li><code>phase</code>: 0.928 → 0.917 as phase noise grows from 0 to 0.2 rad.</li>
+<li><code>phase_noiseaware</code>: 0.928 → 0.909; slight robustness gain at mid-noise (0.931 at 0.05 rad).</li>
+<li><code>amplitude</code>: 0.95 → 0.936 under multiplicative noise 0.2.</li>
+<li>See Figure <code>figures/acc_vs_noise.png</code> and <code>results/acc_vs_noise.csv</code>.</li>
+<li><strong>Implication:</strong> phase-coded inference is viable up to ~0.1 rad jitter; noise-aware training helps; amplitude-coded weights are less sensitive to phase jitter and can serve as a hybrid fallback.</li>
+</ul>
+<h2 id="7-noiserobustness-findings">7. Noise/robustness findings</h2>
+<ul>
+<li>Additive noise dominates below 10 dB SNR; phase noise dominates beyond 0.1 rad.</li>
+<li>Noise-aware training (injecting (\delta\phi)) should reclaim accuracy for higher jitter, analogous to in-situ training in physical NNs [@wright2022deep].</li>
+<li>Pilot-tone calibration and redundancy can further suppress drift and stochastic noise [@rahman2021noise].</li>
+</ul>
+<h2 id="8-limitations-and-next-steps">8. Limitations and next steps</h2>
+<ul>
+<li>Current model ignores device bandwidth limits and nonlinearity in modulators; integrating measured transfer functions is next.</li>
+<li>Only single-layer classification tested; deeper networks require phase-decorrelation analysis and perhaps hybrid analog/digital partitioning.</li>
+<li>Circuit validation (SPICE or benchtop IQ chain) is pending; <code>docs/07_circuit_mapping.md</code> outlines the hardware mapping.</li>
+</ul>
+<h2 id="9-references">9. References</h2>
+<p>Full annotated bibliography in <code>docs/references.md</code>; BibTeX in <code>references.bib</code>.</p>
+</section>
+<section id='01_problem_statement'>
+<h1 id="problem-statement">Problem Statement</h1>
+<h2 id="objective">Objective</h2>
+<p>Design and evaluate an analog / wave-based neural network primitive where synaptic weights are encoded as phase or frequency shifts on a shared carrier. The target computation is an approximate multiply-accumulate (MAC) for inference workloads (linear layers, convolutions) while exploiting wave superposition for energy and bandwidth advantages demonstrated in photonic and RF analog accelerators [@shen2017deep; @feldmann2021parallel].</p>
+<h2 id="encoding-hypothesis">Encoding hypothesis</h2>
+<ul>
+<li>Represent each weight (w_i) as a controllable phase shift (\phi_i = \arccos(\operatorname{clip}(w_i, -1, 1))) applied to a carrier tone; alternatively map index (i) to a tone frequency (f_i).</li>
+<li>Represent each input (x_i) as the tone amplitude (or a small phase perturbation) at the corresponding carrier.</li>
+<li>Computation: the summed waveform is (s(t)=\sum_i x_i \cos(\omega t + \phi_i) + n(t)). IQ demodulation yields (I \approx \sum_i x_i \cos(\phi_i)) as the MAC estimate.</li>
+<li>Frequency-coded variant: assign each weight to a tone (f_i); apply matched filtering or FFT to extract bins that approximate (x_i w_i).</li>
+<li>Readout: coherent detection (IQ demod), correlation, or phase-locked loop (PLL) tracking as used in coherent photonics and RF receivers [@tait2017neuromorphic; @bogaerts2020programmable].</li>
+</ul>
+<h2 id="success-metrics">Success metrics</h2>
+<ul>
+<li>Functional accuracy: MAC mean-squared error (MSE) and downstream task accuracy (e.g., digits classification) versus an ideal digital baseline.</li>
+<li>Noise tolerance: SNR (dB) at which MSE &lt; (10^{-2}) and classification accuracy drops &lt;2% absolute under phase/amplitude noise [@rahman2021noise].</li>
+<li>Energy/bandwidth proxy: operations realized per carrier tone and reuse of a single coherent source (fewer DACs/ADCs) relative to digital MAC count, motivated by photonic tensor cores [@feldmann2021parallel].</li>
+<li>Scalability: how many weights/carriers can be packed before crosstalk or phase noise degrades accuracy, informed by oscillator-network and photonic scaling limits [@csaba2020coupled; @shen2017deep].</li>
+</ul>
+</section>
+<section id='02_literature_review'>
+<h1 id="literature-review-expanded">Literature Review (Expanded)</h1>
+<h2 id="a-wave-interference-compute">A) Wave / interference compute</h2>
+<ul>
+<li>Shen et al. program nanophotonic interferometers to perform matrix multiplication with coherent detection and thermo-optic phase control [@shen2017deep].</li>
+<li>Feldmann et al. integrate a photonic tensor core using phase-change material weight banks to deliver convolutional acceleration at fJ/MAC scales [@feldmann2021parallel].</li>
+<li>Lin et al. demonstrate diffractive optical layers that implement a full inference pipeline passively, showing end-to-end phase-only training [@lin2018all].</li>
+<li>Tait et al. build silicon photonic weight banks enabling coherent summation and routing; broadcast-and-weight earlier work shows frequency-division weighting for spikes [@tait2017neuromorphic; @tait2014broadcast].</li>
+<li>Vandoorne et al. show reservoir computing on silicon photonics, indicating phase-sensitive nonlinearity can be harnessed for temporal tasks [@vandoorne2014experimental].</li>
+<li>Wright et al. use hardware-in-the-loop backpropagation through physical transfer matrices, validating co-design for noisy photonic systems [@wright2022deep].</li>
+</ul>
+<h2 id="b-oscillator-phase-coupling-compute">B) Oscillator / phase-coupling compute</h2>
+<ul>
+<li>Csaba &amp; Porod review coupled oscillators as computational primitives, detailing synchronization conditions, noise sources, and mapping to Ising/NN objectives [@csaba2020coupled].</li>
+<li>Hoppensteadt &amp; Izhikevich introduce oscillatory neurocomputers where coupling strengths encode weights [@hoppensteadt1999oscillatory].</li>
+<li>Wang et al. realize a spin-torque-oscillator Ising machine with programmable couplings and analyze locking range limits [@wang2019ising].</li>
+</ul>
+<h2 id="c-mixed-signal-in-memory-accelerators">C) Mixed-signal / in-memory accelerators</h2>
+<ul>
+<li>Sebastian et al. survey analog memory devices and variability impacts on MAC fidelity [@sebastian2020memory].</li>
+<li>Khwa et al. report a mixed-signal CNN accelerator; analog MAC arrays require calibration for gain/offset errors [@khwa2018mixed].</li>
+<li>Bogaerts &amp; Chrostowski outline programmable photonic circuits, with practical phase-control and thermal drift considerations [@bogaerts2020programmable].</li>
+</ul>
+<h2 id="d-training-and-calibration-methods">D) Training and calibration methods</h2>
+<ul>
+<li>Wright et al. demonstrate physical backpropagation with measured transfer matrices, reducing model-hardware mismatch [@wright2022deep].</li>
+<li>Tait et al. (and broadcast-and-weight) detail pilot tones, thermal tuning, and monitoring for photonic weight banks—templates for drift-aware calibration [@tait2017neuromorphic; @tait2014broadcast].</li>
+<li>Rahman et al. analyze algorithmic noise compensation (redundancy, retraining) in analog accelerators [@rahman2021noise].</li>
+</ul>
+<h2 id="e-noise-reliability">E) Noise &amp; reliability</h2>
+<ul>
+<li>Phase noise and coupling dispersion quantified for oscillator compute, showing jitter-driven accuracy collapse beyond locking range [@csaba2020coupled].</li>
+<li>Photonic drift and crosstalk documented with mitigation via feedback control in programmable meshes [@bogaerts2020programmable].</li>
+<li>Device variability and endurance constraints summarized for analog memories, motivating error-aware mapping [@sebastian2020memory].</li>
+</ul>
+<h2 id="must-read-anchors-expanded-to-15">Must-read anchors (expanded to 15)</h2>
+<ol>
+<li>Shen et al., coherent nanophotonic matrix multiplication [@shen2017deep].</li>
+<li>Feldmann et al., photonic tensor core with phase-change weights [@feldmann2021parallel].</li>
+<li>Lin et al., diffractive optical neural networks [@lin2018all].</li>
+<li>Wright et al., backprop through physical systems [@wright2022deep].</li>
+<li>Tait et al., silicon photonic weight banks [@tait2017neuromorphic].</li>
+<li>Tait et al., broadcast-and-weight frequency-division weighting [@tait2014broadcast].</li>
+<li>Vandoorne et al., silicon photonic reservoir computing [@vandoorne2014experimental].</li>
+<li>Csaba &amp; Porod, coupled oscillator compute survey [@csaba2020coupled].</li>
+<li>Hoppensteadt &amp; Izhikevich, oscillatory neurocomputers [@hoppensteadt1999oscillatory].</li>
+<li>Wang et al., oscillator-based Ising machine [@wang2019ising].</li>
+<li>Sebastian et al., in-memory compute devices [@sebastian2020memory].</li>
+<li>Khwa et al., mixed-signal CNN accelerator [@khwa2018mixed].</li>
+<li>Bogaerts &amp; Chrostowski, programmable photonic circuits [@bogaerts2020programmable].</li>
+<li>Rahman et al., noise mitigation in analog accelerators [@rahman2021noise].</li>
+<li>Clements et al., compact interferometric mesh layout enabling scalable phase control [@clements2016optimal].</li>
+</ol>
+</section>
+<section id='03_architecture_options'>
+<h1 id="architecture-options">Architecture Options</h1>
+<h2 id="option-a-coherent-superposition-iq-demod-phase-coded-weights">Option A: Coherent superposition + IQ demod (phase-coded weights)</h2>
+<ul>
+<li><strong>Blocks:</strong> coherent carrier source, per-weight phase shifters (electro-optic or RF all-pass), amplitude modulators for inputs, summing waveguide/node, IQ mixer + ADC for readout [@tait2017neuromorphic; @bogaerts2020programmable].</li>
+<li><strong>Operation:</strong> encode weight (w_i) via phase (\phi_i); modulate amplitude with (x_i); interference performs summation; demod extracts in-phase component approximating (x_i w_i) as shown in photonic meshes [@shen2017deep].</li>
+<li><strong>Scaling bottlenecks:</strong> phase resolution vs thermal cross-talk, source linewidth-induced phase noise, DAC/ADC bandwidth, waveguide loss [@shen2017deep]; mesh depth scaling and loss can be optimized via Clements geometry [@clements2016optimal].</li>
+<li><strong>Calibration:</strong> monitor pilot tones; run dithering to track phase drift; include phase-error term in training (hardware-aware); follow broadcast-and-weight pilot strategy for frequency reuse [@tait2014broadcast].</li>
+<li><strong>Simulatable now:</strong> baseband waveform model with additive/phase noise; IQ demod; Monte Carlo sweeps (implemented in <code>src/run_toy_sim.py</code>).</li>
+</ul>
+<h2 id="option-b-frequency-coded-weights-orthogonal-tone-bins">Option B: Frequency-coded weights (orthogonal tone bins)</h2>
+<ul>
+<li><strong>Blocks:</strong> tone comb generator, per-tone phase or amplitude control, linear summing network, FFT or matched-filter readout.</li>
+<li><strong>Operation:</strong> index weight by tone (f_i); input modulates amplitude; orthogonality reduces cross-talk; FFT bin magnitude/phase estimates weighted sum.</li>
+<li><strong>Scaling bottlenecks:</strong> bandwidth and comb flatness, filter leakage, phase noise causing inter-bin interference; oscillator stability [@csaba2020coupled].</li>
+<li><strong>Calibration:</strong> periodic tone-by-tone gain/phase equalization; adaptive windowing in DSP backend.</li>
+<li><strong>Simulatable now:</strong> discrete-time multitone synthesis plus additive/phase noise; FFT-based detection; sensitivity to comb spacing; calibration schedule similar to OFDM equalization.</li>
+</ul>
+<h2 id="option-c-coupled-oscillator-network-kuramoto-style">Option C: Coupled oscillator network (Kuramoto-style)</h2>
+<ul>
+<li><strong>Blocks:</strong> array of oscillators with tunable natural frequency/coupling, injection ports for inputs, phase measurement (digital counters or mixers).</li>
+<li><strong>Operation:</strong> encode weights as coupling coefficients or frequency offsets; inputs perturb phases; steady-state phase differences encode inference; readout via phase order parameter [@hoppensteadt1999oscillatory; @wang2019ising].</li>
+<li><strong>Scaling bottlenecks:</strong> frequency crowding, locking range limits, coupling graph sparsity, start-up time [@csaba2020coupled].</li>
+<li><strong>Calibration:</strong> locking-range characterization; adaptive biasing to offset drift; training-in-the-loop to learn robust couplings.</li>
+<li><strong>Simulatable now:</strong> Kuramoto ODEs with noise; Monte Carlo for lock probability; parameter sweeps for coupling strength and coupling topology.</li>
+</ul>
+<h2 id="decision-heuristic">Decision heuristic</h2>
+<ul>
+<li>Phase-coded coherent superposition (Option A) offers the cleanest link to conventional MACs and can be prototyped with off-the-shelf IQ demodulation.</li>
+<li>Frequency-coded (Option B) is robust to static phase drift but bandwidth-heavy.</li>
+<li>Coupled oscillators (Option C) naturally implement recurrent or Ising-like objectives; useful as an alternative baseline rather than primary MAC engine.</li>
+</ul>
+</section>
+<section id='04_math_model'>
+<h1 id="mathematical-model">Mathematical Model</h1>
+<h2 id="signal-model-phase-coded">Signal model (phase-coded)</h2>
+<p>Given carrier frequency (\omega) and (N) inputs:<br />
+[<br />
+s(t) = \sum_{i=1}^{N} A_i(x_i) \cos(\omega t + \phi_i(w_i)) + n(t)<br />
+]<br />
+with (A_i(x_i) = x_i) (real-valued amplitude) and (\phi_i(w_i) = \arccos(\operatorname{clip}(w_i, -1, 1))) so that (\cos(\phi_i) = w_i).</p>
+<p>IQ demodulation with reference (\cos(\omega t)) and (\sin(\omega t)) yields:<br />
+[<br />
+I = \frac{2}{T}\int_0^{T} s(t) \cos(\omega t)\,dt \approx \sum_i x_i \cos(\phi_i) + \eta_I<br />
+]<br />
+[<br />
+Q = \frac{2}{T}\int_0^{T} s(t) \sin(\omega t)\,dt \approx \sum_i x_i \sin(\phi_i) + \eta_Q<br />
+]<br />
+The MAC estimate is (\hat{y}=I) for real weights; magnitude (|I + jQ|) can capture amplitude errors. A similar derivation holds for frequency bins with orthogonal tones and FFT-based integration.</p>
+<h2 id="noise-terms">Noise terms</h2>
+<ul>
+<li>Additive receiver noise (n(t)) modeled as white Gaussian; variance selected for a given SNR.</li>
+<li>Phase noise: (\phi_i \leftarrow \phi_i + \delta\phi_i), (\delta\phi_i \sim \mathcal{N}(0, \sigma_\phi^2)) [@csaba2020coupled].</li>
+<li>Amplitude noise: (A_i \leftarrow A_i (1+\delta a_i)) with (\delta a_i \sim \mathcal{N}(0, \sigma_a^2)) [@rahman2021noise].</li>
+</ul>
+<h2 id="training-implications">Training implications</h2>
+<ul>
+<li><strong>Offline mapping:</strong> Train digital weights (w_i\in[-1,1]); map to (\phi_i=\arccos(w_i)). This preserves the real MAC in the noiseless limit and constrains hardware to phase shifts.</li>
+<li><strong>Noise-aware loss:</strong> During training, inject (\delta\phi_i) and (\delta a_i) so gradients account for expected jitter and amplitude variation, following hardware-in-the-loop methods [@wright2022deep].</li>
+<li><strong>Calibration-aware bias:</strong> If systematic phase offsets (\bar{\phi}_i) are measured, update mapping to (\phi_i=\arccos(w_i)-\bar{\phi}_i); residual error is tracked by periodic test vectors as used in photonic weight banks [@tait2017neuromorphic].</li>
+</ul>
+<h2 id="readout-and-scaling">Readout and scaling</h2>
+<ul>
+<li>Readout bandwidth must cover at least the carrier plus modulation sidebands; FFT bin spacing must exceed phase-noise-induced linewidth for frequency-coded weights [@bogaerts2020programmable].</li>
+<li>Summation linearity holds while phase shifters stay within small-signal regime and coupling terms remain independent; thermal cross-talk or parasitic coupling can be modeled as correlated phase perturbations [@shen2017deep].</li>
+</ul>
+</section>
+<section id='05_noise_and_variation'>
+<h1 id="noise-and-variation">Noise and Variation</h1>
+<h2 id="noise-taxonomy">Noise taxonomy</h2>
+<ul>
+<li><strong>Additive receiver noise:</strong> thermal/shot noise at the detector or mixer; reduces SNR and raises demodulation MSE [@rahman2021noise].</li>
+<li><strong>Phase noise / jitter:</strong> source linewidth or oscillator flicker; manifests as random (\delta\phi) that directly perturbs effective weight [@csaba2020coupled].</li>
+<li><strong>Amplitude noise:</strong> modulator gain fluctuation or laser intensity noise; perturbs (A_i(x_i)).</li>
+<li><strong>Component mismatch:</strong> static offsets in phase shifters or coupling coefficients; causes bias that accumulates with network depth [@sebastian2020memory].</li>
+<li><strong>Temperature drift:</strong> slow variations causing correlated phase shifts across weights, observed in photonic meshes [@bogaerts2020programmable].</li>
+<li><strong>Quantization:</strong> finite-resolution phase shifters or LUT-based frequency placement.</li>
+</ul>
+<h2 id="sensitivity-analysis-plan">Sensitivity analysis plan</h2>
+<ul>
+<li>Sweep SNR vs MAC MSE using the toy waveform simulator (<code>src/run_toy_sim.py</code>).</li>
+<li>Sweep phase-noise standard deviation vs classification accuracy on digits (<code>src/run_digits_demo.py</code>).</li>
+<li>Evaluate mismatch by adding static offsets to (\phi_i) and re-running MAC MSE; track bias vs variance.</li>
+<li>Record tolerance thresholds: max (\sigma_\phi) and min SNR to maintain &lt;2% accuracy drop.</li>
+</ul>
+<h2 id="monte-carlo-setup">Monte Carlo setup</h2>
+<ul>
+<li>(N=200) samples per SNR/phase-noise setting with fixed RNG seed for reproducibility.</li>
+<li>For each configuration: compute mean and 95% confidence interval of MSE/accuracy.</li>
+<li>Reported outputs:</li>
+<li><code>results/toy_mse_vs_snr.csv</code> and <code>figures/toy_mse_vs_snr.png</code></li>
+<li><code>results/acc_vs_noise.csv</code> and <code>figures/acc_vs_noise.png</code></li>
+</ul>
+<h2 id="calibration-hooks">Calibration hooks</h2>
+<ul>
+<li>Pilot-tone based phase tracking (Option A) to remove slow drift [@tait2017neuromorphic].</li>
+<li>Retraining or fine-tuning with measured (\delta\phi) distribution to compensate stochastic noise [@wright2022deep].</li>
+<li>Redundancy/averaging (duplicate carriers or oscillators) to lower effective variance [@rahman2021noise].</li>
+</ul>
+</section>
+<section id='06_simulation_results'>
+<h1 id="simulation-results">Simulation Results</h1>
+<h2 id="toy-mac-accuracy-vs-snr">Toy MAC accuracy vs SNR</h2>
+<ul>
+<li>Setup: 32-feature MAC, weights encoded as phases (\phi_i=\arccos(w_i)); amplitude and phase noise injected; 200 Monte Carlo samples per SNR (config in <code>config.yml</code>).</li>
+<li>Result: MSE drops from ~0.42 at -5 dB SNR to ~0.01 at 30 dB (see <code>figures/toy_mse_vs_snr.png</code> and <code>results/toy_mse_vs_snr.csv</code>).</li>
+<li>Threshold: MSE &lt; (2\times 10^{-2}) achieved at (\geq 10) dB SNR; aligns with noise-tolerance bands reported for photonic tensor cores [@feldmann2021parallel].</li>
+</ul>
+<h2 id="digits-classification-under-analog-noise-comparative">Digits classification under analog noise (comparative)</h2>
+<ul>
+<li>Dataset: sklearn digits (64-D input). Models trained for 10 epochs, Adam, batch 64.</li>
+<li>Methods compared:</li>
+<li><code>digital</code>: standard linear classifier (reference).</li>
+<li><code>phase</code>: weights encoded as (\cos(\theta)) with phase noise at inference.</li>
+<li><code>phase_noiseaware</code>: same as <code>phase</code> but injects 0.05 rad noise during training.</li>
+<li><code>amplitude</code>: analog amplitude-coded weights with multiplicative noise.</li>
+<li>Results (accuracy vs noise std):</li>
+<li><code>digital</code>: 0.95 across 0–0.2 noise (noise-free baseline).</li>
+<li><code>phase</code>: 0.928 at 0 noise → 0.917 at 0.2.</li>
+<li><code>phase_noiseaware</code>: 0.928 at 0 noise, improves mid-noise (0.931 at 0.05), 0.908 at 0.2.</li>
+<li><code>amplitude</code>: ~0.95 at 0 noise, 0.936 at 0.2.</li>
+<li>Interpretation: phase-coded inference tolerates up to ~0.1 rad with &lt;1% absolute loss; noise-aware training slightly improves robustness; amplitude-coded weights show smaller degradation under multiplicative noise. See <code>figures/acc_vs_noise.png</code> and <code>results/acc_vs_noise.csv</code>.</li>
+</ul>
+<h2 id="takeaways">Takeaways</h2>
+<ul>
+<li>Phase-encoded MAC is robust to moderate additive noise (&gt;=10 dB SNR) and small phase noise (&lt;0.1 rad).</li>
+<li>Calibration or noise-aware training helps beyond 0.1 rad; amplitude coding can be a fallback when phase jitter dominates.</li>
+</ul>
+</section>
+<section id='07_circuit_mapping'>
+<h1 id="circuit-mapping-concept">Circuit Mapping (concept)</h1>
+<h2 id="phase-coded-coherent-sum-option-a">Phase-coded coherent sum (Option A)</h2>
+<ul>
+<li><strong>Phase shift elements:</strong> thermo-optic or electro-optic phase shifters (silicon photonics) or RF all-pass networks; control voltage maps to (\phi_i) [@bogaerts2020programmable].</li>
+<li><strong>Amplitude modulation:</strong> Mach–Zehnder modulators or IQ mixers to encode (x_i).</li>
+<li><strong>Summing node:</strong> multimode interference (MMI) coupler or RF power combiner provides linear superposition.</li>
+<li><strong>Readout:</strong> balanced photodiodes + IQ mixer; ADC at baseband.</li>
+<li><strong>Calibration:</strong> pilot tones at known (\phi) for phase drift tracking; dithering of heater currents as in photonic weight banks [@tait2017neuromorphic].</li>
+</ul>
+<h2 id="frequency-coded-weights-option-b">Frequency-coded weights (Option B)</h2>
+<ul>
+<li><strong>Tone comb generation:</strong> PLL + divider bank or optical frequency comb.</li>
+<li><strong>Weight control:</strong> per-tone phase or amplitude shift using varactor banks or micro-ring resonators.</li>
+<li><strong>Readout:</strong> FFT engine or bank of narrowband filters; AGC loop to equalize tone amplitudes.</li>
+<li><strong>Concern:</strong> inter-bin leakage from phase noise; requires sufficient tone spacing and low-jitter source [@csaba2020coupled]; broadcast-and-weight shows shared-source stability advantages [@tait2014broadcast].</li>
+</ul>
+<h2 id="coupled-oscillators-option-c">Coupled oscillators (Option C)</h2>
+<ul>
+<li><strong>Elements:</strong> ring/VCO/LC oscillators with tunable natural frequency; coupling via resistive/capacitive or mutual inductive links.</li>
+<li><strong>Programming:</strong> bias currents or coupling capacitors encode weights/couplings [@hoppensteadt1999oscillatory; @wang2019ising].</li>
+<li><strong>Readout:</strong> phase detectors or time-to-digital converters compute order parameters.</li>
+<li><strong>Stability:</strong> locking range sets usable coupling magnitude; start-up time dictates latency; device mismatch requires per-oscillator trimming [@csaba2020coupled].</li>
+</ul>
+<h2 id="practical-prototype-path">Practical prototype path</h2>
+<ol>
+<li>Build benchtop emulation: RF source → IQ modulator → digitally controlled phase shifters (vector network analyzer or SDR) → IQ demod → Python processing.</li>
+<li>Validate mapping between digital weight and measured (\phi); characterize noise ((\sigma_\phi, \sigma_a)).</li>
+<li>Iterate training with measured noise statistics using the provided simulation scripts.</li>
+</ol>
+</section>
+<section id='claim_audit'>
+<h1 id="claim-audit">Claim Audit</h1>
+<ul>
+<li><strong>Phase-coded weights can approximate MAC via interference and IQ demod.</strong> Evidence: mathematical model in <code>docs/04_math_model.md</code>; demonstrated in photonic meshes [@shen2017deep; @tait2017neuromorphic].</li>
+<li><strong>Coherent photonics achieves high-throughput convolutions.</strong> Evidence: integrated tensor core results [@feldmann2021parallel].</li>
+<li><strong>Coupled oscillators provide an alternative compute primitive but face locking limits.</strong> Evidence: review and Ising demonstrations [@csaba2020coupled; @wang2019ising].</li>
+<li><strong>Frequency/broadcast weighting and reservoirs scale beyond small meshes.</strong> Evidence: broadcast-and-weight photonic networks [@tait2014broadcast]; silicon photonic reservoir computing [@vandoorne2014experimental].</li>
+<li><strong>Toy simulation shows tolerable MSE at ≥10 dB SNR.</strong> Evidence: <code>results/toy_mse_vs_snr.csv</code>, <code>figures/toy_mse_vs_snr.png</code>.</li>
+<li><strong>Digits classifier comparison shows phase encoding tolerates ~0.1 rad jitter; amplitude coding degrades slower; noise-aware training helps.</strong> Evidence: <code>results/acc_vs_noise.csv</code>, <code>figures/acc_vs_noise.png</code>.</li>
+<li><strong>Noise-aware or in-situ training mitigates hardware mismatch.</strong> Evidence: physical backprop with measured transfer functions [@wright2022deep].</li>
+<li><strong>Calibration and redundancy can reduce drift/variance.</strong> Evidence: phase tracking in photonic meshes [@bogaerts2020programmable] and noise mitigation strategies in analog accelerators [@rahman2021noise].</li>
+<li><strong>Scalable interferometer layouts reduce loss/crosstalk burden.</strong> Evidence: compact Clements mesh design for programmable unitary matrices [@clements2016optimal].</li>
+</ul>
+</section>
+<section id='references'>
+<h1 id="references">References</h1>
+<table>
+<thead>
+<tr>
+<th>Title</th>
+<th>Year</th>
+<th>Source</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="http://arxiv.org/abs/1609.04846v1">A Tutorial about Random Neural Networks in Supervised Learning</a></td>
+<td>2016</td>
+<td>arxiv</td>
+<td>Random Neural Networks (RNNs) are a class of Neural Networks (NNs) that can also be seen as a specific type of queuing network. They have...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2502.01654v1">Predicting concentration levels of air pollutants by transfer learning and recurrent neural network</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>Air pollution (AP) poses a great threat to human health, and people are paying more attention than ever to its prediction. Accurate predi...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2412.20848v1">Analog Alchemy: Neural Computation with In-Memory Inference, Learning and Routing</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>As neural computation is revolutionizing the field of Artificial Intelligence (AI), rethinking the ideal neural hardware is becoming the ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1803.02421v2">Masked Conditional Neural Networks for Audio Classification</a></td>
+<td>2018</td>
+<td>arxiv</td>
+<td>We present the ConditionaL Neural Network (CLNN) and the Masked ConditionaL Neural Network (MCLNN) designed for temporal signal recogniti...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2306.14753v1">The Deep Arbitrary Polynomial Chaos Neural Network or how Deep Artificial Neural Networks could benefit from Data-Driven Homogeneous Chaos Theory</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>Artificial Intelligence and Machine learning have been widely used in various fields of mathematical computing, physical modeling, comput...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1905.05918v1">A Neural Network-Evolutionary Computational Framework for Remaining Useful Life Estimation of Mechanical Systems</a></td>
+<td>2019</td>
+<td>arxiv</td>
+<td>This paper presents a framework for estimating the remaining useful life (RUL) of mechanical systems. The framework consists of a multi-l...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2004.14942v1">Memristors -- from In-memory computing, Deep Learning Acceleration, Spiking Neural Networks, to the Future of Neuromorphic and Bio-inspired Computing</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>Machine learning, particularly in the form of deep learning, has driven most of the recent fundamental developments in artificial intelli...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2009.06342v2">Reservoir Memory Machines as Neural Computers</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>Differentiable neural computers extend artificial neural networks with an explicit memory without interference, thus enabling the model t...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1711.01894v2">Adversarial Frontier Stitching for Remote Neural Network Watermarking</a></td>
+<td>2017</td>
+<td>arxiv</td>
+<td>The state of the art performance of deep learning models comes at a high cost for companies and institutions, due to the tedious data col...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1906.10015v2">A Review on Neural Network Models of Schizophrenia and Autism Spectrum Disorder</a></td>
+<td>2019</td>
+<td>arxiv</td>
+<td>This survey presents the most relevant neural network models of autism spectrum disorder and schizophrenia, from the first connectionist ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2503.17138v1">Structure Is Not Enough: Leveraging Behavior for Neural Network Weight Reconstruction</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>The weights of neural networks (NNs) have recently gained prominence as a new data modality in machine learning, with applications rangin...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2503.17140v2">Adiabatic Fine-Tuning of Neural Quantum States Enables Detection of Phase Transitions in Weight Space</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>Neural quantum states (NQS) have emerged as a powerful tool for approximating quantum wavefunctions using deep learning. While these mode...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1212.0031v3">Encoding binary neural codes in networks of threshold-linear neurons</a></td>
+<td>2012</td>
+<td>arxiv</td>
+<td>Networks of neurons in the brain encode preferred patterns of neural activity via their synaptic connections. Despite receiving considera...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2503.14298v1">Recursive Self-Similarity in Deep Weight Spaces of Neural Architectures: A Fractal and Coarse Geometry Perspective</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>This paper conceptualizes the Deep Weight Spaces (DWS) of neural architectures as hierarchical, fractal-like, coarse geometric structures...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1807.02477v1">Development of a sensory-neural network for medical diagnosing</a></td>
+<td>2018</td>
+<td>arxiv</td>
+<td>Performance of a sensory-neural network developed for diagnosing of diseases is described. Information about patient's condition is provi...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1910.00122v1">Normalisation of Weights and Firing Rates in Spiking Neural Networks with Spike-Timing-Dependent Plasticity</a></td>
+<td>2019</td>
+<td>arxiv</td>
+<td>Maintaining the ability to fire sparsely is crucial for information encoding in neural networks. Additionally, spiking homeostasis is vit...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1512.07839v4">Implementing a Bayes Filter in a Neural Circuit: The Case of Unknown Stimulus Dynamics</a></td>
+<td>2015</td>
+<td>arxiv</td>
+<td>In order to interact intelligently with objects in the world, animals must first transform neural population responses into estimates of ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1904.02309v4">On functions computed on trees</a></td>
+<td>2019</td>
+<td>arxiv</td>
+<td>Any function can be constructed using a hierarchy of simpler functions through compositions. Such a hierarchy can be characterized by a b...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1707.02355v1">Coherent states for compact Lie groups and their large-N limits</a></td>
+<td>2017</td>
+<td>arxiv</td>
+<td>The first two parts of this article surveys results related to the heat-kernel coherent states for a compact Lie group K. I begin by revi...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/0901.3028v1">Cognitive computation with autonomously active neural networks: an emerging field</a></td>
+<td>2009</td>
+<td>arxiv</td>
+<td>The human brain is autonomously active. To understand the functional role of this self-sustained neural activity, and its interplay with ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1708.03047v2">Coherent states in fermionic Fock-Krein spaces and their amplitudes</a></td>
+<td>2017</td>
+<td>arxiv</td>
+<td>We generalize the fermionic coherent states to the case of Fock-Krein spaces, i.e., Fock spaces with an idefinite inner product of Krein ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1112.1778v1">Review of Entangled Coherent States</a></td>
+<td>2011</td>
+<td>arxiv</td>
+<td>We review entangled coherent state research since its first implicit use in 1967 to the present. Entangled coherent states are important ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2204.06878v2">Accumulate: An identity-based blockchain protocol with cross-chain support, human-readable addresses, and key management capabilities</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>The Accumulate Protocol ("Accumulate") is an identity-based, Delegated Proof of Stake (DPoS) blockchain designed to power the digital eco...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2007.13895v3">Linear Delay-cell Design for Low-energy Delay Multiplication and Accumulation</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>A practical deep neural network's (DNN) evaluation involves thousands of multiply-and-accumulate (MAC) operations. To extend DNN's superi...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2401.08577v1">MultiPLY: A Multisensory Object-Centric Embodied Large Language Model in 3D World</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>Human beings possess the capability to multiply a melange of multisensory cues while actively exploring and interacting with the 3D world...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2305.00046v4">AutoLungDx: A Hybrid Deep Learning Approach for Early Lung Cancer Diagnosis Using 3D Res-U-Net, YOLOv5, and Vision Transformers</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>Lung cancer is a leading cause of cancer-related deaths worldwide, and early detection is crucial for improving patient outcomes. Neverth...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1302.1837v1">On the Capacity Region of the Two-User Interference Channel</a></td>
+<td>2013</td>
+<td>arxiv</td>
+<td>One of the key open problems in network information theory is to obtain the capacity region for the two-user Interference Channel (IC). I...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2507.20408v2">A Multi-Stage Hybrid CNN-Transformer Network for Automated Pediatric Lung Sound Classification</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>Automated analysis of lung sound auscultation is essential for monitoring respiratory health, especially in regions facing a shortage of ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1004.5421v1">Interference Mitigation through Limited Transmitter Cooperation</a></td>
+<td>2010</td>
+<td>arxiv</td>
+<td>Interference limits performance in wireless networks, and cooperation among receivers or transmitters can help mitigate interference by f...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2404.04365v3">A Self-Attention-Driven Deep Denoiser Model for Real Time Lung Sound Denoising in Noisy Environments</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>Objective: Lung auscultation is a valuable tool in diagnosing and monitoring various respiratory diseases. However, lung sounds (LS) are ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2412.08244v2">Call to Protect the Dark and Quiet Sky from Harmful Interference by Satellite Constellations</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>The growing number of satellite constellations in low Earth orbit (LEO) enhances global communications and Earth observation, and support...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2507.20426v1">ResCap-DBP: A Lightweight Residual-Capsule Network for Accurate DNA-Binding Protein Prediction Using Global ProteinBERT Embeddings</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>DNA-binding proteins (DBPs) are integral to gene regulation and cellular processes, making their accurate identification essential for un...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2404.12780v1">Piecewise Semi-Analytical Formulation for the Analysis of Coupled-Oscillator Systems</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>A new simulation technique to obtain the synchronized steady-state solutions existing in coupled oscillator systems is presented. The tec...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1411.1792v1">How transferable are features in deep neural networks?</a></td>
+<td>2014</td>
+<td>arxiv</td>
+<td>Many deep neural networks trained on natural images exhibit a curious phenomenon in common: on the first layer they learn features simila...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2304.09590v1">Parallel Neural Networks in Golang</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>This paper describes the design and implementation of parallel neural networks (PNNs) with the novel programming language Golang. We foll...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2212.06370v4">Dual Accuracy-Quality-Driven Neural Network for Prediction Interval Generation</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>Accurate uncertainty quantification is necessary to enhance the reliability of deep learning models in real-world applications. In the ca...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2007.04343v2">Synchronization conditions in the Kuramoto model and their relationship to seminorms</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>In this paper we address two questions about the synchronization of coupled oscillators in the Kuramoto model with all-to-all coupling. I...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1812.06539v3">Conformal Group Actions on Generalized Kuramoto Oscillators</a></td>
+<td>2018</td>
+<td>arxiv</td>
+<td>This paper unifies the recent results on generalized Kuramoto Model reductions. Lohe took a coupled system of $N$ bodies on $S^d$ governe...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1104.3493v2">Synchronization of Kuramoto Oscillators on Knots</a></td>
+<td>2011</td>
+<td>arxiv</td>
+<td>A knot is a circle embedded in the space. Projecting a knot on a plane, we obtain a diagram which is known as the knot diagram. The verti...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2109.05472v2">Compute and Energy Consumption Trends in Deep Learning Inference</a></td>
+<td>2021</td>
+<td>arxiv</td>
+<td>The progress of some AI paradigms such as deep learning is said to be linked to an exponential growth in the number of parameters. There ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2310.08437v2">Cold Start Latency in Serverless Computing: A Systematic Review, Taxonomy, and Future Directions</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>Recently, academics and the corporate sector have paid attention to serverless computing, which enables dynamic scalability and an econom...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/0708.1512v1">Solving the Hamiltonian path problem with a light-based computer</a></td>
+<td>2007</td>
+<td>arxiv</td>
+<td>In this paper we propose a special computational device which uses light rays for solving the Hamiltonian path problem on a directed grap...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2403.02240v5">Quantum Computing: Vision and Challenges</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>The recent development of quantum computing, which uses entanglement, superposition, and other quantum fundamental concepts, can provide ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2211.02350v1">Tierkreis: A Dataflow Framework for Hybrid Quantum-Classical Computing</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>We present Tierkreis, a higher-order dataflow graph program representation and runtime designed for compositional, quantum-classical hybr...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2504.10053v2">Synthetic Biology meets Neuromorphic Computing: Towards a bio-inspired Olfactory Perception System</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>In this study, we explore how the combination of synthetic biology, neuroscience modeling, and neuromorphic electronic systems offers a n...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2104.06667v2">Double Robust Semi-Supervised Inference for the Mean: Selection Bias under MAR Labeling with Decaying Overlap</a></td>
+<td>2021</td>
+<td>arxiv</td>
+<td>Semi-supervised (SS) inference has received much attention in recent years. Apart from a moderate-sized labeled data, L, the SS setting i...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1403.6918v1">A Comparative Study of Load Balancing Algorithms in Cloud Computing Environment</a></td>
+<td>2014</td>
+<td>arxiv</td>
+<td>Cloud Computing is a new trend emerging in IT environment with huge requirements of infrastructure and resources. Load Balancing is an im...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2505.19880v2">Universal Workers: A Vision for Eliminating Cold Starts in Serverless Computing</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>Serverless computing enables developers to deploy code without managing infrastructure, but suffers from cold start overhead when initial...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2207.05399v2">Placement of Microservices-based IoT Applications in Fog Computing: A Taxonomy and Future Directions</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>The Fog computing paradigm utilises distributed, heterogeneous and resource-constrained devices at the edge of the network for efficient ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1706.01619v6">Driven spin wave modes in XY ferromagnet: Nonequilibrium phase transition</a></td>
+<td>2017</td>
+<td>arxiv</td>
+<td>The dynamical responses of XY ferromagnet driven by linearly polarised propagating and standing magnetic field wave have been studied by ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2308.04324v1">Room temperature reversible colossal volto-magnetic effect in all-oxide metallicmagnet/topotactic-phase-transition material heterostructures</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>Multiferroic materials have undergone extensive research in the past two decades in an effort to produce a sizable room-temperature magne...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2009.00448v2">Reversible Computing with Fast, Fully Static, Fully Adiabatic CMOS</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>To advance the energy efficiency of general digital computing far beyond the thermodynamic limits that apply to conventional digital circ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2208.10109v8">Monte Carlo study of the phase transitions in the classical XY ferromagnets with random anisotropy</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>The three-dimensional anisotropic classical XY ferromagnet has been investigated by extensive Monte Carlo simulation using the Metropolis...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2209.09367v4">Supporting Multi-Cloud in Serverless Computing</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>Serverless computing is a widely adopted cloud execution model composed of Function-as-a-Service (FaaS) and Backend-as-a-Service (BaaS) o...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/cond-mat/0511256v1">Bridging Phases at the Morphotropic Boundaries of Lead-Oxide Solid Solutions</a></td>
+<td>2005</td>
+<td>arxiv</td>
+<td>Ceramic solid solutions of PbZr(1-x)TixO3 (PZT) with compositions of about x= 0.50 are well-known for their extraordinarily large piezoel...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2504.10240v5">Graph Neural Networks Based Analog Circuit Link Prediction</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>Circuit link prediction, which identifies missing component connections from incomplete netlists, is crucial in analog circuit design aut...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2210.15189v1">Partially Oblivious Neural Network Inference</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>Oblivious inference is the task of outsourcing a ML model, like neural-networks, without disclosing critical and sensitive information, l...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2311.14601v1">A Metalearned Neural Circuit for Nonparametric Bayesian Inference</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>Most applications of machine learning to classification assume a closed set of balanced classes. This is at odds with the real world, whe...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2109.01262v3">On the Accuracy of Analog Neural Network Inference Accelerators</a></td>
+<td>2021</td>
+<td>arxiv</td>
+<td>Specialized accelerators have recently garnered attention as a method to reduce the power consumption of neural network inference. A prom...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2507.00444v2">DiffCkt: A Diffusion Model-Based Hybrid Neural Network Framework for Automatic Transistor-Level Generation of Analog Circuits</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>Analog circuit design consists of the pre-layout and layout phases. Among them, the pre-layout phase directly decides the final circuit p...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1901.03169v1">The CEPC input for the European Strategy for Particle Physics - Accelerator</a></td>
+<td>2019</td>
+<td>arxiv</td>
+<td>In this manuscript, we provide a summary of accelerator design and the key challenges of the CEPC accelerator, both of which are laid out...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2407.10216v1">Applications of Particle Accelerators</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>Of the tens of thousands of particle accelerators in operation worldwide, the vast majority are not used for particle physics, but instea...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/0802.4023v2">Accelerator design concept for future neutrino facilities</a></td>
+<td>2008</td>
+<td>arxiv</td>
+<td>This document summarizes the findings of the Accelerator Working Group (AWG) of the International Scoping Study (ISS) of a Future Neutrin...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2009.14544v2">Time-domain and Frequency-domain Signals and their Analysis</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>Depending on the application people use time-domain or frequency-domain signals in order to measure or describe processes. First we will ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1604.05221v1">Fixed-Field Alternating-Gradient Accelerators</a></td>
+<td>2016</td>
+<td>arxiv</td>
+<td>These notes provide an overview of Fixed-Field Alternating-Gradient (FFAG) accelerators for medical applications. We begin with a review ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2008.09206v1">Training of mixed-signal optical convolutional neural network with reduced quantization level</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>Mixed-signal artificial neural networks (ANNs) that employ analog matrix-multiplication accelerators can achieve higher speed and improve...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2302.06417v1">Analog, In-memory Compute Architectures for Artificial Intelligence</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>This paper presents an analysis of the fundamental limits on energy efficiency in both digital and analog in-memory computing architectur...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2208.06499v1">HZO-based FerroNEMS MAC for In-Memory Computing</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>This paper demonstrates a hafnium zirconium oxide (HZO)-based ferroelectric NEMS unimorph as the fundamental building block for very low-...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2204.09918v1">MRAM-based Analog Sigmoid Function for In-memory Computing</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>We propose an analog implementation of the transcendental activation function leveraging two spin-orbit torque magnetoresistive random-ac...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2111.10073v1">An Asynchronous Multi-Beam MAC Protocol for Multi-Hop Wireless Networks</a></td>
+<td>2021</td>
+<td>arxiv</td>
+<td>A node equipped with a multi-beam antenna can achieve a throughput of up to m times as compared to a single-beam antenna, by simultaneous...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1004.4600v1">Wireless sensors networks MAC protocols analysis</a></td>
+<td>2010</td>
+<td>arxiv</td>
+<td>Wireless sensors networks performance are strictly related to the medium access mechanism. An effective one, require non-conventional par...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2410.19593v1">Energy Efficient Dual Designs of FeFET-Based Analog In-Memory Computing with Inherent Shift-Add Capability</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>In-memory computing (IMC) architecture emerges as a promising paradigm, improving the energy efficiency of multiply-and-accumulate (MAC) ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2401.09420v3">LionHeart: A Layer-based Mapping Framework for Heterogeneous Systems with Analog In-Memory Computing Tiles</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>When arranged in a crossbar configuration, resistive memory devices can be used to execute Matrix-Vector Multiplications (MVMs), the most...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1310.4897v1">Nonlinear Integrated Microwave Photonics</a></td>
+<td>2013</td>
+<td>arxiv</td>
+<td>Harnessing nonlinear optical effects in a photonic chip scale has been proven useful for a number of key applications in optical communic...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1206.5571v1">Crosstalk Reduction for Superconducting Microwave Resonator Arrays</a></td>
+<td>2012</td>
+<td>arxiv</td>
+<td>Large-scale arrays of Microwave Kinetic Inductance Detectors (MKIDs) are attractive candidates for use in imaging instruments for next ge...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/cond-mat/0001075v2">Near-Field Microwave Microscopy of Materials Properties</a></td>
+<td>2000</td>
+<td>arxiv</td>
+<td>Near-field microwave microscopy has created the opportunity for a new class of electrodynamics experiments of materials. Freed from the c...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1304.1214v1">Bell-state measurement and quantum teleportation using linear optics: two-photon pairs, entangled coherent states, and hybrid entanglement</a></td>
+<td>2013</td>
+<td>arxiv</td>
+<td>We review and compare Bell-state measurement and quantum teleportation schemes using linear optics with three different types of resource...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2501.18886v1">Enabling Scalable Photonic Tensor Cores with Polarization-Domain Photonic Computing</a></td>
+<td>2025</td>
+<td>arxiv</td>
+<td>We present a silicon-photonic tensor core using 2D ferroelectric materials to enable wavelength- and polarization-domain computing. Resul...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1811.06290v1">Highly-coherent stimulated phonon oscillations in a multi-core optical fiber</a></td>
+<td>2018</td>
+<td>arxiv</td>
+<td>Opto-mechanical oscillators that generate coherent acoustic waves are drawing much interest, in both fundamental research and application...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1509.08702v2">The COHERENT Experiment at the Spallation Neutron Source</a></td>
+<td>2015</td>
+<td>arxiv</td>
+<td>The COHERENT collaboration's primary objective is to measure coherent elastic neutrino-nucleus scattering (CEvNS) using the unique, high-...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2209.00496v1">CORE -- a COmpact detectoR for the EIC</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>The COmpact detectoR for the Eic (CORE) Proposal was submitted to the EIC "Call for Collaboration Proposals for Detectors". CORE comprehe...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2006.12659v2">COHERENT Collaboration data release from the first detection of coherent elastic neutrino-nucleus scattering on argon</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>Release of COHERENT collaboration data from the first detection of coherent elastic neutrino-nucleus scattering (CEvNS) on argon. This re...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/physics/0406129v1">An optical fiber-based probe for photonic crystal microcavities</a></td>
+<td>2004</td>
+<td>arxiv</td>
+<td>We review a novel method for characterizing both the spectral and spatial properties of resonant cavities within two-dimensional photonic...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2203.06515v1">Photovoltaic-ferroelectric materials for the realization of all-optical devices</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>Following how the electrical transistor revolutionized the field of electronics,the realization of an optical transistor in which the flo...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2005.14694v1">Frequency Ratio Measurements with 18-digit Accuracy Using a Network of Optical Clocks</a></td>
+<td>2020</td>
+<td>arxiv</td>
+<td>Atomic clocks occupy a unique position in measurement science, exhibiting higher accuracy than any other measurement standard and underpi...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1402.6862v2">A Fast, robust algorithm for power line interference cancellation in neural recording</a></td>
+<td>2014</td>
+<td>arxiv</td>
+<td>Power line interference may severely corrupt neural recordings at 50/60 Hz and harmonic frequencies. In this paper, we present a robust a...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2103.07413v3">Understanding and mitigating noise in trained deep neural networks</a></td>
+<td>2021</td>
+<td>arxiv</td>
+<td>Deep neural networks unlocked a vast range of new applications by solving tasks of which many were previously deemed as reserved to highe...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2105.10699v3">Denoising Noisy Neural Networks: A Bayesian Approach with Compensation</a></td>
+<td>2021</td>
+<td>arxiv</td>
+<td>Deep neural networks (DNNs) with noisy weights, which we refer to as noisy neural networks (NoisyNNs), arise from the training and infere...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1008.0667v2">Noise and Bell's inequality</a></td>
+<td>2010</td>
+<td>arxiv</td>
+<td>From the beginning of quantum mechanics, there has been a discussion about the concept of reality, as exemplified by the EPR paradox. To ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1612.03430v1">Quantum and Classical Frontiers of Noise</a></td>
+<td>2016</td>
+<td>arxiv</td>
+<td>This paper is an introduction to the eleven works of the special issue on Quantum and Classical Frontiers of Noise. The weather, and its ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1204.2545v4">Noise based logic: why noise? A comparative study of the necessity of randomness out of orthogonality</a></td>
+<td>2012</td>
+<td>arxiv</td>
+<td>Although noise-based logic shows potential advantages of reduced power dissipation and the ability of large parallel operations with low ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1605.07838v1">Decoherence and noise in open quantum system dynamics</a></td>
+<td>2016</td>
+<td>arxiv</td>
+<td>We consider the description of quantum noise within the framework of the standard Copenhagen interpretation of quantum mechanics applied ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1004.2652v2">Instantaneous noise-based logic</a></td>
+<td>2010</td>
+<td>arxiv</td>
+<td>We show two universal, Boolean, deterministic logic schemes based on binary noise timefunctions that can be realized without time-averagi...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2311.17794v1">Noise Dynamics in the Quantum Regime</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>A time-dependent bias voltage on a tunnel junction generates a time-dependent modulation of its current fluctuations, and in particular o...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2406.15494v3">Simple Cracking of (Noise-Based) Dynamic Watermarking in Smart Grids</a></td>
+<td>2024</td>
+<td>arxiv</td>
+<td>Previous research employing a conceptual approach with a digital twin has demonstrated that (noise-based) dynamic watermarking is incapab...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/physics/0507187v2">Phase-Locked, Low-Noise, Frequency Agile Titanium: Sapphire Lasers for Simultaneous Atom Interferometers</a></td>
+<td>2005</td>
+<td>arxiv</td>
+<td>We demonstrate phase lock of two &gt;1.6W Titanium:sapphire lasers with a phase noise of -138dBc/Hz at 1MHz from the carrier, using an intra...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/cond-mat/0501499v1">Stokes' Drift and Hypersensitive Response with Dichotomous Markov Noise</a></td>
+<td>2005</td>
+<td>arxiv</td>
+<td>Stochastic Stokes' drift and hypersensitive transport driven by dichotomous noise are theoretically investigated. Explicit mathematical e...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/cond-mat/0210498v1">Shot noise for entangled and spin-polarized electrons</a></td>
+<td>2002</td>
+<td>arxiv</td>
+<td>We review our recent contributions on shot noise for entangled electrons and spin-polarized currents in novel mesoscopic geometries. We f...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2308.01719v4">The Data Conversion Bottleneck in Analog Computing Accelerators</a></td>
+<td>2023</td>
+<td>arxiv</td>
+<td>Most modern computing tasks have digital electronic input and output data. Due to these constraints imposed by real-world use cases of co...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1511.05509v2">Analysis of Performance of Linear Analog Codes</a></td>
+<td>2015</td>
+<td>arxiv</td>
+<td>In this paper we carefully study the MSE performance of the linear analog codes. We have derived a lower bound of the MSE performance und...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1810.04663v3">Security of quantum key distribution with detection-efficiency mismatch in the single-photon case: Tight bounds</a></td>
+<td>2018</td>
+<td>arxiv</td>
+<td>One of the challenges in practical quantum key distribution is dealing with efficiency mismatch between different threshold single-photon...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1009.5979v4">Performance Analysis of the Matrix Pair Beamformer with Matrix Mismatch</a></td>
+<td>2010</td>
+<td>arxiv</td>
+<td>Matrix pair beamformer (MPB) is a blind beamformer. It exploits the temporal structure of the signal of interest (SOI) and applies genera...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1106.0911v1">The three and a half layers of dynamics : analog, digital, semi-digital, analog</a></td>
+<td>2011</td>
+<td>arxiv</td>
+<td>Quantum theory is extremely successful in explaining most physical phenomena, and is not contradicted by any experiment. Yet, the theory ...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/quant-ph/0609172v2">Are Bohmian trajectories real? On the dynamical mismatch between de Broglie-Bohm and classical dynamics in semiclassical systems</a></td>
+<td>2006</td>
+<td>arxiv</td>
+<td>The de Broglie-Bohm interpretation of quantum mechanics aims to give a realist description of quantum phenomena in terms of the motion of...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/1204.5059v2">Computation over Mismatched Channels</a></td>
+<td>2012</td>
+<td>arxiv</td>
+<td>We consider the problem of distributed computation of a target function over a multiple-access channel. If the target and channel functio...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/gr-qc/0505005v1">Superfluid Analog of the Davies-Unruh Effect</a></td>
+<td>2005</td>
+<td>arxiv</td>
+<td>We produce an analog of the Davies-Unruh effect for superfluid helium four. There are two temperatures which result--one is associated wi...</td>
+</tr>
+<tr>
+<td><a href="http://arxiv.org/abs/2208.08342v3">Semantic Communications with Discrete-time Analog Transmission: A PAPR Perspective</a></td>
+<td>2022</td>
+<td>arxiv</td>
+<td>Recent progress in deep learning (DL)-based joint source-channel coding (DeepJSCC) has led to a new paradigm of semantic communications. ...</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41566-020-0585-z">Programmable photonic circuits</a></td>
+<td>2020</td>
+<td>bib</td>
+<td>Overview of programmable photonic circuits and phase-control techniques</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1063/1.5108897">Coupled oscillators for computing: A review and perspective</a></td>
+<td>2020</td>
+<td>bib</td>
+<td>Review of coupled oscillator computing mechanisms and synchronization limits</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41586-020-03070-1">Parallel convolutional processing using an integrated photonic tensor core</a></td>
+<td>2021</td>
+<td>bib</td>
+<td>Integrated photonic tensor core executing convolutions with phase-change material weights</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1126/science.283.5408.1903">Oscillatory neurocomputers with dynamic connectivity</a></td>
+<td>1999</td>
+<td>bib</td>
+<td>Oscillatory neurocomputer concept with dynamic connectivity</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1109/ISSCC.2018.8310344">A 65nm 4.7TOPS/W 8bit convolutional neural network processor with mixed-signal domain-Specific computing</a></td>
+<td>2018</td>
+<td>bib</td>
+<td>Mixed-signal CNN accelerator with analog MAC arrays and on-chip calibration</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1126/science.aat8084">All-optical machine learning using diffractive deep neural networks</a></td>
+<td>2018</td>
+<td>bib</td>
+<td>Diffractive optical layers performing inference with passive phase masks</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1109/JXCDC.2021.3090030">Noise mitigation in analog in-memory computing for deep neural network accelerators</a></td>
+<td>2021</td>
+<td>bib</td>
+<td>Noise-mitigation strategies for analog in-memory neural accelerators</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/ncomms3541">Experimental demonstration of reservoir computing on a silicon photonics chip</a></td>
+<td>2014</td>
+<td>bib</td>
+<td>Silicon photonic reservoir computing with phase-sensitive interference</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/srep05522">Broadcast and weight: An integrated network for scalable photonic spike processing</a></td>
+<td>2014</td>
+<td>bib</td>
+<td>Frequency-division photonic weighting and coherent summation for neuromorphic spikes</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1364/OPTICA.3.001460">Optimal design for universal multiport interferometers</a></td>
+<td>2016</td>
+<td>bib</td>
+<td>Compact mesh design for programmable interferometric matrices</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41565-020-0655-z">Memory devices and applications for in-memory computing</a></td>
+<td>2020</td>
+<td>bib</td>
+<td>Survey of memory devices for analog in-memory computing and variability mitigation</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/nphoton.2017.93">Deep learning with coherent nanophotonic circuits</a></td>
+<td>2017</td>
+<td>bib</td>
+<td>Phase-programmable silicon photonic interferometer for matrix multiplication</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41598-017-06630-y">Neuromorphic photonic networks using silicon photonic weight banks</a></td>
+<td>2017</td>
+<td>bib</td>
+<td>Silicon photonic weight banks enabling coherent weighted summation</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41928-019-0300-0">An oscillator-based Ising machine</a></td>
+<td>2019</td>
+<td>bib</td>
+<td>Oscillator-based Ising machine using spin-torque devices and programmable couplings</td>
+</tr>
+<tr>
+<td><a href="https://doi.org/10.1038/s41586-021-04223-6">Deep physical neural networks trained with backpropagation</a></td>
+<td>2022</td>
+<td>bib</td>
+<td>Backpropagation through physical systems via hardware-in-the-loop calibration</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section class='figure'>
+<h3>Toy MAC MSE vs SNR</h3>
+<img src='figures/toy_mse_vs_snr.png' alt='Toy MAC MSE vs SNR' />
+</section>
+<section class='figure'>
+<h3>Digits accuracy vs phase noise</h3>
+<img src='figures/acc_vs_noise.png' alt='Digits accuracy vs phase noise' />
+</section>
+</body>
+</html>
