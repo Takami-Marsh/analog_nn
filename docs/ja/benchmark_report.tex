@@ -1,0 +1,341 @@
+\documentclass[11pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{siunitx}
+\usepackage{hyperref}
+\usepackage{xurl}
+\usepackage{longtable}
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setmainfont{Times New Roman}
+\setCJKmainfont{Hiragino Mincho ProN}
+\sisetup{table-number-alignment=center,round-mode=places,round-precision=4}
+
+\title{出力層のみを対象としたアナログ風エンコーディングとノイズ注入のベンチマーク}
+\author{Analog NN Benchmarking}
+\date{}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+本報告は、\textbf{出力層のみ}をノイズでモデル化した5種類のMLP分類器（デジタル基準、乗算ノイズ「Amplitude」、乗算ノイズを伴う学習、位相コサイン重み、位相ノイズを伴う学習）を、5つのデータセット（MNIST, KMNIST, EMNIST Letters, CIFAR-10平坦化, Fashion-MNIST）で比較する。各データセットの固定ノイズグリッド上で精度を評価し、1データセット当たりの平均精度と簡易的な頑健性指標（ノイズ曲線の最大値–最小値）をまとめる。単一シードかつ各\(\sigma\)につき1回の重み摂動という前提では、乗算ノイズを伴う学習（amplitude\_noiseaware）はデジタル基準にほぼ一致する平均精度（\num{0.8329} vs \num{0.8359}）を保ちつつ、変動幅を縮める。位相モデルはノイズなし学習では不安定だが、ノイズを伴う学習で大幅に改善する（\num{0.6156} \(\rightarrow\) \num{0.8002}）。\textbf{本研究は出力層のみをアナログ風に扱う限定的スコープである}ことを強調する。
+\end{abstract}
+
+\section{はじめに}
+アナログ／アナログ風アクセラレータは低レイテンシと省電力が期待される一方、ノイズやばらつきに弱い。本稿では\textbf{出力層のみ}をアナログ風エンコード（乗算ノイズ、位相コサイン重み）し、デジタルMLP基準と比較する。主眼は (1) デジタル精度にどこまで近づくか、(2) ノイズを伴う学習の効果、(3) データセット難易度による傾向差である。
+
+\section{モデルとノイズ注入}
+スコープは\textbf{出力層のみ}のノイズモデルであり、中間層はデジタルのまま。非理想性は重みごと独立のノイズとして推論時に注入し、ノイズを伴う学習では学習時にも注入する。
+\begin{itemize}
+  \item \textbf{Digital}: 通常のMLP。出力層の線形写像でロジットを得る。
+  \item \textbf{Amplitude（乗算ゲインノイズ）}:
+  \[
+    W_{\text{noisy}} = W \odot (1 + \epsilon), \quad \epsilon \sim \mathcal{N}(0, \sigma_{\text{amp}}^2).
+  \]
+  \item \textbf{Amplitude\_noiseaware}: 上記を学習時にも注入し、\texttt{train\_noise\_list}から\(\sigma\)をサンプル。
+  \item \textbf{Phase（コサイン重み）}:
+  \[
+  \begin{aligned}
+    &\Theta \in \mathbb{R}^{d \times C}, \quad \epsilon \sim \mathcal{N}(0, \sigma_{\text{phase}}^2)\ \text{(要素ごと)},\\
+    &W = \cos(\Theta), \quad W_{\text{noisy}} = \cos(\Theta + \epsilon), \quad \text{logits} = x^\top W_{\text{noisy}} + b.
+  \end{aligned}
+  \]
+  \item \textbf{Phase\_noiseaware}: 学習時に\texttt{train\_noise\_list}から\(\sigma\)をサンプルして注入。
+\end{itemize}
+損失はクロスエントロピー。最適化はAdam（データセット別のlr/epochは\texttt{config.yml}）。バッチ128、シード42。デバイス選択は mps \(\rightarrow\) cuda \(\rightarrow\) cpu。
+
+\section{データセット}
+MNIST, KMNIST, EMNIST Letters, CIFAR-10（32\(\times\)32\(\times\)3を平坦化）, Fashion-MNIST。各データセットの\texttt{hidden\_dims}や学習率は\texttt{config.yml}に記載。
+
+\section{実験設定}
+\begin{itemize}
+  \item \textbf{ノイズ掃引}: \texttt{config.yml}の\texttt{noise\_std}リストを推論時に適用。
+  \item \textbf{ノイズを伴う学習}: \texttt{train\_noise\_list}から\(\sigma\)を1ステップごとにサンプル。
+  \item \textbf{1回サンプル/ \(\sigma\)}: 各\(\sigma\)で重みノイズ\(\epsilon\)を1回だけサンプルし、そのままテスト全体を評価。
+  \item \textbf{分割}: 学習用に訓練データの80\%、テストは公式テストセット。
+  \item \textbf{前処理}: ToTensor + 正規化 + 平坦化。
+  \item \textbf{デバイス}: 自動選択（mps \(\rightarrow\) cuda \(\rightarrow\) cpu）。MPS/CUDAは厳密決定性を保証しないため、再現性重視ならCPU推奨（遅い）。
+\end{itemize}
+
+\subsection{再現手順（例）}
+\begin{enumerate}
+  \item MNIST: \texttt{python src/run\_benchmark.py --config config.yml --csv results/mnist.csv --json results/mnist.json}
+  \item KMNIST: \texttt{python src/run\_benchmark\_fashion.py --config config.yml --config-key kmnist\_benchmark --csv results/kmnist.csv --json results/kmnist.json}
+  \item EMNIST Letters: \texttt{python src/run\_benchmark\_fashion.py --config config.yml --config-key emnist\_letters\_benchmark --csv results/emnist.csv --json results/emnist.json}
+  \item CIFAR-10 (flat): \texttt{python src/run\_benchmark\_fashion.py --config config.yml --config-key cifar10\_flat\_benchmark --csv results/cifar10.csv --json results/cifar10.json}
+  \item Fashion-MNIST: \texttt{python src/run\_benchmark\_fashion.py --config config.yml --config-key fashion\_complex --csv results/fmnist.csv --json results/fmnist.json}
+  \item 解析・図: \texttt{python scripts/analyze\_benchmark.py}
+\end{enumerate}
+
+\section{結果概要}
+\subsection{集計（5データセット平均、各データセットはノイズグリッド平均）}
+データセット\(k\)の平均精度は
+\[
+  a_k = \frac{1}{|\Sigma_k|} \sum_{\sigma \in \Sigma_k} \text{Acc}(k,\sigma),
+\]
+集計の\(\text{acc\_mean}\)は5データセット平均。デジタル基準は\(\Sigma_k=\{0\}\)で通常推論のみ。
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{l
+S[table-format=1.4]
+S[table-format=1.4]
+S[table-format=1.4]
+l}
+\toprule
+Model & \multicolumn{1}{c}{acc\_mean} & \multicolumn{1}{c}{acc\_min} & \multicolumn{1}{c}{acc\_max} & diff (spread) \\
+\midrule
+digital              & 0.8359 & 0.8359 & 0.8359 & N/A (no noise) \\
+amplitude            & 0.8302 & 0.8158 & 0.8343 & 0.0185 \\
+amplitude\_noiseaware & 0.8329 & 0.8310 & 0.8341 & 0.0031 \\
+phase                & 0.6156 & 0.2125 & 0.8406 & 0.6281 \\
+phase\_noiseaware     & 0.8002 & 0.6964 & 0.8207 & 0.1243 \\
+\bottomrule
+\end{tabular}
+\caption{5データセット集計。spreadは単一サンプル曲線のmax--min。デジタルには推論ノイズを入れていない。}
+\label{tab:aggregate-ja}
+\end{table}
+
+\subsection{データセット別平均とspread（単一シード、各\(\sigma\)1サンプル）}
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{l
+S[table-format=1.5]
+S[table-format=1.5]
+S[table-format=1.5]
+S[table-format=1.5]
+S[table-format=1.5]}
+\toprule
+Dataset & \multicolumn{1}{c}{digital} & \multicolumn{1}{c}{amplitude} & \multicolumn{1}{c}{amp\_noiseaware} & \multicolumn{1}{c}{phase} & \multicolumn{1}{c}{phase\_noiseaware} \\
+\midrule
+MNIST   & 0.9760 & 0.97297 & 0.97214 & 0.78415 & 0.94876 \\
+KMNIST  & 0.8913 & 0.87966 & 0.88777 & 0.74540 & 0.85296 \\
+EMNIST  & 0.9033 & 0.90091 & 0.89853 & 0.56895 & 0.89232 \\
+CIFAR10 & 0.5189 & 0.51489 & 0.52177 & 0.31185 & 0.45151 \\
+FMNIST  & 0.8899 & 0.88249 & 0.88441 & 0.66751 & 0.85530 \\
+\bottomrule
+\end{tabular}
+\caption{データセット別平均精度（評価ノイズグリッド平均）。}
+\label{tab:perdataset-ja}
+\end{table}
+
+\begin{table}[!htbp]
+\centering
+\begin{tabular}{l
+S[table-format=1.5]
+S[table-format=1.5]
+S[table-format=1.5]
+S[table-format=1.5]
+S[table-format=1.5]}
+\toprule
+Dataset & \multicolumn{1}{c}{digital} & \multicolumn{1}{c}{amplitude} & \multicolumn{1}{c}{amp\_noiseaware} & \multicolumn{1}{c}{phase} & \multicolumn{1}{c}{phase\_noiseaware} \\
+\midrule
+MNIST   & 0.0000 & 0.0081  & 0.0016 & 0.7033 & 0.1717 \\
+KMNIST  & 0.0000 & 0.0087  & 0.0055 & 0.5855 & 0.1781 \\
+EMNIST  & 0.0000 & 0.03385 & 0.00428 & 0.78808 & 0.0475 \\
+CIFAR10 & 0.0000 & 0.0250  & 0.0018 & 0.4011  & 0.0590 \\
+FMNIST  & 0.0000 & 0.0168  & 0.0024 & 0.6624  & 0.1652 \\
+\bottomrule
+\end{tabular}
+\caption{データセット別spread（ノイズグリッド上のmax--min、各\(\sigma\)1サンプル）。}
+\label{tab:spreads-ja}
+\end{table}
+
+\subsection{図}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.9\linewidth]{../../figures/benchmark_mean_accuracy.png}
+  \caption{平均精度（各モデルのmin/maxエラーバー付き）。}
+  \label{fig:meanacc-ja}
+\end{figure}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.9\linewidth]{../../figures/benchmark_diff_range.png}
+  \caption{spread（max--min）。粗い頑健性診断。}
+  \label{fig:spread-ja}
+\end{figure}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.9\linewidth]{../../figures/benchmark_per_dataset.png}
+  \caption{データセット別平均精度。}
+  \label{fig:perdataset-ja}
+\end{figure}
+\begin{figure}[!htbp]
+  \centering
+  \includegraphics[width=0.9\linewidth]{../../figures/benchmark_confidence_intervals.png}
+  \caption{データセット間の変動区間（tベース、記述的）。}
+  \label{fig:varinterval-ja}
+\end{figure}
+
+\section{統計的視点}
+5データセットの平均\(\bar{a}\)と標準偏差\(s\)からtベースの「変動区間」を示す：
+\[
+  \bar{a} \pm t_{0.975,4} \frac{s}{\sqrt{5}}.
+\]
+これは\textbf{記述的な変動幅}であり、確率的な信頼区間ではない（精度は\([0,1]\)に制約される）。結果: digital \(\num{0.8359} \pm \num{0.2244}\)、amplitude \(\num{0.8302} \pm \num{0.2238}\)、amplitude\_noiseaware \(\num{0.8329} \pm \num{0.2205}\)、phase \(\num{0.6156} \pm \num{0.2343}\)、phase\_noiseaware \(\num{0.8002} \pm \num{0.2467}\)。デジタルのspreadはノイズを入れていないため未定義。
+
+\section{考察}
+\begin{itemize}
+  \item \textbf{乗算ノイズ系}: amplitude\_noiseawareはデジタルと僅差で、spreadも最小。乗算ノイズを学習時に注入することが推論安定化に効く。
+  \item \textbf{位相系}: ノイズなし学習は大きく不安定。ノイズあり学習で大幅改善するが、\(\cos(\theta)\)という有界重み表現ゆえ容量不足気味で、CIFAR-10(flat)で顕著に遅れ。
+  \item \textbf{指標の限界}: spreadはノイズグリッドと単一サンプルに依存する粗い診断であり、厳密な頑健性指標ではない。
+\end{itemize}
+
+\section{今後の改善と制約}
+\begin{itemize}
+  \item デジタルにも同じノイズを入れた対照実験（推論ノイズ・ノイズ付き学習）を追加し、エンコード効果と正則化効果を分離する。
+  \item 複数シード・各\(\sigma\)複数サンプル、最悪値やAUCなどの頑健性指標を報告する。
+  \item 位相表現の容量拡張（\(w=\alpha\cos\theta\)、I/Q表現）やラップド分布の検討。
+  \item CIFAR-10(flat)はMLP容量のストレステストに過ぎないため、畳み込み特徴と組み合わせた評価を行う。
+\end{itemize}
+
+\section{結論}
+単一シード・各\(\sigma\)1サンプル・固定ノイズグリッドという前提のもと、乗算ノイズを伴う学習（amplitude\_noiseaware）が最もバランスの取れた結果を示し、デジタル基準に近い精度と低い変動を両立した。位相モデルはノイズを伴う学習が必須で、\(\cos(\theta)\)の有界表現では難しいタスクで劣る。今後は対照実験（デジタル+ノイズ）、複数シード、表現力強化（畳み込み特徴・位相のI/Q表現）を行う。
+
+\section*{謝辞}
+先行するアナログ風学習・頑健性研究に感謝する。
+
+\section*{参考文献（ドラフト）}
+\small
+\setlength{\LTpre}{0pt}
+\setlength{\LTpost}{0pt}
+\begin{longtable}{p{0.52\textwidth}p{0.12\textwidth}p{0.08\textwidth}p{0.22\textwidth}}
+\toprule
+Title & Year & Src. & Note \\
+\midrule
+\endfirsthead
+\toprule
+Title & {Year} & {Src.} & Note \\
+\midrule
+\endhead
+\bottomrule
+\endfoot
+A Tutorial about Random Neural Networks in Supervised Learning (\url{http://arxiv.org/abs/1609.04846v1}) & 2016 & arXiv & Random neural networks / queueing view. \\
+Predicting concentration levels of air pollutants by transfer learning and recurrent neural network (\url{http://arxiv.org/abs/2502.01654v1}) & 2025 & arXiv & Air pollution prediction. \\
+Analog Alchemy: Neural Computation with In-Memory Inference, Learning and Routing (\url{http://arxiv.org/abs/2412.20848v1}) & 2024 & arXiv & In-memory analog neural computation and routing. \\
+Masked Conditional Neural Networks for Audio Classification (\url{http://arxiv.org/abs/1803.02421v2}) & 2018 & arXiv & Conditional/masked neural networks for temporal signals. \\
+The Deep Arbitrary Polynomial Chaos Neural Network (\url{http://arxiv.org/abs/2306.14753v1}) & 2023 & arXiv & Homogeneous chaos theory applied to deep networks. \\
+A Neural Network-Evolutionary Computational Framework for RUL Estimation (\url{http://arxiv.org/abs/1905.05918v1}) & 2019 & arXiv & Remaining useful life estimation. \\
+Memristors -- from In-memory computing to Neuromorphic Computing (\url{http://arxiv.org/abs/2004.14942v1}) & 2020 & arXiv & Survey of memristor-based computing. \\
+Reservoir Memory Machines as Neural Computers (\url{http://arxiv.org/abs/2009.06342v2}) & 2020 & arXiv & Differentiable neural computers with explicit memory. \\
+Adversarial Frontier Stitching for Remote Neural Network Watermarking (\url{http://arxiv.org/abs/1711.01894v2}) & 2017 & arXiv & Watermarking neural networks via adversarial stitching. \\
+A Review on Neural Network Models of Schizophrenia and ASD (\url{http://arxiv.org/abs/1906.10015v2}) & 2019 & arXiv & Survey of NN models of ASD and schizophrenia. \\
+Structure Is Not Enough: Leveraging Behavior for Neural Network Weight Reconstruction (\url{http://arxiv.org/abs/2503.17138v1}) & 2025 & arXiv & Weight reconstruction using behavioral cues. \\
+Adiabatic Fine-Tuning of Neural Quantum States (\url{http://arxiv.org/abs/2503.17140v2}) & 2025 & arXiv & Neural quantum states and phase transitions in weight space. \\
+Encoding binary neural codes in networks of threshold-linear neurons (\url{http://arxiv.org/abs/1212.0031v3}) & 2012 & arXiv & Encoding patterns via synaptic connections. \\
+Recursive Self-Similarity in Deep Weight Spaces of Neural Architectures (\url{http://arxiv.org/abs/2503.14298v1}) & 2025 & arXiv & Fractal/coarse geometry perspective on deep weight spaces. \\
+Development of a sensory-neural network for medical diagnosing (\url{http://arxiv.org/abs/1807.02477v1}) & 2018 & arXiv & Sensory-neural network for diagnostics. \\
+Normalisation of Weights and Firing Rates in Spiking Neural Networks with STDP (\url{http://arxiv.org/abs/1910.00122v1}) & 2019 & arXiv & Spiking homeostasis and normalization. \\
+Implementing a Bayes Filter in a Neural Circuit (\url{http://arxiv.org/abs/1512.07839v4}) & 2015 & arXiv & Bayesian filtering with neural circuits. \\
+On functions computed on trees (\url{http://arxiv.org/abs/1904.02309v4}) & 2019 & arXiv & Hierarchical function compositions on trees. \\
+Coherent states for compact Lie groups and their large-N limits (\url{http://arxiv.org/abs/1707.02355v1}) & 2017 & arXiv & Survey of heat-kernel coherent states. \\
+Cognitive computation with autonomously active neural networks (\url{http://arxiv.org/abs/0901.3028v1}) & 2009 & arXiv & Self-sustained neural activity and cognition. \\
+Coherent states in fermionic Fock-Krein spaces and their amplitudes (\url{http://arxiv.org/abs/1708.03047v2}) & 2017 & arXiv & Fermionic coherent states with indefinite inner products. \\
+Review of Entangled Coherent States (\url{http://arxiv.org/abs/1112.1778v1}) & 2011 & arXiv & Survey of entangled coherent states. \\
+Accumulate: An identity-based blockchain protocol (\url{http://arxiv.org/abs/2204.06878v2}) & 2022 & arXiv & DPoS blockchain with identity and cross-chain support. \\
+Linear Delay-cell Design for Low-energy Delay Multiplication and Accumulation (\url{http://arxiv.org/abs/2007.13895v3}) & 2020 & arXiv & Low-energy MAC design. \\
+MultiPLY: A Multisensory Object-Centric Embodied LLM in 3D World (\url{http://arxiv.org/abs/2401.08577v1}) & 2024 & arXiv & Multisensory object-centric embodied model. \\
+AutoLungDx: A Hybrid Deep Learning Approach for Early Lung Cancer Diagnosis (\url{http://arxiv.org/abs/2305.00046v4}) & 2023 & arXiv & Hybrid 3D Res-U-Net/YOLOv5/ViT for lung cancer. \\
+On the Capacity Region of the Two-User Interference Channel (\url{http://arxiv.org/abs/1302.1837v1}) & 2013 & arXiv & Interference channel capacity region. \\
+A Multi-Stage Hybrid CNN-Transformer Network for Pediatric Lung Sound Classification (\url{http://arxiv.org/abs/2507.20408v2}) & 2025 & arXiv & Hybrid CNN-Transformer for lung sounds. \\
+Interference Mitigation through Limited Transmitter Cooperation (\url{http://arxiv.org/abs/1004.5421v1}) & 2010 & arXiv & Cooperation strategies for interference mitigation. \\
+A Self-Attention-Driven Deep Denoiser Model for Real Time Lung Sound Denoising (\url{http://arxiv.org/abs/2404.04365v3}) & 2024 & arXiv & Self-attention denoiser for lung sounds. \\
+Call to Protect the Dark and Quiet Sky from Satellite Constellations (\url{http://arxiv.org/abs/2412.08244v2}) & 2024 & arXiv & Impact of satellite constellations on sky observations. \\
+ResCap-DBP: Lightweight Residual-Capsule Network for DNA-Binding Protein Prediction (\url{http://arxiv.org/abs/2507.20426v1}) & 2025 & arXiv & Residual-capsule network for DBP prediction. \\
+Piecewise Semi-Analytical Formulation for Coupled-Oscillator Systems (\url{http://arxiv.org/abs/2404.12780v1}) & 2024 & arXiv & Semi-analytical solutions for coupled oscillators. \\
+How transferable are features in deep neural networks? (\url{http://arxiv.org/abs/1411.1792v1}) & 2014 & arXiv & Feature transferability in deep nets. \\
+Parallel Neural Networks in Golang (\url{http://arxiv.org/abs/2304.09590v1}) & 2023 & arXiv & PNNs implemented in Go. \\
+Dual Accuracy-Quality-Driven Neural Network for Prediction Interval Generation (\url{http://arxiv.org/abs/2212.06370v4}) & 2022 & arXiv & Uncertainty quantification with dual objectives. \\
+Synchronization conditions in the Kuramoto model (\url{http://arxiv.org/abs/2007.04343v2}) & 2020 & arXiv & Synchronization conditions and seminorms. \\
+Conformal Group Actions on Generalized Kuramoto Oscillators (\url{http://arxiv.org/abs/1812.06539v3}) & 2018 & arXiv & Group actions on generalized Kuramoto models. \\
+Synchronization of Kuramoto Oscillators on Knots (\url{http://arxiv.org/abs/1104.3493v2}) & 2011 & arXiv & Knot-based oscillator synchronization. \\
+Compute and Energy Consumption Trends in Deep Learning Inference (\url{http://arxiv.org/abs/2109.05472v2}) & 2021 & arXiv & Trends in compute and energy for DL inference. \\
+Cold Start Latency in Serverless Computing (\url{http://arxiv.org/abs/2310.08437v2}) & 2023 & arXiv & Review of cold start latency in serverless. \\
+Solving the Hamiltonian path problem with a light-based computer (\url{http://arxiv.org/abs/0708.1512v1}) & 2007 & arXiv & Optical approach to Hamiltonian path. \\
+Quantum Computing: Vision and Challenges (\url{http://arxiv.org/abs/2403.02240v5}) & 2024 & arXiv & Vision and challenges in quantum computing. \\
+Tierkreis: A Dataflow Framework for Hybrid Quantum-Classical Computing (\url{http://arxiv.org/abs/2211.02350v1}) & 2022 & arXiv & Dataflow framework for hybrid quantum-classical. \\
+Synthetic Biology meets Neuromorphic Computing (\url{http://arxiv.org/abs/2504.10053v2}) & 2025 & arXiv & Bio-inspired olfactory perception system. \\
+Double Robust Semi-Supervised Inference for the Mean (\url{http://arxiv.org/abs/2104.06667v2}) & 2021 & arXiv & Semi-supervised inference under MAR labeling. \\
+A Comparative Study of Load Balancing Algorithms in Cloud Computing Environment (\url{http://arxiv.org/abs/1403.6918v1}) & 2014 & arXiv & Load balancing in cloud environments. \\
+Universal Workers: A Vision for Eliminating Cold Starts in Serverless Computing (\url{http://arxiv.org/abs/2505.19880v2}) & 2025 & arXiv & Reducing cold starts in serverless computing. \\
+Placement of Microservices-based IoT Applications in Fog Computing (\url{http://arxiv.org/abs/2207.05399v2}) & 2022 & arXiv & Taxonomy for fog computing placement. \\
+Driven spin wave modes in XY ferromagnet (\url{http://arxiv.org/abs/1706.01619v6}) & 2017 & arXiv & Nonequilibrium phase transition in XY ferromagnets. \\
+Room temperature reversible colossal volto-magnetic effect (\url{http://arxiv.org/abs/2308.04324v1}) & 2023 & arXiv & Volto-magnetic effect in oxide heterostructures. \\
+Reversible Computing with Fast, Fully Static, Fully Adiabatic CMOS (\url{http://arxiv.org/abs/2009.00448v2}) & 2020 & arXiv & Energy-efficient reversible CMOS. \\
+Monte Carlo study of the phase transitions in the classical XY ferromagnets (\url{http://arxiv.org/abs/2208.10109v8}) & 2022 & arXiv & Monte Carlo of anisotropic XY ferromagnets. \\
+Supporting Multi-Cloud in Serverless Computing (\url{http://arxiv.org/abs/2209.09367v4}) & 2022 & arXiv & Multi-cloud strategies for serverless. \\
+Bridging Phases at the Morphotropic Boundaries of Lead-Oxide Solid Solutions (\url{http://arxiv.org/abs/cond-mat/0511256v1}) & 2005 & arXiv & Piezoelectric solid solutions near morphotropic boundaries. \\
+Graph Neural Networks Based Analog Circuit Link Prediction (\url{http://arxiv.org/abs/2504.10240v5}) & 2025 & arXiv & GNNs for analog circuit link prediction. \\
+Partially Oblivious Neural Network Inference (\url{http://arxiv.org/abs/2210.15189v1}) & 2022 & arXiv & Oblivious inference for privacy. \\
+A Metalearned Neural Circuit for Nonparametric Bayesian Inference (\url{http://arxiv.org/abs/2311.14601v1}) & 2023 & arXiv & Meta-learned neural circuit for Bayesian inference. \\
+On the Accuracy of Analog Neural Network Inference Accelerators (\url{http://arxiv.org/abs/2109.01262v3}) & 2021 & arXiv & Accuracy analysis of analog NN accelerators. \\
+DiffCkt: A Diffusion Model-Based Hybrid Neural Network Framework for Automatic Transistor-Level Generation of Analog Circuits (\url{http://arxiv.org/abs/2507.00444v2}) & 2025 & arXiv & Diffusion + hybrid NN for analog circuit generation. \\
+The CEPC input for the European Strategy for Particle Physics - Accelerator (\url{http://arxiv.org/abs/1901.03169v1}) & 2019 & arXiv & CEPC accelerator design summary. \\
+Applications of Particle Accelerators (\url{http://arxiv.org/abs/2407.10216v1}) & 2024 & arXiv & Overview of particle accelerator applications. \\
+Accelerator design concept for future neutrino facilities (\url{http://arxiv.org/abs/0802.4023v2}) & 2008 & arXiv & Scoping study findings for future neutrino facilities. \\
+Time-domain and Frequency-domain Signals and their Analysis (\url{http://arxiv.org/abs/2009.14544v2}) & 2020 & arXiv & Signals in time/frequency domains. \\
+Fixed-Field Alternating-Gradient Accelerators (\url{http://arxiv.org/abs/1604.05221v1}) & 2016 & arXiv & Overview of FFAG accelerators for medical applications. \\
+Training of mixed-signal optical convolutional neural network with reduced quantization level (\url{http://arxiv.org/abs/2008.09206v1}) & 2020 & arXiv & Mixed-signal optical CNN training. \\
+Analog, In-memory Compute Architectures for Artificial Intelligence (\url{http://arxiv.org/abs/2302.06417v1}) & 2023 & arXiv & Energy-efficiency limits in analog in-memory computing. \\
+HZO-based FerroNEMS MAC for In-Memory Computing (\url{http://arxiv.org/abs/2208.06499v1}) & 2022 & arXiv & Ferroelectric NEMS unimorph for low-energy MAC. \\
+MRAM-based Analog Sigmoid Function for In-memory Computing (\url{http://arxiv.org/abs/2204.09918v1}) & 2022 & arXiv & Analog sigmoid using MRAM. \\
+An Asynchronous Multi-Beam MAC Protocol for Multi-Hop Wireless Networks (\url{http://arxiv.org/abs/2111.10073v1}) & 2021 & arXiv & Multi-beam MAC for wireless networks. \\
+Wireless sensors networks MAC protocols analysis (\url{http://arxiv.org/abs/1004.4600v1}) & 2010 & arXiv & MAC protocols for wireless sensor networks. \\
+Energy Efficient Dual Designs of FeFET-Based Analog In-Memory Computing (\url{http://arxiv.org/abs/2410.19593v1}) & 2024 & arXiv & FeFET-based IMC with shift-add capability. \\
+LionHeart: A Layer-based Mapping Framework for Heterogeneous Systems with Analog In-Memory Computing Tiles (\url{http://arxiv.org/abs/2401.09420v3}) & 2024 & arXiv & Mapping framework for analog IMC tiles. \\
+Nonlinear Integrated Microwave Photonics (\url{http://arxiv.org/abs/1310.4897v1}) & 2013 & arXiv & Nonlinear optical effects on chip. \\
+Crosstalk Reduction for Superconducting Microwave Resonator Arrays (\url{http://arxiv.org/abs/1206.5571v1}) & 2012 & arXiv & Crosstalk reduction in MKIDs. \\
+Near-Field Microwave Microscopy of Materials Properties (\url{http://arxiv.org/abs/cond-mat/0001075v2}) & 2000 & arXiv & Near-field microwave microscopy. \\
+Bell-state measurement and quantum teleportation using linear optics (\url{http://arxiv.org/abs/1304.1214v1}) & 2013 & arXiv & Bell-state measurement and teleportation schemes. \\
+Enabling Scalable Photonic Tensor Cores with Polarization-Domain Photonic Computing (\url{http://arxiv.org/abs/2501.18886v1}) & 2025 & arXiv & Polarization-domain photonic tensor core. \\
+Highly-coherent stimulated phonon oscillations in a multi-core optical fiber (\url{http://arxiv.org/abs/1811.06290v1}) & 2018 & arXiv & Coherent acoustic waves in multi-core fiber. \\
+The COHERENT Experiment at the Spallation Neutron Source (\url{http://arxiv.org/abs/1509.08702v2}) & 2015 & arXiv & COHERENT CEvNS experiment overview. \\
+CORE -- a COmpact detectoR for the EIC (\url{http://arxiv.org/abs/2209.00496v1}) & 2022 & arXiv & CORE detector proposal for EIC. \\
+COHERENT Collaboration data release from the first detection of CEvNS on argon (\url{http://arxiv.org/abs/2006.12659v2}) & 2020 & arXiv & COHERENT argon CEvNS data release. \\
+An optical fiber-based probe for photonic crystal microcavities (\url{http://arxiv.org/abs/physics/0406129v1}) & 2004 & arXiv & Fiber probe for photonic crystal cavities. \\
+Photovoltaic-ferroelectric materials for the realization of all-optical devices (\url{http://arxiv.org/abs/2203.06515v1}) & 2022 & arXiv & Photovoltaic-ferroelectric materials for optical devices. \\
+Frequency Ratio Measurements with 18-digit Accuracy Using a Network of Optical Clocks (\url{http://arxiv.org/abs/2005.14694v1}) & 2020 & arXiv & Optical clock frequency ratio measurements. \\
+A Fast, robust algorithm for power line interference cancellation in neural recording (\url{http://arxiv.org/abs/1402.6862v2}) & 2014 & arXiv & Power line interference cancellation. \\
+Understanding and mitigating noise in trained deep neural networks (\url{http://arxiv.org/abs/2103.07413v3}) & 2021 & arXiv & Noise in trained DNNs and mitigation. \\
+Denoising Noisy Neural Networks: A Bayesian Approach with Compensation (\url{http://arxiv.org/abs/2105.10699v3}) & 2021 & arXiv & Bayesian denoising for noisy neural networks. \\
+Noise and Bell's inequality (\url{http://arxiv.org/abs/1008.0667v2}) & 2010 & arXiv & Noise considerations in Bell tests. \\
+Quantum and Classical Frontiers of Noise (\url{http://arxiv.org/abs/1612.03430v1}) & 2016 & arXiv & Survey of quantum/classical noise frontiers. \\
+Noise based logic: why noise? (\url{http://arxiv.org/abs/1204.2545v4}) & 2012 & arXiv & Noise-based logic and randomness. \\
+Decoherence and noise in open quantum system dynamics (\url{http://arxiv.org/abs/1605.07838v1}) & 2016 & arXiv & Decoherence and noise in open systems. \\
+Instantaneous noise-based logic (\url{http://arxiv.org/abs/1004.2652v2}) & 2010 & arXiv & Deterministic logic with binary noise timefunctions. \\
+Noise Dynamics in the Quantum Regime (\url{http://arxiv.org/abs/2311.17794v1}) & 2023 & arXiv & Time-dependent modulation of current fluctuations. \\
+Simple Cracking of (Noise-Based) Dynamic Watermarking in Smart Grids (\url{http://arxiv.org/abs/2406.15494v3}) & 2024 & arXiv & Security analysis of noise-based watermarking. \\
+Phase-Locked, Low-Noise, Frequency Agile Titanium: Sapphire Lasers (\url{http://arxiv.org/abs/physics/0507187v2}) & 2005 & arXiv & Phase-locked Ti:sapphire lasers with low noise. \\
+Stokes' Drift and Hypersensitive Response with Dichotomous Markov Noise (\url{http://arxiv.org/abs/cond-mat/0501499v1}) & 2005 & arXiv & Stochastic Stokes' drift under dichotomous noise. \\
+Shot noise for entangled and spin-polarized electrons (\url{http://arxiv.org/abs/cond-mat/0210498v1}) & 2002 & arXiv & Shot noise in entangled/spin-polarized transport. \\
+The Data Conversion Bottleneck in Analog Computing Accelerators (\url{http://arxiv.org/abs/2308.01719v4}) & 2023 & arXiv & Data conversion limits in analog accelerators. \\
+Analysis of Performance of Linear Analog Codes (\url{http://arxiv.org/abs/1511.05509v2}) & 2015 & arXiv & MSE performance bounds for linear analog codes. \\
+Security of quantum key distribution with detection-efficiency mismatch (\url{http://arxiv.org/abs/1810.04663v3}) & 2018 & arXiv & Bounds for QKD with detector mismatch. \\
+Performance Analysis of the Matrix Pair Beamformer with Matrix Mismatch (\url{http://arxiv.org/abs/1009.5979v4}) & 2010 & arXiv & Robustness of matrix pair beamformer. \\
+The three and a half layers of dynamics : analog, digital, semi-digital, analog (\url{http://arxiv.org/abs/1106.0911v1}) & 2011 & arXiv & Perspective on analog/digital dynamics. \\
+Are Bohmian trajectories real? (\url{http://arxiv.org/abs/quant-ph/0609172v2}) & 2006 & arXiv & Bohmian trajectories and classical mismatch. \\
+Computation over Mismatched Channels (\url{http://arxiv.org/abs/1204.5059v2}) & 2012 & arXiv & Distributed computation over MAC with mismatch. \\
+Superfluid Analog of the Davies-Unruh Effect (\url{http://arxiv.org/abs/gr-qc/0505005v1}) & 2005 & arXiv & Analog of Davies-Unruh in superfluid helium. \\
+Semantic Communications with Discrete-time Analog Transmission: A PAPR Perspective (\url{http://arxiv.org/abs/2208.08342v3}) & 2022 & arXiv & Semantic communications with analog transmission. \\
+Programmable photonic circuits (\url{https://doi.org/10.1038/s41566-020-0585-z}) & 2020 & bib & Overview of programmable photonic circuits. \\
+Coupled oscillators for computing: A review and perspective (\url{https://doi.org/10.1063/1.5108897}) & 2020 & bib & Review of coupled oscillator computing. \\
+Parallel convolutional processing using an integrated photonic tensor core (\url{https://doi.org/10.1038/s41586-020-03070-1}) & 2021 & bib & Photonic tensor core for convolutions. \\
+Oscillatory neurocomputers with dynamic connectivity (\url{https://doi.org/10.1126/science.283.5408.1903}) & 1999 & bib & Oscillatory neurocomputer concept. \\
+A 65nm 4.7TOPS/W 8bit CNN processor with mixed-signal computing (\url{https://doi.org/10.1109/ISSCC.2018.8310344}) & 2018 & bib & Mixed-signal CNN accelerator with calibration. \\
+All-optical machine learning using diffractive deep neural networks (\url{https://doi.org/10.1126/science.aat8084}) & 2018 & bib & Diffractive optical layers performing inference. \\
+Noise mitigation in analog in-memory computing for deep neural network accelerators (\url{https://doi.org/10.1109/JXCDC.2021.3090030}) & 2021 & bib & Noise mitigation for analog IMC accelerators. \\
+Experimental demonstration of reservoir computing on a silicon photonics chip (\url{https://doi.org/10.1038/ncomms3541}) & 2014 & bib & Photonic reservoir computing demonstration. \\
+Broadcast and weight: An integrated network for scalable photonic spike processing (\url{https://doi.org/10.1038/srep05522}) & 2014 & bib & Photonic weighting for neuromorphic spikes. \\
+Optimal design for universal multiport interferometers (\url{https://doi.org/10.1364/OPTICA.3.001460}) & 2016 & bib & Mesh design for programmable interferometers. \\
+Memory devices and applications for in-memory computing (\url{https://doi.org/10.1038/s41565-020-0655-z}) & 2020 & bib & Survey of memory devices for IMC. \\
+Deep learning with coherent nanophotonic circuits (\url{https://doi.org/10.1038/nphoton.2017.93}) & 2017 & bib & Phase-programmable nanophotonic interferometer. \\
+Neuromorphic photonic networks using silicon photonic weight banks (\url{https://doi.org/10.1038/s41598-017-06630-y}) & 2017 & bib & Photonic weight banks for coherent summation. \\
+An oscillator-based Ising machine (\url{https://doi.org/10.1038/s41928-019-0300-0}) & 2019 & bib & Oscillator-based Ising machine. \\
+Deep physical neural networks trained with backpropagation (\url{https://doi.org/10.1038/s41586-021-04223-6}) & 2022 & bib & Backpropagation through physical systems. \\
+\end{longtable}
+\normalsize
+
+\end{document}

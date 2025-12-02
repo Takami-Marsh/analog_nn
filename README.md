@@ -26,6 +26,8 @@ This creates a Python venv, installs dependencies, fetches papers, builds the an
 - `python scripts/build_bib.py results/papers_deduped.json references.bib docs/references.md`
 - `python src/run_toy_sim.py --config config.yml`
 - `python src/run_digits_demo.py --config config.yml`
+- `python src/run_benchmark.py --config config.yml` (baseline MNIST benchmark)
+- `python src/run_benchmark_fashion.py --config config.yml` (Fashion-MNIST and other dataset benchmarks; add `--config-key` e.g. `fashion_complex|kmnist_benchmark|emnist_letters_benchmark|cifar10_flat_benchmark`)
 - `python src/serve_digits_ui.py --config config.yml` (launch UI; add `--share` to expose public link)
 
 ## Deliverables

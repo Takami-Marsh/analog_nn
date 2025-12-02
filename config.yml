@@ -30,3 +30,102 @@ digits_demo:
     - name: amplitude_noiseaware
       type: amplitude
       train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.1, 0.15, 0.2]
+fashion_complex:
+  enabled: true
+  train_fraction: 0.8
+  dataset: fashion-mnist
+  input_dim: 784
+  hidden_dims: [512, 256, 128]
+  epochs: 50
+  lr: 0.003
+  batch_size: 128
+  noise_std: [0.0, 0.01, 0.02, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
+  methods:
+    - name: digital
+      type: digital
+    - name: phase
+      type: phase
+      train_noise: 0.0
+    - name: phase_noiseaware
+      type: phase
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.1, 0.15, 0.2]
+    - name: amplitude
+      type: amplitude
+    - name: amplitude_noiseaware
+      type: amplitude
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.1, 0.15, 0.2]
+kmnist_benchmark:
+  enabled: true
+  train_fraction: 0.8
+  dataset: kmnist
+  input_dim: 784
+  num_classes: 10
+  hidden_dims: [512, 256]
+  epochs: 45
+  lr: 0.0035
+  batch_size: 128
+  noise_std: [0.0, 0.01, 0.02, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.4]
+  methods:
+    - name: digital
+      type: digital
+    - name: phase
+      type: phase
+      train_noise: 0.0
+    - name: phase_noiseaware
+      type: phase
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.1, 0.15, 0.2]
+    - name: amplitude
+      type: amplitude
+    - name: amplitude_noiseaware
+      type: amplitude
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.1, 0.15, 0.2]
+emnist_letters_benchmark:
+  enabled: true
+  train_fraction: 0.8
+  dataset: emnist-letters
+  input_dim: 784
+  num_classes: 26
+  hidden_dims: [512, 256, 128]
+  epochs: 55
+  lr: 0.003
+  batch_size: 128
+  noise_std: [0.0, 0.01, 0.02, 0.05, 0.08, 0.12, 0.16, 0.2, 0.25, 0.3]
+  methods:
+    - name: digital
+      type: digital
+    - name: phase
+      type: phase
+      train_noise: 0.0
+    - name: phase_noiseaware
+      type: phase
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.12, 0.16, 0.2, 0.25]
+    - name: amplitude
+      type: amplitude
+    - name: amplitude_noiseaware
+      type: amplitude
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.12, 0.16, 0.2, 0.25]
+cifar10_flat_benchmark:
+  enabled: true
+  train_fraction: 0.9
+  dataset: cifar10
+  input_dim: 3072
+  num_classes: 10
+  hidden_dims: [1024, 512, 256]
+  epochs: 65
+  lr: 0.0025
+  batch_size: 128
+  noise_std: [0.0, 0.01, 0.02, 0.05, 0.08, 0.12, 0.16, 0.2, 0.25, 0.3]
+  methods:
+    - name: digital
+      type: digital
+    - name: phase
+      type: phase
+      train_noise: 0.0
+    - name: phase_noiseaware
+      type: phase
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.12, 0.16, 0.2, 0.25]
+    - name: amplitude
+      type: amplitude
+    - name: amplitude_noiseaware
+      type: amplitude
+      train_noise_list: [0.01, 0.02, 0.05, 0.08, 0.12, 0.16, 0.2, 0.25]

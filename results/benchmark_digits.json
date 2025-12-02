@@ -1,0 +1,502 @@
+[
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.0,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.01,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.02,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.05,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.1,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.15,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.2,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.25,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.3,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "digital",
+    "type": "digital",
+    "train_noise": 0.0,
+    "noise_std": 0.4,
+    "accuracy": 0.976,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.0,
+    "accuracy": 0.9784,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.01,
+    "accuracy": 0.9781,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.02,
+    "accuracy": 0.9787,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.05,
+    "accuracy": 0.9762,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.1,
+    "accuracy": 0.967,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.15,
+    "accuracy": 0.9084,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.2,
+    "accuracy": 0.7493,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.25,
+    "accuracy": 0.588,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.3,
+    "accuracy": 0.442,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.4,
+    "accuracy": 0.2754,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.0,
+    "accuracy": 0.9737,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.01,
+    "accuracy": 0.9734,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.02,
+    "accuracy": 0.9735,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.05,
+    "accuracy": 0.973,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.1,
+    "accuracy": 0.9715,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.15,
+    "accuracy": 0.9697,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.2,
+    "accuracy": 0.9652,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.25,
+    "accuracy": 0.9534,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.3,
+    "accuracy": 0.9322,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "phase_noiseaware",
+    "type": "phase",
+    "train_noise": 0.0,
+    "noise_std": 0.4,
+    "accuracy": 0.802,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.0,
+    "accuracy": 0.9744,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.01,
+    "accuracy": 0.9745,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.02,
+    "accuracy": 0.9744,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.05,
+    "accuracy": 0.9749,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.1,
+    "accuracy": 0.9741,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.15,
+    "accuracy": 0.9736,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.2,
+    "accuracy": 0.9731,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.25,
+    "accuracy": 0.972,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.3,
+    "accuracy": 0.9719,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.4,
+    "accuracy": 0.9668,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.0,
+    "accuracy": 0.9725,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.01,
+    "accuracy": 0.9725,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.02,
+    "accuracy": 0.9722,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.05,
+    "accuracy": 0.9723,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.1,
+    "accuracy": 0.9726,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.15,
+    "accuracy": 0.9725,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.2,
+    "accuracy": 0.9717,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.25,
+    "accuracy": 0.9717,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.3,
+    "accuracy": 0.9724,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  },
+  {
+    "model": "amplitude_noiseaware",
+    "type": "amplitude",
+    "train_noise": 0.0,
+    "noise_std": 0.4,
+    "accuracy": 0.971,
+    "epochs": 40,
+    "lr": 0.005,
+    "seed": 42
+  }
+]

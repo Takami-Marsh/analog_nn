@@ -4,6 +4,7 @@ import argparse
 import json
 from pathlib import Path
 from typing import Dict, List, Optional, Tuple
+import threading
 
 import numpy as np
 import pandas as pd
@@ -20,6 +21,14 @@ from torchvision import datasets, transforms
 def load_config(path: Path) -> Dict:
     with open(path, "r", encoding="utf-8") as f:
         return yaml.safe_load(f)
+
+
+def get_device() -> torch.device:
+    if torch.backends.mps.is_available() and torch.backends.mps.is_built():
+        return torch.device("mps")
+    if torch.cuda.is_available():
+        return torch.device("cuda")
+    return torch.device("cpu")
 
 
 class PhaseLinear(nn.Module):
@@ -77,6 +86,7 @@ class AnalogMLP(nn.Module):
         input_dim: int,
         hidden_dims: List[int],
         mode: str,
+        num_classes: int = 10,
         train_noise: float = 0.0,
         train_noise_list: Optional[List[float]] = None,
     ):
@@ -90,11 +100,11 @@ class AnalogMLP(nn.Module):
         self.hidden = nn.Sequential(*layers) if layers else nn.Identity()
         self.mode = mode
         if mode == "phase":
-            self.out = PhaseLinear(prev, 10, train_noise=train_noise, train_noise_list=train_noise_list)
+            self.out = PhaseLinear(prev, num_classes, train_noise=train_noise, train_noise_list=train_noise_list)
         elif mode == "amplitude":
-            self.out = AmpLinear(prev, 10, train_noise_list=train_noise_list)
+            self.out = AmpLinear(prev, num_classes, train_noise_list=train_noise_list)
         else:
-            self.out = nn.Linear(prev, 10)
+            self.out = nn.Linear(prev, num_classes)
 
     def forward(
         self,
@@ -145,23 +155,39 @@ def make_loaders(seed: int, train_fraction: float, batch_size: int, dataset: str
         )
 
 
-def build_model(method: Dict, device: torch.device, input_dim: int, hidden_dims: List[int]) -> Tuple[nn.Module, str]:
+def build_model(
+    method: Dict, device: torch.device, input_dim: int, hidden_dims: List[int], num_classes: int = 10
+) -> Tuple[nn.Module, str]:
     mtype = method.get("type", "digital")
     model = AnalogMLP(
         input_dim=input_dim,
         hidden_dims=hidden_dims,
         mode=mtype,
+        num_classes=num_classes,
         train_noise=float(method.get("train_noise", 0.0)),
         train_noise_list=method.get("train_noise_list"),
     )
     return model.to(device), mtype
 
 
-def train_model(model: nn.Module, loader: DataLoader, epochs: int, lr: float, device: torch.device, mode: str):
+def train_model(
+    model: nn.Module,
+    loader: DataLoader,
+    epochs: int,
+    lr: float,
+    device: torch.device,
+    mode: str,
+    stop_check: Optional[callable] = None,
+):
+    should_stop = stop_check or (lambda: False)
     opt = torch.optim.Adam(model.parameters(), lr=lr)
     for _ in tqdm(range(epochs), desc="train", leave=False):
+        if should_stop():
+            break
         model.train()
         for xb, yb in loader:
+            if should_stop():
+                break
             xb = xb.to(device, dtype=torch.float32)
             yb = yb.to(device)
             opt.zero_grad()
@@ -175,11 +201,21 @@ def train_model(model: nn.Module, loader: DataLoader, epochs: int, lr: float, de
 
 
 @torch.no_grad()
-def eval_model(model: nn.Module, loader: DataLoader, device: torch.device, mode: str, noise_std: float) -> float:
+def eval_model(
+    model: nn.Module,
+    loader: DataLoader,
+    device: torch.device,
+    mode: str,
+    noise_std: float,
+    stop_check: Optional[callable] = None,
+) -> float:
+    should_stop = stop_check or (lambda: False)
     model.eval()
     correct = 0
     total = 0
     for xb, yb in loader:
+        if should_stop():
+            break
         xb = xb.to(device, dtype=torch.float32)
         yb = yb.to(device)
         if mode == "phase":
@@ -194,7 +230,12 @@ def eval_model(model: nn.Module, loader: DataLoader, device: torch.device, mode:
     return correct / total if total else 0.0
 
 
-def run_benchmark(config: Dict) -> pd.DataFrame:
+def run_benchmark(
+    config: Dict,
+    device: Optional[torch.device] = None,
+    stop_event: Optional[threading.Event] = None,
+) -> pd.DataFrame:
+    should_stop = stop_event.is_set if stop_event else (lambda: False)
     seed = config.get("seed", 42)
     torch.manual_seed(seed)
     np.random.seed(seed)
@@ -204,19 +245,24 @@ def run_benchmark(config: Dict) -> pd.DataFrame:
     dataset = cfg.get("dataset", "digits")
     input_dim = cfg.get("input_dim", 64)
     hidden_dims = cfg.get("hidden_dims", [64])
+    num_classes = cfg.get("num_classes", 10)
     noise_list: List[float] = cfg.get("noise_std", [0.0, 0.05, 0.1, 0.2])
     methods: List[Dict] = cfg.get("methods", [{"name": "digital", "type": "digital"}])
-    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    device = torch.device(device) if device else get_device()
 
     train_loader, test_loader = make_loaders(seed, cfg.get("train_fraction", 0.8), batch_size=128, dataset=dataset, input_dim=input_dim)
 
     rows = []
     for method in tqdm(methods, desc="methods"):
+        if should_stop():
+            break
         name = method.get("name", method.get("type", "phase"))
-        model, mtype = build_model(method, device, input_dim=input_dim, hidden_dims=hidden_dims)
-        train_model(model, train_loader, epochs=epochs, lr=lr, device=device, mode=mtype)
+        model, mtype = build_model(method, device, input_dim=input_dim, hidden_dims=hidden_dims, num_classes=num_classes)
+        train_model(model, train_loader, epochs=epochs, lr=lr, device=device, mode=mtype, stop_check=should_stop)
+        if should_stop():
+            break
         for nstd in tqdm(noise_list, desc=f"noise {name}", leave=False):
-            acc = eval_model(model, test_loader, device=device, mode=mtype, noise_std=nstd)
+            acc = eval_model(model, test_loader, device=device, mode=mtype, noise_std=nstd, stop_check=should_stop)
             rows.append(
                 {
                     "model": name,
